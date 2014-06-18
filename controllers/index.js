@@ -14,5 +14,9 @@ module.exports = function (router) {
         res.render('index', model);
         
     });
-
+    
+    router.get('/setLanguage/:locale', function (req, res) {
+        res.cookie('locale', req.params.locale);
+        res.redirect('/');
+    });
 };
