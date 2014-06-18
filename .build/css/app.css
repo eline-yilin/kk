@@ -18,11 +18,13 @@ body {
 }
 /* line 15, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .product-item:hover {
-  background: #4682B4;
-  color: #fff;
-  corsor: pointer;
+  border-color: #4682B4;
+  cursor: pointer;
+  -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
-/* line 17, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 19, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .primary-tile {
   font-weight: bold;
   padding-bottom: 3px;

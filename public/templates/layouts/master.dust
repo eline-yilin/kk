@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{+title /}</title>
+    <title>Kraken Test：{title}</title>
     <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -14,7 +14,6 @@
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body role="document">
-
     <!-- Fixed navbar -->
     <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -28,9 +27,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/product">Product</a></li>
-            <li><a href="/cart">Cart</a></li>
+            <li {@eq key=name value="index"}class="active"{/eq}><a href="/">Home</a></li>
+            <li {@eq key=name value="product"}class="active"{/eq}><a href="/product">Product</a></li>
+            <li {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">Cart</a></li>
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">language <b class="caret"></b></a>
               <ul class="dropdown-menu">

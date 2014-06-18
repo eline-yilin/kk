@@ -3,7 +3,8 @@
 
 module.exports = function ProductModel() {
     return {
-        name: 'product page',
+        name: 'product',
+        title:'Product Page',
         products: [
 			{
 				id: '1',
