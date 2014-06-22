@@ -1,8 +1,18 @@
 'use strict';
-
+var mysql = require('mysql');
 
 module.exports = function ProductModel() {
-    return {
+	mysql.query('select * from user', function(err, result) {
+        if(!err){
+           return result;
+        }
+        else{return err;}    
+	);
+	
+        }
+         
+    });
+    /*return {
         name: 'product',
         title:'Product Page',
         products: [
@@ -27,5 +37,5 @@ module.exports = function ProductModel() {
 				prettyPrice: '9.99',
 			},
 	]
-    };
+    };*/
 };
