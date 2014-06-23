@@ -10,7 +10,7 @@ var getProdctList = function  (callback){
 	});
 	connection.connect(function(err) {
 	  if(!err){
-		  connection.query('select * from user', function(err, result) {
+		  connection.query('select * from product', function(err, result) {
 		        if(!err){
 		        	connection.end();
 		           return callback(null,result);

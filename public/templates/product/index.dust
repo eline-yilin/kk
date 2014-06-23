@@ -11,10 +11,10 @@
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
 																					<div class="new-tile primary-tile">
-																						<span class="item-title">{name}</span><span class="item-sub">{prettyPrice}</span>
+																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
 																					</div>
 																					<div class="new-tile">
-																						 product description:
+																						 product description:{description}
 																					</div>
 																		<div style='margin-top:10px'></div>
 																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
