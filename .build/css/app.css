@@ -1,12 +1,12 @@
-/* line 1, F:\git\kraken\css\app */
+/* line 1, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 body {
   padding-top: 70px;
 }
-/* line 5, F:\git\kraken\css\app */
+/* line 5, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .item-title {
   padding-right: 10px;
 }
-/* line 9, F:\git\kraken\css\app */
+/* line 9, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .product-item {
   border: 1px solid #aaa;
   padding: 15px;
@@ -16,7 +16,7 @@ body {
   border-radius: 10px;
   -webkit-box-shadow: 0 0 1px #000;
 }
-/* line 15, F:\git\kraken\css\app */
+/* line 15, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .product-item:hover {
   border-color: #4682B4;
   cursor: pointer;
@@ -24,7 +24,7 @@ body {
   -moz-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
-/* line 19, F:\git\kraken\css\app */
+/* line 19, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
 .primary-tile {
   font-weight: bold;
   padding-bottom: 3px;

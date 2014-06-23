@@ -24,9 +24,9 @@
         }
     },
     "databaseConfig": {
-    "username": "admin",
-    "password": "yuShu1234",
-        "host": "121.199.55.129",
+    "user": "root",
+    "password": "goumao",
+        "host": "localhost",
         "database": "yuechang"
     },
 

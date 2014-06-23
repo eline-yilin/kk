@@ -1,41 +1,41 @@
 'use strict';
 var mysql = require('mysql');
 
-module.exports = function ProductModel() {
-	mysql.query('select * from user', function(err, result) {
-        if(!err){
-           return result;
-        }
-        else{return err;}    
-	);
+
+var getProdctList = function  (callback){	
+	var connection = mysql.createConnection({"user": "root",
+	    "password": "goumao",
+	    "host": "localhost",
+	    "database": "yuechang"
+	});
+	connection.connect(function(err) {
+	  if(!err){
+		  connection.query('select * from user', function(err, result) {
+		        if(!err){
+		        	connection.end();
+		           return callback(null,result);
+		        }
+		        else{
+		        	console.log(err);
+		        	return callback(err,null);
+		        	}    
+			}
+			);
+      }
+      else{
+      	console.log(err);
+      	return callback(err,null);
+      	}
+	});
+//	var rst = [
+//		        {name:1,
+//		        	id:2}
+//		        ];
+//	console.log(rst);
+//	return rst;
+	}; 
 	
-        }
-         
-    });
-    /*return {
-        name: 'product',
-        title:'Product Page',
-        products: [
-			{
-				id: '1',
-				name: 'test product',
-				prettyPrice: '10.12',
-			},
-			{
-				id: '2',
-				name: 'test product2',
-				prettyPrice: '12.56',
-			},
-			{
-				id: '3',
-				name: 'test product3',
-				prettyPrice: '9.56',
-			},
-			{
-				id: '4',
-				name: 'test product4',
-				prettyPrice: '9.99',
-			},
-	]
-    };*/
+module.exports = function(){console.log('prod mod exp'); 
+this.get = getProdctList;
 };
+

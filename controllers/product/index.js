@@ -10,14 +10,27 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('product/index', model);
-            }
-        });
+    			 console.log('////////////////product//////////////////////');
+		    	 model.get
+		    	(
+		    		function (err, products) {
+					if (err) {
+						console.log(err);
+					}
+					else{
+				        res.format({
+				            json: function () {
+				                res.json(products);
+				            },
+				            html: function () {
+				            	products = JSON.stringify(products);
+								console.log('////' + products);
+				                res.render('product/index', {'products': products});
+				            }
+				        });
+						}
+					}
+		    	);
     });
 
 };
