@@ -51,6 +51,13 @@
             }
         },
 
+        "locale": {
+            "priority": 95,
+            "enabled": true,
+            "module": {
+                "name": "path:./lib/locale"
+            }
+        },
         
         "expressView": {
             "priority": 100,

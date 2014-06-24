@@ -18,6 +18,7 @@ var kraken = require('kraken-js'),
 app.use(kraken(options));
 
 
+
 app.listen(port, function (err) {
     console.log('[%s] Listening on http://localhost:%d', app.settings.env, port);
 });
