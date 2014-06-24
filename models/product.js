@@ -1,12 +1,14 @@
 'use strict';
 var mysql = require('mysql');
+var cfg = require("config");
+var db = cfg['databaseConfig'];
 
 
 var getProdctList = function  (callback){	
-	var connection = mysql.createConnection({"user": "root",
-	    "password": "goumao",
-	    "host": "localhost",
-	    "database": "yuechang"
+	var connection = mysql.createConnection({"user": db['user'],
+	    "password": db['password'],
+	    "host": db['host'],
+	    "database": db['database']
 	});
 	connection.connect(function(err) {
 	  if(!err){
@@ -35,7 +37,7 @@ var getProdctList = function  (callback){
 //	return rst;
 	}; 
 	
-module.exports = function(){console.log('prod mod exp'); 
+module.exports = function(){console.log('prod mod exp');
 this.get = getProdctList;
 };
 

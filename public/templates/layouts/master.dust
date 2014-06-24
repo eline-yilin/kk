@@ -33,7 +33,7 @@
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">language <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                 <li><a href="/setLanguage/us-EN"><img src="/img/us.png" alt="English"></a></li>
+                 <li><a href="/setLanguage/en-US"><img src="/img/us.png" alt="English"></a></li>
                  <li><a href="/setLanguage/es-ES"><img src="/img/es.png" alt="Spanish"></a></li>
               </ul>
             </li>

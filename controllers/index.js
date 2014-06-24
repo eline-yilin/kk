@@ -10,7 +10,16 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        
+    	var locale = 'en-US';
+    	if(typeof  req.cookies.locale !== undefined &&  req.cookies.locale  )
+    		{
+    		
+    		locale = req.cookies.locale;
+    		}
+    	console.log(locale);
+    	res.locals.context = {
+                locality: locale
+            };
         res.render('index', model);
         
     });
