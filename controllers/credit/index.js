@@ -11,14 +11,26 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
         
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('credit/index', model);
-            }
-        });
+    	model.get
+    	(
+    		function (err, rst) {
+			if (err) {
+				console.log(err);
+			}
+			else{
+		        res.format({
+		            json: function () {
+		                res.json(rst);
+		            },
+		            html: function () {
+						console.log('////' + JSON.stringify(rst));
+		                res.render('credit/index', {credits:rst,name:'credit'});
+		            }
+		        });
+				}
+			}
+    	);
+    	
     });
 
 };

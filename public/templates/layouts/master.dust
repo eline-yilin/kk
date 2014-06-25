@@ -8,7 +8,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="/css/app.css"/>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
      <!-- Latest compiled and minified JavaScript -->
       <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -27,14 +27,22 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li {@eq key=name value="index"}class="active"{/eq}><a href="/">Home</a></li>
-            <li {@eq key=name value="product"}class="active"{/eq}><a href="/product">Product</a></li>
-            <li {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">Cart</a></li>
-            <li class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="#">language <b class="caret"></b></a>
+            <li {@eq key=name value="index"}class="active"{/eq}><a href="/">{@pre type="content" key="home"/}</a></li>
+            <li {@eq key=name value="user"}class="active"{/eq}>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="/user">{@pre type="content" key="user"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                 <li><a href="/setLanguage/en-US"><img src="/img/us.png" alt="English"></a></li>
-                 <li><a href="/setLanguage/es-ES"><img src="/img/es.png" alt="Spanish"></a></li>
+                <li><a href="/user">{@pre type="content" key="user"/}</a> </li>
+                 <li><a href="/user/credit">{@pre type="content" key="credit"/}</a> </li>
+              </ul>
+            </li>
+            <li {@eq key=name value="product"}class="active"{/eq}><a href="/product">{@pre type="content" key="product"/}</a></li>
+            <li {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">{@pre type="content" key="cart"/}</a></li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="language"/} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                 <li><a href="/setLanguage/en-US"><img src="/img/locale/us.png" alt="English"></a></li>
+                 <li><a href="/setLanguage/es-ES"><img src="/img/locale/es.png" alt="Espaniola"></a></li>
+                 <li><a href="/setLanguage/zh-CN"><img src="/img/locale/cn.png" alt="中文"></a></li>
               </ul>
             </li>
           </ul>

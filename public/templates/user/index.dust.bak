@@ -2,19 +2,19 @@
 {<body}
     <h1 style='display:none;'>{@pre type="content" key="greeting"/}</h1>
      <div class="products">
-            {?credits}
+            {?products}
                 <fieldset>
-                    <legend>Credit</legend>
-                        {#credits}
+                    <legend>Product List</legend>
+                        {#user}
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div id="appointment{id}" class="product-item">
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
 																					<div class="new-tile primary-tile">
-																						<span class="item-title">{amount}</span><span class="item-sub">{expiration}</span>
+																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
 																					</div>
 																					<div class="new-tile">
-																						 product description:{updated}
+																						 product description:{description}
 																					</div>
 																		<div style='margin-top:10px'></div>
 																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
@@ -25,11 +25,11 @@
                                 </form>
                             </div>
                         </div>
-                        {/credits}
-                </fieldset> 
+                        {/products}
+                </fieldset>
             {:else}
-                There is no history :(
-            {/credits}
+                There are no products :(
+            {/products}
         </div>
         <script>  
 $.ajaxSetup({

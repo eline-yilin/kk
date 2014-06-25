@@ -13,19 +13,19 @@ module.exports = function (router) {
     			 console.log('////////////////product//////////////////////');
 		    	 model.get
 		    	(
-		    		function (err, products) {
+		    		function (err, rst) {
 					if (err) {
 						console.log(err);
 					}
 					else{
 				        res.format({
 				            json: function () {
-				                res.json(products);
+				                res.json(rst);
 				            },
 				            html: function () {
-				            	products = JSON.stringify(products);
-								console.log('////' + products);
-				                res.render('product/index', {'products': products});
+				            	//products = JSON.stringify(products);
+								console.log('////' + rst);
+				                res.render('product/index', {products:rst,name:'credit'});
 				            }
 				        });
 						}
