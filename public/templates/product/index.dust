@@ -40,7 +40,7 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
-        function addCart(id, event)
+        function addCart(id)
         {
          $.post( "/cart", {_csrf:csrftoken}, function( data ) {
 					  return false;

@@ -1,36 +1,62 @@
 {>"layouts/master" /}
 {<body}
-    <h1 style='display:none;'>{@pre type="content" key="greeting"/}</h1>
-     <div class="products">
-            {?credits}
-                <fieldset>
-                    <legend>Credit</legend>
-                        {#credits}
-                        <div class="col-xs-12 col-sm-6 col-md-4">
-                            <div id="appointment{id}" class="product-item">
-                                <form method="POST" action="/cart">
-                                    <input type="hidden" name="item_id" value="{id}">
-																					<div class="new-tile primary-tile">
-																						<span class="item-title">{amount}</span><span class="item-sub">{expiration}</span>
-																					</div>
-																					<div class="new-tile">
-																						 product description:{updated}
-																					</div>
-																		<div style='margin-top:10px'></div>
-																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
-                                    <input type="submit" value="Delete" style='display:none'>
-                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
-                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
-                                    <input type="hidden" name="_method" value="POST">
-                                </form>
-                            </div>
-                        </div>
-                        {/credits}
-                </fieldset> 
-            {:else}
-                There is no history :(
-            {/credits}
+<div id='info'><div class='sucess'></div><div class='error'></div></div>
+     <form class="form-horizontal" id='register' method='POST'>
+     <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
+     <input type="hidden" id='_method' name="_method" value="CREATE">
+	<input type='hidden' name='postback' value='1' />
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">{@pre type="content" key="accountRegister"/}</legend>
+    <div class="control-group">
+          <!-- Text input-->
+          <label class="control-label" for="username">{@pre type="content" key="username"/}</label>
+          <div class="controls">
+            <input type="text"  class="input-xlarge" name='username' id='username'>
+          </div>
+
+          <!-- Select Basic -->
+          <label class="control-label">{@pre type="content" key="gender"/}</label>
+          <div class="controls">
+            <select class="input-xlarge" name='gender' id='gender'>
+              <option value=''></option>
+              <option value='male'>{@pre type="content" key="male"/}</option>
+              <option value='female'>{@pre type="content" key="female"/}</option>
+            </select>
+          </div>
+
+		<label class="control-label">{@pre type="content" key="DOB"/}</label>
+          <div class="controls">
+            <select class="input-xlarge" name='year' id='year'>
+            <option value=''></option>
+              {#data.years}
+              <option value='{key}'>{value}</option>";
+              {/data.years}
+            </select>
+            <select class="input-xlarge" name='month' id='month'>
+            <option value=''></option>
+              {#data.months}
+              <option value='{key}'>{value}</option>";
+              {/data.months}
+            </select>
+            <select class="input-xlarge" name='day' id='day'>
+            <option value=''></option>
+              {#data.days}
+              <option value='{key}'>{value}</option>";
+              {/data.days}
+            </select>
+          </div>
+    </div>
+        
+    <div class="control-group">
+          <!-- Button -->
+          <div class="controls">
+            <button id='submit' onclick="javascript:return addCart(1);"  class="btn btn-success">{@pre type="content" key="submit"/}</button>
+          </div>
         </div>
+	</div>
+    </fieldset>
+  </form>
         <script>  
 $.ajaxSetup({
     crossDomain: false, 
@@ -39,10 +65,28 @@ $.ajaxSetup({
     }
 });
 
-var csrftoken = $('#csrf').val();
-        function addCart(id, event)
+        function addCart(id)
         {
-         $.post( "/cart", {_csrf:csrftoken}, function( data ) {
+        var csrftoken = $('#csrf').val();
+         var method = $('#_method').val();
+        var username = $('#username').val();
+        var gender = $('#gender').val();
+        var birthday = $('#year').val() + '-' + $('#month').val() + '-' + $('#day').val();       
+         $.post( "/user/register", {
+         _csrf:csrftoken,
+         username:username,
+         gender:gender,
+         birthday:birthday,
+         method:method
+         },
+          function( data ) {
+          if(data['insertId'])
+          {
+           $('#info .sucess').html("{data.sucess}").show;
+           setInterval(function(){
+           window.location = "/";
+           }, 3000);
+          }
 					  return false;
 					},"json");
           return false;

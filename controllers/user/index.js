@@ -53,14 +53,42 @@ module.exports = function (router) {
     });
 
  router.get('/register', function (req, res) {
-	 var rst ={};
+	 var years = new Array();
+	 var months = new Array();
+	 var days = new Array();
+	 for(var i = 1970 ; i < 2014; i++)
+	 {
+		 years.push( {
+				 value:i,
+				 key:i
+		 });
+	 }
+	 for(var i = 1 ; i < 13; i++)
+	 {
+		 months.push(  {
+				 value:i,
+				 key:i
+		 });
+	 }
+	 for(var i = 1 ; i < 32; i++)
+	 {
+		 days.push(  {
+				 value:i,
+				 key:i
+		 });
+	 }
+	 var rst ={
+			 years:years,
+			 months:months,
+			 days:days
+			 };
 	 res.format({
          json: function () {
              res.json(rst);
          },
          html: function () {
 				console.log('////' + JSON.stringify(rst));
-             res.render('user/credit', {user:rst,name:'user'});
+             res.render('user/register', {data:rst,name:'user'});
          }
      });
   	
@@ -69,8 +97,9 @@ module.exports = function (router) {
  router.post('/register', function (req, res) {
 	   var CreditModel = require('../../models/user');
 	   var model = new CreditModel();
+	   
 	model.post
-	(
+	(req.body,
 		function (err, rst) {
 			if (err) {
 				console.log(err);
@@ -78,11 +107,12 @@ module.exports = function (router) {
 			else{
 		        res.format({
 		            json: function () {
+		            	console.log('////#############//////' + JSON.stringify(rst));
 		                res.json(rst);
 		            },
 		            html: function () {
 						console.log('////' + JSON.stringify(rst));
-		                res.render('user/credit', {credits:rst,name:'user'});
+		                res.render('user/register', {credits:rst,name:'user'});
 		            }
 		        });
 				}
