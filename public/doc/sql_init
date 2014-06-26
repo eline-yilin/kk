@@ -40,4 +40,7 @@ CREATE TABLE  `yuechang`.`product` (
   `img` varchar(45) NOT NULL,
   `price` float unsigned zerofill NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
