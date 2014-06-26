@@ -58,13 +58,6 @@
     </fieldset>
   </form>
         <script>  
-$.ajaxSetup({
-    crossDomain: false, 
-    beforeSend: function(xhr, settings) {
-           
-    }
-});
-
         function addCart(id)
         {
         var csrftoken = $('#csrf').val();
