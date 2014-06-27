@@ -34,7 +34,7 @@ var getByOpenID = function(openid,callback) {
 	var connection = mysql.createConnection(dbconfig);
 	connection.connect(function(err) {
 		if (!err) {
-			connection.query('select * from user where openid = ' + openid + ' limit 1',
+			connection.query("select * from user where openid = '" + openid + "' limit 1",
 					function(err, result) {
 						if (!err ) {
 							connection.end();
@@ -59,12 +59,13 @@ var post = function(data, callback) {
 	if (data && data['id']) {
 
 	} else {
-		query = "INSERT INTO USER (name,openid,gender,birthday,clientid) values"
+		query = "INSERT INTO user (name,openid,gender,birthday,clientid) values"
 				+ "('"
 				+ data['username']
-				+ "','abcd','"
+				+ "','" + data['openid'] + "','"
 				+ data['gender']
 				+ "','" + data['birthday'] + "',1)";
+		console.log(query);
 	}
 	connection.connect(function(err) {
 		if (!err) {

@@ -15,7 +15,6 @@ module.exports = function(router) {
 						res.json(rst);
 					},
 					html : function() {
-						console.log('////' + JSON.stringify(rst));
 						res.render('user/index', {
 							user : rst,
 							name : 'user'
@@ -40,7 +39,6 @@ module.exports = function(router) {
 						res.json(rst);
 					},
 					html : function() {
-						console.log('////' + JSON.stringify(rst));
 						res.render('user/credit', {
 							credits : rst,
 							name : 'user'
@@ -53,9 +51,6 @@ module.exports = function(router) {
 	});
 
 	router.get('/register', function(req, res) {
-		//console.log('#########################' + JSON.stringify(req.query));
-		//console.log('#########################' + JSON.stringify(req.url));
-		//console.log('#########################' + JSON.stringify(req.method));
 		var openid = req.query.openid;
 		if (!openid ||openid == 'undefined') {
 			console.log('no openid');
@@ -107,15 +102,14 @@ module.exports = function(router) {
 	router.post('/register', function(req, res) {
 		var UserModel = require('../../models/user');
 		var model = new UserModel();
-
+		var openid = req.query.openid || (req.cookies && req.cookies.openid);
+		req.body.openid = openid;
 		model.post(req.body, function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
 				res.format({
 					json : function() {
-						console.log('////#############//////'
-								+ JSON.stringify(rst));
 						res.cookie('uid', rst.insertId);
 						res.json(rst);
 					},
