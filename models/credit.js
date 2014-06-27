@@ -4,7 +4,7 @@ var cfg = require("config");
 var db = cfg['databaseConfig'];
 
 
-var getCreditList = function  (callback){	
+var getCreditList = function  (data,callback){	
 	var connection = mysql.createConnection({"user": db['user'],
 	    "password": db['password'],
 	    "host": db['host'],
@@ -12,7 +12,7 @@ var getCreditList = function  (callback){
 	});
 	connection.connect(function(err) {
 	  if(!err){
-		  connection.query('select * from credit_history', function(err, result) {
+		  connection.query('select * from credit_history where userid=' + data['userid'], function(err, result) {
 		        if(!err){
 		        	connection.end();
 		           return callback(null,result);

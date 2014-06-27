@@ -3,9 +3,10 @@
 module.exports = function(router) {
 
 	router.get('/', function(req, res) {
+		var openid = req.query.openid || (req.cookies && req.cookies.openid);
 		var UserModel = require('../../models/user');
 		var model = new UserModel();
-		model.get(function(err, rst) {
+		model.openid(openid,function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -27,9 +28,10 @@ module.exports = function(router) {
 	});
 
 	router.get('/credit', function(req, res) {
+		var uid = req.cookies && req.cookies.uid;
 		var CreditModel = require('../../models/credit');
 		var model = new CreditModel();
-		model.get(function(err, rst) {
+		model.get({userid:uid},function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -103,8 +105,8 @@ module.exports = function(router) {
 	});
 
 	router.post('/register', function(req, res) {
-		var CreditModel = require('../../models/user');
-		var model = new CreditModel();
+		var UserModel = require('../../models/user');
+		var model = new UserModel();
 
 		model.post(req.body, function(err, rst) {
 			if (err) {
