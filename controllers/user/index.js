@@ -50,6 +50,30 @@ module.exports = function(router) {
 
 	});
 
+	router.get('/order', function(req, res) {
+		var uid = req.cookies && req.cookies.uid;
+		var ProductModel = require('../../models/product');
+		var model = new ProductModel();
+		model.get({userid:uid},function(err, rst) {
+			if (err) {
+				console.log(err);
+			} else {
+				res.format({
+					json : function() {
+						res.json(rst);
+					},
+					html : function() {
+						res.render('user/order', {
+							credits : rst,
+							name : 'user'
+						});
+					}
+				});
+			}
+		});
+
+	});
+	
 	router.get('/register', function(req, res) {
 		var openid = req.query.openid;
 		if (!openid ||openid == 'undefined') {

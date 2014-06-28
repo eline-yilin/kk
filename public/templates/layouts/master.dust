@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kraken Test：{title}</title>
+    <title>{@pre type="content" key="title"/}:{name}</title>
     <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -35,6 +35,7 @@
              <a data-toggle="dropdown" class="dropdown-toggle" href="/user">{@pre type="content" key="user"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/user">{@pre type="content" key="user"/}</a> </li>
+                <li><a href="/user/order">{@pre type="content" key="order"/}</a> </li>
                  <li><a href="/user/credit">{@pre type="content" key="credit"/}</a> </li>
               </ul>
             </li>
