@@ -31,6 +31,9 @@
                 There is no history :(
             {/credits}
         </div>
+        <div class='operations'>
+        <button onclick="javascript:return addCredit();" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add credit</button>
+        </div>
         <script>  
 $.ajaxSetup({
     crossDomain: false, 
@@ -40,9 +43,18 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
-        function addCart(id, event)
+        function addCart(id)
         {
          $.post( "/cart", {_csrf:csrftoken}, function( data ) {
+					  return false;
+					},"json");
+          return false;
+        }
+        
+        function addCredit(id, event)
+        {
+        var now = convertDateTime(new Date());
+         $.post( "/credit", {_csrf:csrftoken,typeid:1,amount:10,expiration:'2014-08-31',updated:now,client:0}, function( data ) {
 					  return false;
 					},"json");
           return false;

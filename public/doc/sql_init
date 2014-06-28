@@ -1,11 +1,12 @@
 DROP TABLE IF EXISTS `yuechang`.`user`;
 CREATE TABLE  `yuechang`.`user` (
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `openid` varchar(50) NOT NULL,
   `gender` char(10) NOT NULL,
   `birthday` date NOT NULL,
   `clientid` int(10) unsigned NOT NULL,
+  `phone` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -15,7 +16,7 @@ CREATE TABLE  `yuechang`.`client` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `yuechang`.`credit_history`;
@@ -28,7 +29,7 @@ CREATE TABLE  `yuechang`.`credit_history` (
   `client` int(10) unsigned zerofill NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 DROP TABLE IF EXISTS `yuechang`.`product`;

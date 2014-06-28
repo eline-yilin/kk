@@ -59,10 +59,11 @@ var post = function(data, callback) {
 	if (data && data['id']) {
 
 	} else {
-		query = "INSERT INTO user (name,openid,gender,birthday,clientid) values"
+		query = "INSERT INTO user (name,phone,openid,gender,birthday,clientid) values"
 				+ "('"
 				+ data['username']
-				+ "','" + data['openid'] + "','"
+				+ "','" + data['phone']
+				+ "','"+ data['openid'] + "','"
 				+ data['gender']
 				+ "','" + data['birthday'] + "',1)";
 		console.log(query);
