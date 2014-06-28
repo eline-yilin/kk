@@ -1,16 +1,16 @@
-/* line 13, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 13, F:\git\kraken\css\app */
 body {
   padding-top: 70px;
 }
-/* line 18, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 18, F:\git\kraken\css\app */
 .item-title {
   padding-right: 10px;
 }
-/* line 21, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 21, F:\git\kraken\css\app */
 .info {
   display: none;
 }
-/* line 22, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 22, F:\git\kraken\css\app */
 .product-item {
   border: 1px solid #aaa;
   padding: 15px;
@@ -21,14 +21,14 @@ body {
   -webkit-box-shadow: 0 0 1px #000000;
   box-shadow: 0 0 1px #000000;
 }
-/* line 27, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 27, F:\git\kraken\css\app */
 .product-item:hover {
   border-color: #4682B4;
   cursor: pointer;
   -webkit-box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
   box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
 }
-/* line 37, C:\Users\azheng\Zend\workspaces\DefaultWorkspace\testKraken\css\app */
+/* line 37, F:\git\kraken\css\app */
 .primary-tile {
   font-weight: bold;
   padding-bottom: 3px;
