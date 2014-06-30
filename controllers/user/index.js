@@ -73,6 +73,41 @@ module.exports = function(router) {
 		});
 
 	});
+	router.get('/login', function(req, res) {
+		var phone = null ;
+		if(req.user){
+		   phone = req.user.phone ;
+		}
+		
+		res.render('user/login', {
+				user : {phone:phone},
+				name : 'user'
+		});
+		
+		});
+	
+	router.post('/login', function(req, res) {
+		var UserModel = require('../../models/user');
+		var model = new UserModel();
+		var phone = req.body.phone;
+		var password = req.body.password;
+		model.get({phone:phone,password:password}, function(err, rst) {
+			if (err) {
+				console.log(err);
+			} else {
+				
+					
+					if(rst && rst[0])
+					{
+						rst = rst[0];
+						res.cookie('uid',rst.id);
+					}
+					
+					res.json(rst);				
+			}
+		});
+
+	});
 	
 	router.get('/register', function(req, res) {
 		var openid = req.query.openid;

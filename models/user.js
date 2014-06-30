@@ -8,11 +8,22 @@ var dbconfig = {
 		"host" : db['host'],
 		"database" : db['database']
 	}
-var getUserList = function(callback) {
+var getUserList = function(data, callback) {
 	var connection = mysql.createConnection(dbconfig);
 	connection.connect(function(err) {
 		if (!err) {
-			connection.query('select * from user limit 1',
+			var query = "select * from user ";
+			if(data)
+				{
+				query += ' where true ';
+				for(var key in data){
+		            var attrName = key;
+		            var attrValue = data[key];
+		            query += ' and ' +　attrName + '=' + attrValue;
+		        }
+			}
+			console.log(query);
+			connection.query(query,
 					function(err, result) {
 						if (!err) {
 							connection.end();
@@ -59,13 +70,14 @@ var post = function(data, callback) {
 	if (data && data['id']) {
 
 	} else {
-		query = "INSERT INTO user (name,phone,openid,gender,birthday,clientid) values"
+		query = "INSERT INTO user (name,phone,openid,gender,birthday,clientid,password) values"
 				+ "('"
 				+ data['username']
 				+ "','" + data['phone']
 				+ "','"+ data['openid'] + "','"
 				+ data['gender']
-				+ "','" + data['birthday'] + "',1)";
+				+ "','" + data['birthday'] + "',1,'" 
+				+ data['password'] + ")";
 		console.log(query);
 	}
 	connection.connect(function(err) {

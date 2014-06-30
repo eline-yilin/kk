@@ -30,7 +30,7 @@
             </select>
           </div>
 
-		<label class="control-label">{@pre type="content" key="DOB"/}</label>
+					<label class="control-label">{@pre type="content" key="DOB"/}</label>
           <div class="controls">
             <select class="input-xlarge" name='year' id='year'>
             <option value=''></option>
@@ -51,6 +51,16 @@
               {/data.days}
             </select>
           </div>
+           <!-- password-->
+					<label class="control-label" for="phone">{@pre type="content" key="password"/}</label>
+          <div class="controls">
+            <input type="password"  class="input-xlarge" name='password' id='password'>
+          </div>
+           <!--confirm password-->
+					<label class="control-label" for="phone">{@pre type="content" key="confirmpassword"/}</label>
+          <div class="controls">
+            <input type="password"  class="input-xlarge" name='confirmpassword' id='confirmpassword'>
+          </div>
     </div>
         
     <div class="control-group">
@@ -70,6 +80,7 @@
         var username = $('#username').val();
         var phone = $('#phone').val();
         var gender = $('#gender').val();
+        var password =  $('#password').val();
         var birthday = $('#year').val() + '-' + $('#month').val() + '-' + $('#day').val();       
          $.post( "/user/register", {
          _csrf:csrftoken,
@@ -77,6 +88,7 @@
          phone:phone,
          gender:gender,
          birthday:birthday,
+         password：password，
          method:method
          },
           function( data ) {

@@ -16,6 +16,7 @@ module.exports = function (router) {
     
     router.get('/setLanguage/:locale', function (req, res) {
         res.cookie('locale', req.params.locale);
-        res.redirect('/');
+        res.redirect(req.get('referer'));
+        //res.redirect('/');
     });
 };

@@ -1,5 +1,8 @@
-#Thu Jun 26 09:44:29 CST 2014
+#Mon Jun 30 14:47:53 CST 2014
 eclipse.preferences.version=1
+encoding//locales/CN/zh/admin/index.properties=UTF-8
 encoding//locales/CN/zh/index.properties=UTF-8
+encoding//locales/CN/zh/layouts/admin_master.properties=UTF-8
 encoding//locales/CN/zh/layouts/master.properties=UTF-8
+encoding//locales/CN/zh/user/login.properties=UTF-8
 encoding//locales/CN/zh/user/register.properties=UTF-8
