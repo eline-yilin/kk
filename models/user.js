@@ -16,6 +16,13 @@ var getUserList = function(data, callback) {
 	return base.query(query, callback);
 };
 
+var isAdmin = function(data, callback) {
+	var query = "select * from admin where id= " + data['uid'] ;
+	//+ " and clientid=" + data['clientid'];
+	
+	return base.getOne(query, callback);
+};
+
 var getByOpenID = function(openid,callback) {
 	var query = "select * from user where openid = '" + openid + "' limit 1";
 	return base.getOne(query, callback);
@@ -51,4 +58,5 @@ module.exports = function() {
 	this.post = post;
 	this.openid = getByOpenID;
 	this.id = getByID;
+	this.isAdmin = isAdmin;
 };
