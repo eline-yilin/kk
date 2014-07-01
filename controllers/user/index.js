@@ -3,10 +3,10 @@
 module.exports = function(router) {
 
 	router.get('/', function(req, res) {
-		var openid = req.query.openid || (req.cookies && req.cookies.openid);
+		var uid = req.cookies && req.cookies.uid;
 		var UserModel = require('../../models/user');
 		var model = new UserModel();
-		model.openid(openid,function(err, rst) {
+		model.id(uid,function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -39,6 +39,11 @@ module.exports = function(router) {
 						res.json(rst);
 					},
 					html : function() {
+						var date =  new Date(rst.expiration);
+						console.log(rst.expiration);
+						console.log(date);
+						rst.expiration = (date.getMonth() + 1) + '-' + date.getDay() + '-' +  date.getFullYear();
+						console.log(rst.expiration);
 						res.render('user/credit', {
 							credits : rst,
 							name : 'user'

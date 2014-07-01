@@ -1,6 +1,6 @@
 'use strict';
 var cfg = require("config");
-
+require('./lib/custom-dust-helper');
 var kraken = require('kraken-js'),
     app = require('express')(),
     options = {

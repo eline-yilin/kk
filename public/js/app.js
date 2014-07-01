@@ -8,6 +8,10 @@ $.ajaxSetup({
 
 function convertDateTime(date, format)
 {
+	if(! date instanceof Date){
+		alert(date);
+		date = new Date(date);
+	}
 	var dd = date.getDate();
 	var mm = date.getMonth()+1; //January is 0!
 	var yyyy = date.getFullYear();
@@ -25,3 +29,5 @@ function convertDateTime(date, format)
     }
 	
 }
+
+
