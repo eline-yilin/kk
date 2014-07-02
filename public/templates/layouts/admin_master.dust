@@ -39,7 +39,13 @@
                  <li><a href="/user/credit">{@pre type="content" key="credit"/}</a> </li>
               </ul>
             </li>
-            <li {@eq key=name value="product"}class="active"{/eq}><a href="/admin/products">{@pre type="content" key="product"/}</a></li>
+            <li class="dropdown {@eq key=name value="product"} active{/eq}">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="product"/} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                 <li><a href="/admin/product">{@pre type="content" key="productlist"/}</a></li>
+                 <li><a href="/admin/product/add">{@pre type="content" key="productadd"/}</a></li>
+              </ul>
+            </li>
             <li {@eq key=name value="cart"}class="active"{/eq}><a href="/admin/orders">{@pre type="content" key="orders"/}</a></li>
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="language"/} <b class="caret"></b></a>

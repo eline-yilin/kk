@@ -10,7 +10,6 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-    			 console.log('////////////////product//////////////////////');
 		    	 model.get
 		    	({},
 		    		function (err, rst) {
@@ -25,7 +24,34 @@ module.exports = function (router) {
 				            html: function () {
 				            	//products = JSON.stringify(products);
 								console.log('////' + rst);
-				                res.render('product/index', {products:rst,name:'product'});
+								var temp = [];
+								for(var key in rst)
+								{
+									var item = rst[key];
+									var pid = item['id'];
+									//ITEM IN ARRAY
+									if(temp[pid] )
+									{
+										if(item['url']){
+											var url = item['url'];
+											temp[pid]['url'].push( url.replace(".build", "") );
+										}
+									}
+									//item not in array, init and push
+									else
+									{
+										var url = item['url'];
+										if(url)
+										{
+											url = url.replace(".build", "");
+										}
+										
+										item['url'] = new Array(url);
+										temp[pid] = item;
+									}
+									
+								}
+				                res.render('product/index', {products:temp,name:'product'});
 				            }
 				        });
 						}

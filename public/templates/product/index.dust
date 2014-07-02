@@ -16,6 +16,9 @@
 																					<div class="new-tile">
 																						 product description:{description}
 																					</div>
+																					<div class="new-tile">
+																						 product image: {#url}<img style='width:200px;' src='{.}'>{/url}
+																					</div>
 																		<div style='margin-top:10px'></div>
 																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
                                     <button onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>view detail</button>

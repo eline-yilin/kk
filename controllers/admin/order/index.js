@@ -1,12 +1,13 @@
 'use strict';
 
 
-var AdminModel = require('../../models/admin');
+var OrderModel = require('../../../models/order');
 
 
 module.exports = function (router) {
 
-    var model = new AdminModel();
+    var model = new OrderModel();
+
 
     router.get('/', function (req, res) {
         
@@ -15,10 +16,9 @@ module.exports = function (router) {
                 res.json(model);
             },
             html: function () {
-                res.render('admin/index', model);
+                res.render('admin/order/index', model);
             }
         });
     });
-    
 
 };
