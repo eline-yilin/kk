@@ -67,3 +67,26 @@ CREATE TABLE  `yuechang`.`product_img` (
 )
 COLLATE='utf8_general_ci'
  ENGINE=InnoDB
+ 
+ 
+DROP TABLE IF EXISTS `yuechang`.`product_category`;
+CREATE TABLE  `yuechang`.`product_category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) unsigned ,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB 
+
+
+DROP TABLE IF EXISTS `yuechang`.`entity`;
+CREATE TABLE  `yuechang`.`entity` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(450) NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
