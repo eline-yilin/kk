@@ -31,22 +31,27 @@
 	  <!-- Prod Info-->
     <fieldset>
       <div id="legend" class="">
-        <legend class="">{@pre type="content" key="addproduct"/}</legend>
+        <legend class="">{@pre type="content" key="addentity"/}</legend>
     <div class="control-group">
           <!-- Text input-->
-          <label class="control-label" for="username">{@pre type="content" key="productname"/}</label>
+          <label class="control-label" for="username">{@pre type="content" key="entityname"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='productname' id='productname'>
+            <input type="text"  class="input-xlarge" name='entityname' id='entityname'>
           </div>
           <!-- category-->
 					<label class="control-label" for="phone">{@pre type="content" key="category"/}</label>
           <div class="controls">
             <input type="text"  class="input-xlarge" name='category' id='category'>
           </div>
-           <!-- price-->
-					<label class="control-label" for="price">{@pre type="content" key="price"/}</label>
+           <!-- address-->
+		<h4>{@pre type="content" key="address"/}</h4>
+		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='price' id='price'>
+            <input type="text"  class="input-xlarge" name='floor' id='floor'>
+          </div>
+          <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
+          <div class="controls">
+            <input type="text"  class="input-xlarge" name='number' id='number'>
           </div>
     </div>
         

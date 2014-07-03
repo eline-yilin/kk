@@ -90,3 +90,14 @@ CREATE TABLE  `yuechang`.`entity` (
 ) 
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+
+DROP TABLE IF EXISTS `yuechang`.`adress`;
+CREATE TABLE `adress` (
+	`id` INT(11) NULL DEFAULT NULL,
+	`city` VARCHAR(50) NULL DEFAULT NULL,
+	`state` VARCHAR(50) NULL DEFAULT NULL,
+	`floor` VARCHAR(50) NULL DEFAULT NULL,
+	`number` VARCHAR(50) NULL DEFAULT NULL
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
