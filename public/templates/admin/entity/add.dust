@@ -43,6 +43,11 @@
           <div class="controls">
             <input type="text"  class="input-xlarge" name='category' id='category'>
           </div>
+          <!-- desc-->
+          <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
+          <div class="controls">
+            <textarea  class="input-xlarge" name='description' id='description'></textarea>
+          </div>
            <!-- address-->
 		<h4>{@pre type="content" key="address"/}</h4>
 		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>

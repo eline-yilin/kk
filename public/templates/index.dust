@@ -1,5 +1,28 @@
 {>"layouts/master" /}
 
 {<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
+   <div><img src='' alt='logo'></div>
+   <div id='home-block-menus'>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+   </div>
 {/body}

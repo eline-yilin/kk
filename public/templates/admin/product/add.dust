@@ -44,9 +44,14 @@
             <input type="text"  class="input-xlarge" name='category' id='category'>
           </div>
            <!-- price-->
-					<label class="control-label" for="price">{@pre type="content" key="price"/}</label>
+		  <label class="control-label" for="price">{@pre type="content" key="price"/}</label>
           <div class="controls">
             <input type="text"  class="input-xlarge" name='price' id='price'>
+          </div>
+          <!-- desc-->
+          <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
+          <div class="controls">
+            <textarea  class="input-xlarge" name='description' id='description'></textarea>
           </div>
     </div>
         

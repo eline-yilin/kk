@@ -10,15 +10,55 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('admin/entity/index', model);
-            }
-        });
+    	model.get
+    	({},
+    		function (err, rst) {
+			if (err) {
+				console.log(err);
+			}
+			else{
+		        res.format({
+		            json: function () {
+		                res.json(rst);
+		            },
+		            html: function () {
+						console.log('////' + JSON.stringify(rst));
+						var temp = [];
+						for(var key in rst)
+						{
+							var item = rst[key];
+							var pid = item['id'];
+							console.log(pid+'---');
+							//ITEM IN ARRAY
+							if(temp[pid] )
+							{
+								if(item['url']){
+									var url = item['url'];
+									temp[pid]['url'].push( url.replace(".build", "") );
+								}
+							}
+							//item not in array, init and push
+							else
+							{
+								var url = item['url'];
+								if(url)
+								{
+									url = url.replace(".build", "");
+								}
+								
+								item['url'] = new Array(url);
+								temp[pid] = item;
+								console.log(temp);
+							}
+							
+						}
+		                res.render('admin/entity/index', {items:temp,name:'entity'});
+		            }
+		        });
+				}
+			}
+    	);
+       
     });
     
     router.get('/add', function (req, res) {
@@ -44,7 +84,7 @@ module.exports = function (router) {
 	 		if(img.name && img.name != '')
 	 		{
 	 			 var tmp_path = img.path;
-	 			 var target_path =   '.build/img/upload/' + img.name;
+	 			 var target_path =   '.build/img/upload/entity_' + img.name;
 	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);
 	 			try{		
 	 			var fw = fs.openSync(target_path,'w');
