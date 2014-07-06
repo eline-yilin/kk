@@ -1,12 +1,11 @@
-{>"layouts/admin_master" /}
+{>"layouts/master" /}
 {<body}
-    <h1 style='display:none;'>{@pre type="content" key="greeting"/}</h1>
      <div class="products">
             {?products}
                 <fieldset>
-                    <legend>Product List</legend>
+                    <legend>Product Detail</legend>
                         {#products}
-                        <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
                             <div id="appointment{id}" class="product-item">
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
@@ -14,24 +13,11 @@
 																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
 																					</div>
 																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productDesc"/}: </label>
-																						{description}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
-																						<div class='images'>
-																						{#url}
-																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
-																						 </div>
-																						 {/url}
-																						 </div>
-																						 <div class='clear'></div>
+																						 product description:{description}
 																					</div>
 																		<div style='margin-top:10px'></div>
-																	  <button type='button' onclick="javascript:return edit({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> edit</button>
-                                    <button onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>view detail</button>
-                                   
+																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
+                                      
                                     <input type="submit" value="Delete" style='display:none'>
                                     <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
                                     <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
@@ -54,11 +40,6 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
-function edit(id)
-{
-window.location = '/admin/product/edit/' + id;
-return false;
-}
         function addCart(id)
         {
          $.post( "/cart", {_csrf:csrftoken}, function( data ) {
@@ -66,10 +47,6 @@ return false;
 					},"json");
           return false;
         }
-        function goToDetail(id)
-        {
-         window.location = "/product/id/" + id;
-         return false;
-        }
+        
         </script>
 {/body}

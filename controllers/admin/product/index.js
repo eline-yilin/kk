@@ -10,15 +10,55 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('admin/product/index', model);
-            }
-        });
+
+   	 model.get
+   	({},
+   		function (err, rst) {
+			if (err) {
+				console.log(err);
+			}
+			else{
+		        res.format({
+		            json: function () {
+		                res.json(rst);
+		            },
+		            html: function () {
+		            	//products = JSON.stringify(products);
+						console.log('////' + rst);
+						var temp = [];
+						for(var key in rst)
+						{
+							var item = rst[key];
+							var pid = item['id'];
+							//ITEM IN ARRAY
+							if(temp[pid] )
+							{
+								if(item['url']){
+									var url = item['url'];
+									temp[pid]['url'].push( url.replace(".build", "") );
+								}
+							}
+							//item not in array, init and push
+							else
+							{
+								var url = item['url'];
+								if(url)
+								{
+									url = url.replace(".build", "");
+								}
+								
+								item['url'] = new Array(url);
+								temp[pid] = item;
+							}
+							
+						}console.log(temp);
+		                res.render('admin/product/index', {products:temp,name:'product'});
+		            }
+		        });
+				}
+			}
+   	);
+
     });
     
     router.get('/add', function (req, res) {
@@ -89,5 +129,29 @@ module.exports = function (router) {
     	
 
     });
+    	
+    	router.get('/edit/:id', function (req, res) {
+    		var id = req.params.id;
+    		console.log('////////////////product id ' +　id  + '//////////////////////');
+    	   	 model.id
+    	   	(id,
+    	   		function (err, rst) {
+    				if (err) {
+    					console.log(err);
+    				}
+    				else{
+    			        res.format({
+    			            json: function () {
+    			                res.json(rst);
+    			            },
+    			            html: function () {
+    			                res.render('admin/product/edit', {products:rst,name:'product'});
+    			            }
+    			        });
+    					}
+    				}
+    	   	);
+            
+        });
 
 };

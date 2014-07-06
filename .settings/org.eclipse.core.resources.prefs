@@ -1,9 +1,10 @@
-#Sun Jul 06 15:43:24 CST 2014
+#Sun Jul 06 20:20:20 CST 2014
 eclipse.preferences.version=1
 encoding//locales/CN/zh/admin/entity/add.properties=UTF-8
 encoding//locales/CN/zh/admin/entity/index.properties=UTF-8
 encoding//locales/CN/zh/admin/index.properties=UTF-8
 encoding//locales/CN/zh/admin/product/add.properties=UTF-8
+encoding//locales/CN/zh/admin/product/index.properties=UTF-8
 encoding//locales/CN/zh/index.properties=UTF-8
 encoding//locales/CN/zh/layouts/admin_master.properties=UTF-8
 encoding//locales/CN/zh/layouts/master.properties=UTF-8
