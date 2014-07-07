@@ -62,5 +62,28 @@ module.exports = function (router) {
        
     
     });
+    
+    router.get('/id/:id', function (req, res) {
+   	 var id = req.params.id;
+		 console.log('////////////////product id ' +　id  + '//////////////////////');
+  	 model.id
+  	(id,
+  		function (err, rst) {
+			if (err) {
+				console.log(err);
+			}
+			else{
+		        res.format({
+		            json: function () {
+		                res.json(rst);
+		            },
+		            html: function () {console.log(rst);
+		                res.render('entity/id', {items:rst,name:'entity'});
+		            }
+		        });
+				}
+			}
+  	);
+});
 
 };

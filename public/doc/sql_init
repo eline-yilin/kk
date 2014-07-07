@@ -40,6 +40,8 @@ CREATE TABLE  `yuechang`.`product` (
   `description` varchar(400) NOT NULL,
   `img` varchar(45) NOT NULL,
   `price` float unsigned zerofill NOT NULL,
+  `entity_id` INT(11) NULL DEFAULT NULL,
+  `weight` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
   
 )

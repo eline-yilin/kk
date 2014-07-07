@@ -14,9 +14,12 @@ var getProductById = function  (id, callback){
 
 
 var post = function  (data, callback){
-	var query = "insert into product (category_id,name,price,description) values (" +　 data['category'] + ",'"
+	var query = "insert into product (category_id,name,price,description,entity_id,weight) values (" +　 data['category'] + ",'"
 	+ data['productname'] + "','" + data['price'] + "','"
-	+ data['descripiton'] + "')";
+	+ data['description'] + "',"
+	+ data['entity'] + ","
+	+ data['weight']
+	+ ")";
 
 	return base.query(query, function(err, rst){
 		if(err){

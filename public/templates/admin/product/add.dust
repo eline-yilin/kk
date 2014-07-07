@@ -28,7 +28,7 @@
  
 	</div>
     </fieldset>
-	  <!-- Prod Info-->
+	<!-- Prod Info-->
     <fieldset>
       <div id="legend" class="">
         <legend class="">{@pre type="content" key="addproduct"/}</legend>
@@ -55,6 +55,31 @@
           </div>
     </div>
         
+    </fieldset>
+    <!-- entity Info-->
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">{@pre type="content" key="displayinfo"/}</legend>
+    <div class="control-group">
+          <!-- entity-->
+          <label class="control-label">{@pre type="content" key="entity"/}</label>
+          <div class="controls">
+            <select class="input-xlarge" name='entity' id='entity'>
+              <option value=''></option>
+              {#data.entities}
+              <option value='{id}'>{name}</option>";
+              {/data.entities}
+            </select>
+          </div>
+          <!-- weight-->
+			<label class="control-label" for="weight">{@pre type="content" key="weight"/}</label>
+          <div class="controls">
+            <input type="text"  class="input-xlarge" name='weight' id='weight'>
+          </div>
+          
+    </div>
+        
+    </fieldset>
     <div class="control-group">
           <!-- Button -->
           <div class="controls">
@@ -62,7 +87,6 @@
           </div>
         </div>
 	</div>
-    </fieldset>
   </form>
         <script>  
        function addImage()

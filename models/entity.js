@@ -11,7 +11,37 @@ var getEntityList = function  (data, callback){
 
 var getEntityById = function  (id, callback){	
 	var query = 'select * from entity where id=' + id;
-	return base.getOne(query, callback);	
+	return base.getOne(query, function(err,entity){
+		if(err){
+			throw err;
+		}
+		else
+			{
+			var query_get_img = 'select url from entity_img where entity_id=' + id;
+			return base.query(query_get_img, function(err,img){
+				if(err){
+					throw err;
+				}
+				else
+					{
+					var query_get_products = 'select * from product where entity_id=' + id  + ' limit 5';
+					return base.query(query_get_products, function(err,product){
+						if(err){
+							throw err;
+						}
+						else
+							{
+							  entity.imgs = img;
+							  entity.products = product;
+							  return callback(null, entity);
+							
+							}
+					});
+					
+					}
+			});
+			}
+	});	
 }; 
 
 

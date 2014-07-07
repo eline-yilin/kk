@@ -62,15 +62,25 @@ module.exports = function (router) {
     });
     
     router.get('/add', function (req, res) {
-        
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('admin/product/add', {data:model, name:'product'});
-            }
-        });
+    	var EntityModel = require('../../../models/entity');
+    	 var model = new EntityModel();
+    	 model.get
+    	   	({},
+    	   		function (err, rst) {
+    				if (err) {
+    					console.log(err);
+    				}
+    				else{
+				        res.format({
+				            json: function () {
+				                res.json(model);
+				            },
+				            html: function () {
+				                res.render('admin/product/add', {data:{entities:rst}, name:'product'});
+				            }
+				        });
+    				}
+    	   	});
     });
     
     	router.post('/add', function (req, res) {
