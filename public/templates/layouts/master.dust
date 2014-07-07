@@ -40,7 +40,15 @@
               </ul>
             </li>
             <li {@eq key=name value="product"}class="active"{/eq}><a href="/product">{@pre type="content" key="product"/}</a></li>
+            <li {@eq key=name value="entity"}class="active"{/eq}><a href="/entity">{@pre type="content" key="entity"/}</a></li>
             <li {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">{@pre type="content" key="cart"/}</a></li>
+            <li {@eq key=name value="comment"}class="active"{/eq}>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="/comment">{@pre type="content" key="comment"/} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/comment">{@pre type="content" key="comment"/}</a> </li>
+                <li><a href="/comment/add">{@pre type="content" key="addcomment"/}</a> </li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="language"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
