@@ -18,44 +18,39 @@ module.exports = function (router) {
 				console.log(err);
 			}
 			else{
-		        res.format({
-		            json: function () {
-		                res.json(rst);
-		            },
-		            html: function () {
-						console.log('////' + JSON.stringify(rst));
-						var temp = [];
-						for(var key in rst)
-						{
-							var item = rst[key];
-							var pid = item['id'];
-							console.log(pid+'---');
-							//ITEM IN ARRAY
-							if(temp[pid] )
-							{
-								if(item['url']){
-									var url = item['url'];
-									temp[pid]['url'].push( url.replace(".build", "") );
-								}
-							}
-							//item not in array, init and push
-							else
-							{
-								var url = item['url'];
-								if(url)
-								{
-									url = url.replace(".build", "");
-								}
-								
-								item['url'] = new Array(url);
-								temp[pid] = item;
-								console.log(temp);
-							}
-							
+
+				console.log('////' + JSON.stringify(rst));
+				var temp = [];
+				for(var key in rst)
+				{
+					var item = rst[key];
+					var pid = item['id'];
+					console.log(pid+'---');
+					//ITEM IN ARRAY
+					if(temp[pid] )
+					{
+						if(item['url']){
+							var url = item['url'];
+							temp[pid]['url'].push( url.replace(".build", "") );
 						}
-		                res.render('entity/index', {items:temp,name:'entity'});
-		            }
-		        });
+					}
+					//item not in array, init and push
+					else
+					{
+						var url = item['url'];
+						if(url)
+						{
+							url = url.replace(".build", "");
+						}
+						
+						item['url'] = new Array(url);
+						temp[pid] = item;
+						console.log(temp);
+					}
+					
+				}
+                res.render('entity/index', {items:temp,name:'entity'});
+            
 				}
 			}
     	);
