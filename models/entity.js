@@ -24,15 +24,57 @@ var getEntityById = function  (id, callback){
 				}
 				else
 					{
-					var query_get_products = 'select * from product where entity_id=' + id  + ' limit 5';
+					var query_get_products = 'select p.*, i.url from product p LEFT JOIN product_img i ' 
+					+ '	on  p.id = i.product_id where entity_id=' + id  + ' limit 50';
+					console.log(query_get_products);
 					return base.query(query_get_products, function(err,product){
 						if(err){
 							throw err;
 						}
 						else
 							{
+							var tempProd = [];
+							for(var key in product)
+							{
+								var p = product[key];
+								var pid = p['id'];
+								//ITEM IN ARRAY
+								if(tempProd[pid] )
+								{
+									if(p['url']){
+										var url = p['url'];
+										tempProd[pid]['url'].push( url.replace(".build", "") );
+									}
+								}
+								//item not in array, init and push
+								else
+								{
+									var url = p['url'];
+									if(url)
+									{
+										url = url.replace(".build", "");
+									}
+									
+									p['url'] = new Array(url);
+									tempProd[pid] = p;
+									
+								}
+								
+							}
+							var products =[];
+							for(var key in tempProd)
+							{
+								if(products.length < 5)
+									{
+										products.push(tempProd[key]);
+									}
+								else 
+									{
+									break;
+									}
+							}
 							  entity.imgs = img;
-							  entity.products = product;
+							  entity.products = products;
 							  return callback(null, entity);
 							
 							}

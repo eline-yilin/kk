@@ -73,14 +73,19 @@ module.exports = function (router) {
 				console.log(err);
 			}
 			else{
-		        res.format({
-		            json: function () {
-		                res.json(rst);
-		            },
-		            html: function () {console.log(rst);
-		                res.render('entity/id', {items:rst,name:'entity'});
-		            }
-		        });
+				console.log(rst);
+				if(rst.imgs)
+					{
+					for(var key in rst.imgs)
+					{
+						var item = rst.imgs[key];
+						var url = item.url;
+						url = url.replace(".build", "");
+						rst.imgs[key].url = url;
+
+					}
+			    }
+                res.render('entity/id', {items:rst,name:'entity'});
 				}
 			}
   	);

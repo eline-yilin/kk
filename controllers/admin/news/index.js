@@ -8,11 +8,11 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
         
-    	res.render('admin/news/index', model);
+    	res.render('admin/news/index', {items:{},name:'news'});
     });
     
     router.get('/add', function (req, res) {
-	res.render('admin/news/add', model);
+	res.render('admin/news/add', {items:{},name:'news'});
 	
     });
     
@@ -23,7 +23,7 @@ module.exports = function (router) {
     			console.log(err);
     		}
     		else{
-    			res.render('admin/news/index', model);
+    			res.render('admin/news/index', {items:{},name:'news'});
     		}
     	});
     	

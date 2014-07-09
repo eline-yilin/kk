@@ -20,7 +20,7 @@
 																						<div class='images'>
 																						{#imgs}
 																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
+																						  <img style='max-width:100%;margin-bottom:10px;' src='{url}'>
 																						 </div>
 																						 {/imgs}
 																						 </div>
@@ -35,6 +35,17 @@
 																								<span class="item-title">{name}</span><span class="item-sub">{price}</span>
 																							</div>
 																						 </div>
+																						 	<div class="new-tile">
+																						<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
+																						<div class='images'>
+																						{#url}
+																						 <div class="col-xs-12 col-sm-6 col-md-4">
+																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
+																						 </div>
+																						 {/url}
+																						 </div>
+																						 <div class='clear'></div>
+																					</div>
 																						 {/products}
 																						 </div>
 																						 <div class='clear'></div>
