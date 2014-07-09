@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; 
 
 var BaseController = require("./Base");
 var base = new BaseController();

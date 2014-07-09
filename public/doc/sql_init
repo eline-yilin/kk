@@ -131,3 +131,20 @@ CREATE TABLE  `yuechang`.`comment` (
 ) 
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB;
+
+
+DROP TABLE IF EXISTS `yuechang`.`news`;
+CREATE TABLE  `yuechang`.`news` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `status_id` int(10) unsigned NOT NULL,
+  `title` varchar(85) NOT NULL,
+  `content` varchar(500) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `target_type` varchar(45) NOT NULL,
+  `updated` datetime NOT NULL,
+  `img` varchar(145) NOT NULL,
+  `url` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
