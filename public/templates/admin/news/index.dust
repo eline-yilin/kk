@@ -11,14 +11,14 @@
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
 																					<div class="new-tile primary-tile">
-																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
+																						<span class="item-title">{title}</span><span class="item-sub">{url}</span>
 																					</div>
 																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productDesc"/}: </label>
-																						{description}
+																						<label class='control-label'> {@pre type="content" key="content"/}: </label>
+																						{content}
 																					</div>
 																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
+																						<label class='control-label'> {@pre type="content" key="img"/}: </label>
 																						<div class='images'>
 																						{#img}
 																						 <div class="col-xs-12 col-sm-6 col-md-4">

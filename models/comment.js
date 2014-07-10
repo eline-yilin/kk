@@ -4,15 +4,8 @@ var BaseController = require("./Base");
 var base = new BaseController();
 var getCommentList = function  (data,callback){
 	var query = 'select * from comment ';
-	if(data)
-		{
-		query += ' where true ';
-		for(var key in data){
-            var attrName = key;
-            var attrValue = data[key];
-            query += ' and ' +　attrName + '=' + attrValue;
-        }
-	}	
+	query += base.proceeFilter(data);
+	
 	return base.query(query,callback);
 
 	}; 

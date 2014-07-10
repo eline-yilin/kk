@@ -54,6 +54,38 @@ var getOne = function(query, callback){
 	});
 }
 
+var processFilter = function(data){
+	var query = '';
+	if(data)
+	{
+		query += ' where true ';
+		for(var key in data){
+	        var attrName = key;
+	        var attrValue = data[key];
+	        query += ' and ' +　attrName + '=' + attrValue;
+	    }
+	}	
+	return query;
+}
+
+var processInsertQuery = function(table, data)
+{
+	var query = '';
+	var columns = [];
+	var values = [];
+	for(var key in data)
+	{
+		columns.push(key);
+	}
+	var query = "INSERT INTO " + table + " (" + columns.join() + ") values (";
+	for(var key in data)
+	{
+		query += "'" + data[key] + "',";
+	}
+	query = query.substring(0,query.length -1);
+	query += ")";
+	return query;
+}
 module.exports = function(){
 	this.extend = function(child){
 		var source = child();
@@ -65,4 +97,6 @@ module.exports = function(){
 	};
 	this.query = query;
 	this.getOne = getOne;
+	this.processFilter = processFilter;
+	this.processInsertQuery = processInsertQuery;
 };
