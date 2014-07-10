@@ -28,7 +28,6 @@ module.exports = function (router) {
 						{
 							var item = rst[key];
 							var pid = item['id'];
-							console.log(pid+'---');
 							// ITEM IN ARRAY
 							if(temp[pid] )
 							{
@@ -48,11 +47,19 @@ module.exports = function (router) {
 								
 								item['url'] = new Array(url);
 								temp[pid] = item;
-								console.log(temp);
+								
 							}
 							
 						}
-		                res.render('admin/entity/index', {items:temp,name:'entity'});
+						var ret = [];
+						for(var key in temp)
+							{
+							if(temp[key])
+								{
+								ret.push(temp[key]);
+								}
+							}
+		                res.render('admin/entity/index', {items:ret,name:'entity'});
 		            }
 		        });
 				}
