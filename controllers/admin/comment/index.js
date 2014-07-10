@@ -10,15 +10,25 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('admin/comment/index', model);
-            }
-        });
+    	
+
+    	var model = new CommentModel();
+    	//var uid = req.cookies && req.cookies.uid;
+    	model.get
+    	({},
+    		function (err, rst) {
+			if (err) {
+				console.log(err);
+			}
+			else{
+				console.log('////' + JSON.stringify(rst));
+                res.render('admin/comment/index', {items:rst,name:'comment'});
+				}
+			}
+    	);
+    	
+    
+    
     });
 
 };

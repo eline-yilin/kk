@@ -10,8 +10,9 @@ module.exports = function (router) {
    
     router.get('/', function (req, res) {
     	var model = new CommentModel();
+    	var uid = req.cookies && req.cookies.uid;
     	model.get
-    	(null,
+    	({user_id:uid},
     		function (err, rst) {
 			if (err) {
 				console.log(err);
