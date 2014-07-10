@@ -18,12 +18,7 @@
           <div class="controls imgRow">
             <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
           </div>
- 					
- 					<!-- Button -->
-          <div class="controls">
-            <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">{@pre type="content" key="addImg"/}</button>
-          </div>
-          
+
     </div>
  
 	</div>

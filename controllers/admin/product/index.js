@@ -163,5 +163,29 @@ module.exports = function (router) {
     	   	);
             
         });
+    	
+    	router.post('/delete/:id', function (req, res) {
+    		var id = req.params.id;
+    		console.log('////////////////delete product id ' +　id  + '//////////////////////');
+    	   	 model.delete
+    	   	(id,
+    	   		function (err, rst) {
+    				if (err) {
+    					console.log(err);
+    				}
+    				else{
+    			        res.format({
+    			            json: function () {
+    			                res.json(rst);
+    			            },
+    			            html: function () {
+    			                res.redirect('/admin/product/');
+    			            }
+    			        });
+    					}
+    				}
+    	   	);
+            
+        });
 
 };

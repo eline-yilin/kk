@@ -52,19 +52,18 @@
 </style>
    <div><img src='' alt='logo'></div>
    <div>
+
  	<div class="banner scroll-wrapper" id="idContainer2" ontouchstart="touchStart(event)" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);">
-       <ul class="scroller" style="width:500%" id="idSlider2">
-	      <li><a href=''><img src="/img/upload/desert.jpg"/></a></li>
-	      <li><a href=''><img src="/img/upload/Chrysanthemum.jpg"/></a></li>
-	      <li><a href=''><img src="/img/upload/desert.jpg"/></a></li>
-	      <li><a href=''><img src="/img/upload/Chrysanthemum.jpg"/></a></li>
-	      <li><a href=''><img src="/img/upload/desert.jpg"/></a></li>     
+       <ul class="scroller" style="width:{total}00%" id="idSlider2">
+        {#items}
+	      <li><a href={url}><img src="{img}"/></a></li>  
+	      {/items}  
        </ul>       
         <ul class="new-banner-num new-tbl-type" id="idNum">
         </ul>
     </div>   
   </div>      
-  <input type="hidden" value="5" id="activity"/>
+  <input type="hidden" value="{total}" id="activity"/>
    <div id='home-block-menus'>
 	   <div class="col col-xs-4 col-sm-4 col-md-4">
 	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>

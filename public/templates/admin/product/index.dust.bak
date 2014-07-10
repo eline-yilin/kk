@@ -60,16 +60,12 @@ function edit(id)
 window.location = '/admin/product/edit/' + id;
 return false;
 }
-function removeItem(id)
+function remove(id)
 {
 var confirmed =  confirm("{@pre type="content" key="removeWarning"/}");
 if(confirmed)
 {
-$.post( "/admin/product/delete/" + id, {_csrf:csrftoken}, function( data ) {
-if(data.warningCount == 0)
-{
-$('#appointment' + id).remove();
-}
+$.post( "/product/delete/" + id, {_csrf:csrftoken}, function( data ) {
 				  return false;
 				},"json");
   return false;

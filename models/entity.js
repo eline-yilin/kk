@@ -4,10 +4,15 @@ var base = new BaseController();
 
 var getEntityList = function  (data, callback){	
 	var query = 'select e.*, i.url, a.floor, a.number, a.city, a.state '
-		+ ' from entity e LEFT JOIN entity_img i on e.id = i.entity_id LEFT JOIN  address a on a.id  = e.address_id';
+		+ ' from entity e LEFT JOIN entity_img i on e.id = i.entity_id LEFT JOIN  address a on a.id  = e.address_id '
+		+ ' where e.is_deleted <> 1';
 	return base.query(query, callback);
 }; 
 
+var deleteItemById = function  (id, callback){	
+	var query = 'UPDATE entity SET is_deleted = 1 where id=' + id;
+	return base.query(query, callback);	
+}; 
 
 var getEntityById = function  (id, callback){	
 	var query = 'select * from entity where id=' + id;
@@ -130,4 +135,5 @@ module.exports = function(){
 this.get = getEntityList;
 this.id = getEntityById;
 this.post = post;
+this.delete = deleteItemById;
 };

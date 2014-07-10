@@ -3,13 +3,18 @@ var BaseController = require("./Base");
 var base = new BaseController();
 
 var getProductList = function  (data, callback){	
-	var query = 'select p.*, i.url from product p LEFT JOIN product_img i on p.id = i.product_id';
+	var query = 'select p.*, i.url from product p LEFT JOIN product_img i on p.id = i.product_id where p.is_deleted <> 1';
 	return base.query(query, callback);
 }; 
 	
 var getProductById = function  (id, callback){	
 	var query = 'select * from product where id=' + id;
 	return base.getOne(query, callback);	
+}; 
+
+var deleteItemById = function  (id, callback){	
+	var query = 'UPDATE product SET is_deleted = 1 where id=' + id;
+	return base.query(query, callback);	
 }; 
 
 
@@ -46,5 +51,6 @@ module.exports = function(){
 this.get = getProductList;
 this.id = getProductById;
 this.post = post;
+this.delete = deleteItemById;
 };
 

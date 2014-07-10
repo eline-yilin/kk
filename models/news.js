@@ -12,22 +12,27 @@ var getItemList = function  (data,callback){
             var attrValue = data[key];
             query += ' and ' +　attrName + '=' + attrValue;
         }
+		query += ' ORDER BY weight,updated DESC';
 	}	
 	return base.query(query,callback);
 
 	}; 
 	
-	var addItem = function  (data,callback){	
-		var query = "insert into news ( status_id, title, content, user_id, target_type, updated， url, img) values ("
-			  + data['status_id'] 
-		  + ", '" + data['title'] + "','"
-		  +  data['content'] + "',"
-		  + data['user_id'] + ",'"
-		  + data['target_type'] + "','"
-		  + data['updated'] + "',"
-		  + data['url'] + "',"
-		  + data['img'] + "',"
-		  + "')";
+	var addItem = function  (data,callback){
+		var columns = [];
+		var values = [];
+		for(var key in data)
+		{
+			columns.push(key);
+		}
+		var query = "insert into news (" + columns.join() + ") values (";
+		for(var key in data)
+		{
+			query += "'" + data[key] + "',";
+		}
+		query = query.substring(0,query.length -1);
+		query += ")";
+		console.log(query);
 		return base.query(query,callback);
 		}; 
 module.exports = function(){

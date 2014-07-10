@@ -48,7 +48,7 @@
                         {/items}
                 </fieldset>
             {:else}
-                There are no enities :(
+                There are no products :(
             {/items}
         </div>
         <script>  
@@ -66,7 +66,7 @@ var csrftoken = $('#csrf').val();
 		var confirmed =  confirm("{@pre type="content" key="removeWarning"/}");
 		if(confirmed)
 		{
-		$.post( "/admin/entity/delete/" + id, {_csrf:csrftoken}, function( data ) {
+		$.post( "/admin/product/delete/" + id, {_csrf:csrftoken}, function( data ) {
 		if(data.warningCount == 0)
 		{
 		$('#appointment' + id).remove();

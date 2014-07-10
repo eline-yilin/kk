@@ -29,7 +29,7 @@ module.exports = function (router) {
 							var item = rst[key];
 							var pid = item['id'];
 							console.log(pid+'---');
-							//ITEM IN ARRAY
+							// ITEM IN ARRAY
 							if(temp[pid] )
 							{
 								if(item['url']){
@@ -37,7 +37,7 @@ module.exports = function (router) {
 									temp[pid]['url'].push( url.replace(".build", "") );
 								}
 							}
-							//item not in array, init and push
+							// item not in array, init and push
 							else
 							{
 								var url = item['url'];
@@ -93,11 +93,11 @@ module.exports = function (router) {
 	 		    fs.close(fw);
 	 		    console.log('unlink ' + tmp_path);
 	 	        fs.unlinkSync(tmp_path);
-	 			//fs.renameSync(tmp_path, target_path);
+	 			// fs.renameSync(tmp_path, target_path);
 	 		}
 	 		catch(error){console.log(error);}
  		 	    body.img.push( target_path);
- 		 	    //fs.unlinkSync(tmp_path); 
+ 		 	    // fs.unlinkSync(tmp_path);
 	 		}
 	 		
 	 	}
@@ -117,17 +117,38 @@ module.exports = function (router) {
 			            	if(rst)
 			            		{
 			            		res.redirect('/admin/entity/');
-			            		//res.render('admin/entity/add', {sucess:rst,name:'entity'});
+			            		// res.render('admin/entity/add',
+								// {sucess:rst,name:'entity'});
 			            		}
 			            }
 			        });
 					}
 				});
-	 	
-	    
-	    
-    	
 
     });
+    
+    	router.post('/delete/:id', function (req, res) {
+    		var id = req.params.id;
+    		console.log('////////////////delete product id ' +　id  + '//////////////////////');
+    	   	 model.delete
+    	   	(id,
+    	   		function (err, rst) {
+    				if (err) {
+    					console.log(err);
+    				}
+    				else{
+    			        res.format({
+    			            json: function () {
+    			                res.json(rst);
+    			            },
+    			            html: function () {
+    			                res.redirect('/admin/product/');
+    			            }
+    			        });
+    					}
+    				}
+    	   	);
+            
+        });
 
 };
