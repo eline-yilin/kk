@@ -49,7 +49,15 @@ module.exports = function (router) {
 					}
 					
 				}
-                res.render('entity/index', {items:temp,name:'entity'});
+				var ret = [];
+				for(var key in temp)
+					{
+					if(temp[key])
+						{
+						ret.push(temp[key]);
+						}
+					}
+                res.render('entity/index', {items:ret,name:'entity'});
             
 				}
 			}

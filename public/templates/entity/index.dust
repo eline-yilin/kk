@@ -7,7 +7,7 @@
                     <legend>{@pre type="content" key="entitylist"/}</legend>
                         {#items}
                         <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div id="appointment{id}" class="product-item">
+                            <div id="appointment{id}" class="product-item" onclick="javascript:return goToDetail({id});">
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
 																					<div class="new-tile primary-tile">
@@ -33,8 +33,8 @@
 																						 <div class='clear'></div>
 																					</div>
 																		<div style='margin-top:10px'></div>
-																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
-                                    <button onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>view detail</button>
+																	  <button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
+                                    <button style='display:none' onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>view detail</button>
                                    
                                     <input type="submit" value="Delete" style='display:none'>
                                     <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->

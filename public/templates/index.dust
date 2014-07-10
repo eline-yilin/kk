@@ -50,7 +50,7 @@
 	background-color:#e4393c
 }
 </style>
-   <div><img src='' alt='logo'></div>
+   <div style='display:none'><img src='' alt='logo'></div>
    <div>
 
  	<div class="banner scroll-wrapper" id="idContainer2" ontouchstart="touchStart(event)" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);">
@@ -66,7 +66,7 @@
   <input type="hidden" value="{total}" id="activity"/>
    <div id='home-block-menus'>
 	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   <div class='block-menu'><a href='/entity'>{@pre type="content" key="entitylist"/}</div>
 	   </div>
 	   <div class="col col-xs-4 col-sm-4 col-md-4">
 	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
@@ -84,6 +84,12 @@
 	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
 	   </div>
 	   <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	    <div class="col col-xs-4 col-sm-4 col-md-4">
+	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   </div>
+	    <div class="col col-xs-4 col-sm-4 col-md-4">
 	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
 	   </div>
    </div>

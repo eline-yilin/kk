@@ -129,6 +129,7 @@ CREATE TABLE  `yuechang`.`comment` (
   `target_id` varchar(45) NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `status_id` int(10) unsigned NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) 
 COLLATE='utf8_general_ci'
@@ -147,6 +148,7 @@ CREATE TABLE  `yuechang`.`news` (
   `url` varchar(200) NOT NULL,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `weight` int(10) unsigned NOT NULL DEFAULT '0',
+  `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) 
 COLLATE='utf8_general_ci'

@@ -46,12 +46,16 @@
 																						 </div>
 																						 <div class='clear'></div>
 																					</div>
+																					<div class="new-tile">
+																						<label class='control-label'> {@pre type="content" key="productDes"/}: </label>
+																						{description}
+																					</div>
 																						 {/products}
 																						 </div>
 																						 <div class='clear'></div>
 																					</div>
 																		<div style='margin-top:10px'></div>
-																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
+																	  <button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
                                       
                                     <input type="submit" value="Delete" style='display:none'>
                                     <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
