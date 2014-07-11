@@ -64,7 +64,8 @@
     </div>   
   </div>      
   <input type="hidden" value="{total}" id="activity"/>
-   <div id='home-block-menus'>
+  <div style='margin-top:20px;'></div>
+   <div id='home-block-menus navbar navbar-fixed-bottom'>
 	   <div class="col col-xs-4 col-sm-4 col-md-4">
 	   <div class='block-menu'><a href='/entity'>{@pre type="content" key="entitylist"/}</div>
 	   </div>

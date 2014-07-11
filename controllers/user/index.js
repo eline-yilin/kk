@@ -106,6 +106,7 @@ module.exports = function(router) {
 					{
 						rst = rst[0];
 						res.cookie('uid',rst.id);
+						res.cookie('username',rst.name);
 					}
 					
 					res.json(rst);				
