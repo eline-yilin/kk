@@ -23,9 +23,9 @@
         <div class="navbar-header">
          <a class="navbar-brand pull-left" href="/">{@pre type="content" key="title"/}</a>
           <button data-target="#user-navigation" data-toggle="collapse" class="navbar-toggle pull-right" type="button">
-          {?user.username}
-           <span style='color:#999;position:fixed;right:10px;top:15px;'> {user.username} <i class='icon-cog icon-white'></i> </span>
-          {/user.username} 
+          {?userObj.username}
+           <span style='color:#999;position:fixed;right:10px;top:15px;'> {userObj.username} <i class='icon-cog icon-white'></i> </span>
+          {/userObj.username} 
             <span class="sr-only">Toggle navigation</span>   
           </button>
           <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#operation-navigation">
