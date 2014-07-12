@@ -44,7 +44,7 @@ module.exports = function (router) {
 		var title = req.body.title;
 		var content = req.body.content;
 		var uid = req.cookies.uid;
-		model.post({title:title,content:content,user_id:uid, target_type:'client',status_id:0,updated:util.convertDateTime(new Date())}, function(err, rst) {
+		model.post({title:title,content:content,user_id:uid,status_id:0,updated:util.convertDateTime(new Date())}, function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {

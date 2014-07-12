@@ -93,8 +93,8 @@ var getEntityById = function  (id, callback){
 
 
 var post = function  (data, callback){
-	var insert_address_query = "insert into address (floor,number) values (" +　 data['floor'] + ",'"
-	+ data['number'] + "')";
+	
+	var insert_address_query = base.processInsertQuery('address', data);
 	
 	
 	return base.query(insert_address_query, function(err, rst){

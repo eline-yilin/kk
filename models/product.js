@@ -19,11 +19,11 @@ var deleteItemById = function  (id, callback){
 
 
 var post = function  (data, callback){
-	var query = "insert into product (category_id,name,price,description,entity_id,weight) values (" +　 data['category'] + ",'"
+	var query = "insert into product (category_id,name,price,description,entity_id,weight) values (" +　( data['category'] || 0) + ",'"
 	+ data['productname'] + "','" + data['price'] + "','"
 	+ data['description'] + "',"
-	+ data['entity'] + ","
-	+ data['weight']
+	+ (data['entity'] || 'null') + ","
+	+ ( data['weight'] || 0)
 	+ ")";
 
 	return base.query(query, function(err, rst){

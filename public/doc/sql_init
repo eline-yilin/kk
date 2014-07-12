@@ -5,7 +5,7 @@ CREATE TABLE  `yuechang`.`user` (
   `openid` varchar(50) NOT NULL,
   `gender` char(10) NOT NULL,
   `birthday` date NOT NULL,
-  `clientid` int(10) unsigned NOT NULL,
+  `clientid` int(10) unsigned NOT NULL DEFAULT 0,
   `phone` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -22,12 +22,12 @@ CREATE TABLE  `yuechang`.`client` (
 DROP TABLE IF EXISTS `yuechang`.`credit_history`;
 CREATE TABLE  `yuechang`.`credit_history` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `typeid` int(10) unsigned zerofill NOT NULL,
+  `typeid` int(10) unsigned  NOT NULL DEFAULT '0',
   `expiration` datetime NOT NULL,
-  `amount` int(10) unsigned zerofill NOT NULL,
-  `userid` int(10) unsigned zerofill NOT NULL,
-  `client` int(10) unsigned zerofill NOT NULL,
-  `updated` datetime NOT NULL,
+  `amount` int(10) unsigned  NOT NULL,
+  `userid` int(10) unsigned  NOT NULL,
+  `client` int(10) unsigned  NOT NULL DEFAULT '0',
+  `updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -35,13 +35,13 @@ CREATE TABLE  `yuechang`.`credit_history` (
 DROP TABLE IF EXISTS `yuechang`.`product`;
 CREATE TABLE  `yuechang`.`product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `category_id` int(10) unsigned zerofill NOT NULL,
+  `category_id` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(45) NOT NULL,
   `description` varchar(400) NOT NULL,
-  `img` varchar(45) NOT NULL,
-  `price` float unsigned zerofill NOT NULL,
+  `img` varchar(45) NULL DEFAULT NULL,
+  `price` float unsigned NOT NULL,
   `entity_id` INT(11) NULL DEFAULT NULL,
-  `weight` INT(11) NULL DEFAULT NULL,
+  `weight` INT(11) NULL DEFAULT 0,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
   
@@ -88,7 +88,7 @@ CREATE TABLE  `yuechang`.`entity` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(450) NOT NULL,
-  `category_id` int(10) unsigned NOT NULL,
+  `category_id` int(10) unsigned NOT NULL DEFAULT '0',
   `address_id` int(10) unsigned NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -124,11 +124,11 @@ CREATE TABLE  `yuechang`.`comment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(85) NOT NULL,
   `content` varchar(450) NOT NULL,
-  `updated` datetime NOT NULL,
-  `target_type` varchar(45) NOT NULL,
-  `target_id` varchar(45) NOT NULL,
+  `updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `target_type` varchar(45) NOT NULL DEFAULT 'system',
+  `target_id` int(10) NOT NULL  DEFAULT '0',
   `user_id` int(10) unsigned NOT NULL,
-  `status_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) 
@@ -143,10 +143,10 @@ CREATE TABLE  `yuechang`.`news` (
   `title` varchar(85) NOT NULL,
   `content` varchar(500) NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `target_type` varchar(45) NOT NULL DEFAULT '',
+  `target_type` varchar(45) NOT NULL DEFAULT 'system',
   `img` varchar(145) NOT NULL,
-  `url` varchar(200) NOT NULL,
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `url` varchar(200) NULL DEFAULT NULL,
+  `updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `weight` int(10) unsigned NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)

@@ -28,7 +28,7 @@
     <div class="control-group">
           <!-- Button -->
           <div class="controls">
-            <button id='submit'  class="btn btn-success">{@pre type="content" key="submit"/}</button>
+            <button id='submit'  class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
           </div>
         </div>
 	</div>

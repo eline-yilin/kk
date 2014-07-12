@@ -16,7 +16,7 @@
 																						 product description:{description}
 																					</div>
 																		<div style='margin-top:10px'></div>
-																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
+																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-shopping-cart"></i> add to cart</button>
                                       
                                     <input type="submit" value="Delete" style='display:none'>
                                     <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->

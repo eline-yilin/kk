@@ -33,9 +33,9 @@
 																						 <div class='clear'></div>
 																					</div>
 																		<div style='margin-top:10px'></div>
-																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>{@pre type="content" key="edit"/}</button>
-                                    <button onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>{@pre type="content" key="detail"/}</button>
-				    <button onclick="javascript:return removeItem({id});"  class="btn btn-danger btn-mini"><i class="icon-white icon-remove-sign"></i>{@pre type="content" key="remove"/}</button>
+																	  <button onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-pencil"></i> {@pre type="content" key="edit"/}</button>
+                                    <button onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-search"></i> {@pre type="content" key="detail"/}</button>
+				    <button onclick="javascript:return removeItem({id});"  class="btn btn-danger btn-mini"><i class="icon-white icon-remove-sign"></i> {@pre type="content" key="remove"/}</button>
 			   
                                    
                                     <input type="submit" value="Delete" style='display:none'>

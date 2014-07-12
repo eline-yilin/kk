@@ -21,7 +21,9 @@
  					
  					<!-- Button -->
           <div class="controls">
-            <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">{@pre type="content" key="addImg"/}</button>
+            <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">
+            	<i class="icon-white icon-plus-sign"></i> {@pre type="content" key="addImg"/}
+            </button>
           </div>
           
     </div>
@@ -63,7 +65,7 @@
     <div class="control-group">
           <!-- Button -->
           <div class="controls">
-            <button id='submit' class="btn btn-success">{@pre type="content" key="submit"/}</button>
+            <button id='submit' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
           </div>
         </div>
 	</div>
