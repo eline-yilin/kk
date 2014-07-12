@@ -1,6 +1,5 @@
 {>"layouts/master" /}
 {<body}
-    <h1 style='display:none;'>{@pre type="content" key="greeting"/}</h1>
      <div class="products">
             {?items}
                 <fieldset>
@@ -38,7 +37,7 @@
 																					</div>
 																		<div style='margin-top:10px'></div>
 																	  <button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
-                                    <button style='display:none' onclick="javascript:return goToDetail({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i>view detail</button>
+                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
                                    
                                     <input type="submit" value="Delete" style='display:none'>
                                     <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
@@ -53,6 +52,46 @@
                 There are no products :(
             {/items}
         </div>
+        
+        <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog"  style='padding:10px;'>
+
+       			  <div class="modal-header">
+          			 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+           		 </div>
+           		 <div class="modal-body">  
+       			 <fieldset>
+				      <div id="legend" class="">
+				        <legend class="">{@pre type="content" key="comment"/}</legend>
+				    <div class="control-group">
+				          <!-- Text input-->
+				          
+				          <!-- title-->
+									<label class="control-label" for="title">{@pre type="content" key="title"/}</label>
+				          <div class="controls">
+				            <input type="text"  class="input-xlarge" name='title' id='title'>
+				          </div>
+									
+				           <!-- content-->
+									<label class="control-label" for="content">{@pre type="content" key="content"/}</label>
+				          <div class="controls">
+				            <textarea  class="input-xlarge" name='content' id='content'></textarea>
+				          </div>
+				          
+				    </div>
+
+    			</fieldset>
+    			</div>
+    			 <div class="modal-footer">  
+    			 <div class="control-group">
+				          <!-- Button -->
+				          <div class="controls">
+				            <button id='submitComment'  class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+				          </div>
+				        </div>
+					</div>
+    			 </div>
+   
+        </div>
         <script>  
 $.ajaxSetup({
     crossDomain: false, 
@@ -62,6 +101,18 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
+function comment(id,event)
+{
+var e= event || window.event;
+if (window.event) {
+   e.cancelBubble=true;
+} else {
+   e.stopPropagation(); 
+}
+
+$('#commentDialog').modal();
+return false;
+}
         function addCart(id)
         {
          $.post( "/cart", {_csrf:csrftoken}, function( data ) {
