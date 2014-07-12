@@ -2,7 +2,7 @@
 
 
 var entityModel = require('../../../models/entity');
-
+var categoryModel = require('../../../models/category');
 
 module.exports = function (router) {
 
@@ -69,15 +69,12 @@ module.exports = function (router) {
     });
     
     router.get('/add', function (req, res) {
-        
-        res.format({
-            json: function () {
-                res.json(model);
-            },
-            html: function () {
-                res.render('admin/entity/add', {data:model, name:'entity'});
-            }
-        });
+    	var model = new categoryModel();
+    	model.get
+    	({parent_id:1},
+    		function (err, rst) {res.render('admin/entity/add', {category:rst,name:'credit'});}
+    	);
+       
     });
     
     	router.post('/add', function (req, res) {

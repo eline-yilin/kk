@@ -41,8 +41,8 @@
             <input type="text"  class="input-xlarge" name='productname' id='productname'>
           </div>
           <!-- category-->
-					<label class="control-label" for="phone">{@pre type="content" key="category"/}</label>
-          <div class="controls">
+		  <label class="control-label hidden" for="phone">{@pre type="content" key="category"/}</label>
+          <div class="controls hidden">
             <input type="text"  class="input-xlarge" name='category' id='category'>
           </div>
            <!-- price-->

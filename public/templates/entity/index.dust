@@ -18,6 +18,10 @@
 																						{floor}-{number}
 																					</div>
 																					<div class="new-tile">
+																						<label class='control-label'> {@pre type="content" key="entitycategory"/}: </label>
+																						{category}
+																					</div>
+																					<div class="new-tile">
 																						<label class='control-label'> {@pre type="content" key="entityDesc"/}: </label>
 																						{description}
 																					</div>

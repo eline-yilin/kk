@@ -12,7 +12,7 @@
     <div class="control-group">
           
           <!-- img-->
-					<div class="controls hidden imgRow" id="imgTemplate">
+		  <div class="controls hidden imgRow" id="imgTemplate">
             <input type="file",  class="input-xlarge"  id='thumbnail'>
           </div>
           <div class="controls imgRow">
@@ -41,10 +41,17 @@
             <input type="text"  class="input-xlarge" name='entityname' id='entityname'>
           </div>
           <!-- category-->
-					<label class="control-label" for="phone">{@pre type="content" key="category"/}</label>
+		<label class="control-label" for="category">{@pre type="content" key="category"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='category' id='category'>
+            <input type="text"  class="input-xlarge" name='parent-category' id='category' value='餐饮' disabled>
           </div>
+		<div class="controls">
+            <select class="input-xlarge" name='category' id='category'>
+            {#category}
+              <option value={id}>{name}</option>
+              {/category}
+            </select>
+           </div>
           <!-- desc-->
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
