@@ -3,8 +3,6 @@
 
 var CommentModel = require('../../models/comment');
 
-var Utility = require("../../lib/utility");
-var util = new Utility();
 
 module.exports = function (router) {
    
@@ -44,7 +42,17 @@ module.exports = function (router) {
 		var title = req.body.title;
 		var content = req.body.content;
 		var uid = req.cookies.uid;
-		model.post({title:title,content:content,user_id:uid,status_id:0,updated:util.convertDateTime(new Date())}, function(err, rst) {
+		var reqBody = {title:title,content:content,user_id:uid};
+		if(req.body.target_type)
+		{
+			reqBody.target_type = req.body.target_type;
+		}
+		if(req.body.target_id)
+		{
+			reqBody.target_id = req.body.target_id;
+		}
+		
+		model.post(reqBody, function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
@@ -55,8 +63,15 @@ module.exports = function (router) {
 						rst = rst[0];
 						
 					}
-					res.redirect('/comment');
-					//res.json(rst);				
+					res.format({
+			            json: function () {
+			                res.json(rst);
+			            },
+			            html: function () {
+			            	res.redirect('/comment');
+			            }
+			        });
+				
 			}
 		});
 

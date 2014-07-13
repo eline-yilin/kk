@@ -53,10 +53,10 @@
             {/items}
         </div>
         
-        <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog"  style='padding:10px;'>
+        <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog">
 
        			  <div class="modal-header">
-          			 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          			 <button type="button" class="close" data-dismiss="modal" style='padding:3px;'>×</button>
            		 </div>
            		 <div class="modal-body">  
        			 <fieldset>
@@ -78,14 +78,14 @@
 				          </div>
 				          
 				    </div>
-
+					<div id='commentMsg' style='display:none'></div>
     			</fieldset>
     			</div>
     			 <div class="modal-footer">  
     			 <div class="control-group">
 				          <!-- Button -->
 				          <div class="controls">
-				            <button id='submitComment'  class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+				            <button type='button' id='submitComment' onclick="javascript: addComment();" class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
 				          </div>
 				        </div>
 					</div>
@@ -111,8 +111,45 @@ if (window.event) {
 }
 
 $('#commentDialog').modal();
+$('#commentDialog').data('entityid',id);
 return false;
 }
+ function addComment()
+        {
+         var id = $('#commentDialog').data('entityid');
+         var content = $('#content').val();
+         var title = $('#title').val();
+         $.post( "/comment/add", 
+         {	_csrf:csrftoken, 
+         	content:content, 
+         	title:title,
+         	target_type:'entity',
+         	target_id:id
+          },
+         	 function( data ) {
+         	 if(data['warningCount'] == 0)
+         	 {
+         	  $('#commentMsg').html("<span class='sucess'>{@pre type="content" key="commentSucess"/}</span>").show();
+         	  window.setTimeout(
+         	  function(){
+         	  	$('#commentDialog').modal('hide');
+         	  	$('#commentMsg').hide();
+         	  	},3000);
+         	 }
+         	 else
+         	 {
+         	 $('#commentMsg').html("<span class='error'>{@pre type="content" key="commentError"/}</span>").show();
+         	 window.setTimeout(function(){$('#commentDialog').modal('hide');$('#commentMsg').hide();},3000);
+         	 }
+					  return false ;
+					},"json");
+          return false;
+        }
+        function goToDetail(id)
+        {
+         window.location = "/entity/id/" + id;
+         return false;
+        }
         function addCart(id)
         {
          $.post( "/cart", {_csrf:csrftoken}, function( data ) {
