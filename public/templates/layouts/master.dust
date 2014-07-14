@@ -24,12 +24,14 @@
       <div class="container">
         <div class="navbar-header">
          <a class="navbar-brand pull-left" href="/">{@pre type="content" key="title"/}</a>
-          <button data-target="#user-navigation" data-toggle="collapse" class="navbar-toggle pull-right" type="button">
-          {?userObj.username}
+         {?userObj.username}
+          <button data-target="#user-navigation" data-toggle="collapse" class="navbar-toggle pull-right" type="button">       
            <span style='color:#999;position:fixed;right:10px;top:15px;'> {userObj.username} <i class='icon-cog icon-white'></i> </span>
-          {/userObj.username} 
             <span class="sr-only">Toggle navigation</span>   
           </button>
+           {:else}
+           <a href="/user/login" class='pull-right' style='margin-top:10px;padding-right:10px;color:#fff;text-decoration:none;'><i class='icon-user icon-white'></i> {@pre type="content" key="login"/}</a>
+          {/userObj.username} 
           <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#operation-navigation">
 			        <span class="sr-only">Toggle navigation</span>
 			        <span class="icon-bar"></span>
@@ -46,14 +48,19 @@
          </span>
          <span class="navbar-collapse collapse pull-right"  id='user-navigation' >
           <ul class="nav navbar-nav navbar-right">
+          {?userObj.username}
             <li {@eq key=name value="user"}class="active"{/eq}>
              <a data-toggle="dropdown" class="dropdown-toggle" href="/user">{@pre type="content" key="user"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/user">{@pre type="content" key="user"/}</a> </li>
                 <li><a href="/user/order">{@pre type="content" key="order"/}</a> </li>
                  <li><a href="/user/credit">{@pre type="content" key="credit"/}</a> </li>
+                 <li><a href="/user/logout">{@pre type="content" key="logout"/}</a> </li>   
               </ul>
             </li>
+            {:else}
+              <li  {@eq key=name value="user"}class="active"{/eq}><a href="/user/login">{@pre type="content" key="login"/}</a></li>
+            {/userObj.username}
             <li class='hidden-sm hidden-xs'  {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">{@pre type="content" key="cart"/}</a></li>
             <li {@eq key=name value="comment"}class="active"{/eq}>
              <a data-toggle="dropdown" class="dropdown-toggle" href="/comment">{@pre type="content" key="comment"/} <b class="caret"></b></a>

@@ -26,6 +26,14 @@ module.exports = function(router) {
 
 	});
 
+	router.get('/logout', function(req, res) {
+		res.clearCookie('uid');
+		res.clearCookie('username');
+		res.locals.userObj = null;
+		res.redirect('/');
+
+	});
+	
 	router.get('/credit', function(req, res) {
 		var uid = req.cookies && req.cookies.uid;
 		var CreditModel = require('../../models/credit');
