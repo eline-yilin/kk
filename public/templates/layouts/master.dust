@@ -30,7 +30,7 @@
             <span class="sr-only">Toggle navigation</span>   
           </button>
            {:else}
-           <a href="/user/login" class='pull-right' style='margin-top:10px;padding-right:10px;color:#fff;text-decoration:none;'><i class='icon-user icon-white'></i> {@pre type="content" key="login"/}</a>
+           <a href="/user/login" class='pull-right visible-sm visible-xs' style='margin-top:10px;padding-right:10px;color:#fff;text-decoration:none;'><i class='icon-user icon-white'></i> {@pre type="content" key="login"/}</a>
           {/userObj.username} 
           <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#operation-navigation">
 			        <span class="sr-only">Toggle navigation</span>
