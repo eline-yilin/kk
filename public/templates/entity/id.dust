@@ -89,9 +89,11 @@
  <div id='tab-comment' class='tab-pane'>
   {#items}
  {#comments}
- <div class="comment-line" style='margin-top:5px;padding:5px;margin-bottom:5px;border-bottom:1px solid #888;'>
- <label class='control-label'> {title}</label>
- <div style='font-weight:normal;font-size:0.9em;'>{content}</div>
+ <div class="panel panel-primary">
+  <div class="panel-heading">{title}</div>
+  <div class="panel-body">
+    {content}
+  </div>
 </div>
  {/comments}
  {/items}

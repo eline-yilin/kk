@@ -66,33 +66,44 @@
   <input type="hidden" value="{total}" id="activity"/>
   <div style='margin-top:20px;'></div>
    <div id='home-block-menus navbar navbar-fixed-bottom'>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/entity'>{@pre type="content" key="entitylist"/}</div>
+  	 <div style='margin-top:15px;'>
+			   <div class='block-menu hidden'><a href='/entity'>{@pre type="content" key="entitylist"/}</div>
+			    <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="/entity" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="entitylist"/}</a>
+			   </div>	   
+			    <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			    <div class='clear'></div>
 	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	    <div style='margin-top:15px;'>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			    <div class='clear'></div>
 	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
+	   <div style='margin-top:15px;'>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
+			   </div>
+			   <div class='clear'></div>
 	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
-	   <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
-	    <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
-	    <div class="col col-xs-4 col-sm-4 col-md-4">
-	   <div class='block-menu'><a href='/product?floor=1'>{@pre type="content" key="firstfloor"/}</div>
-	   </div>
+	    
    </div>
    <script>
 	var picCount = $("#activity").val();

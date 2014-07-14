@@ -5,47 +5,30 @@
                 <fieldset>
                     <legend>{@pre type="content" key="entitylist"/}</legend>
                         {#items}
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div id="appointment{id}" class="product-item" onclick="javascript:return goToDetail({id});">
-                                <form method="POST" action="/cart">
-                                    <input type="hidden" name="item_id" value="{id}">
-																					<div class="new-tile primary-tile">
-																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityaddress"/}: </label>
-																						{floor}-{number}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entitycategory"/}: </label>
-																						{category}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityDesc"/}: </label>
-																						{description}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityImg"/}: </label>
-																						<div class='images'>
-																						{#url}
-																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
-																						 </div>
-																						 {/url}
-																						 </div>
-																						 <div class='clear'></div>
-																					</div>
-																		<div style='margin-top:10px'></div>
-																	  <button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
-                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
-                                   
-                                    <input type="submit" value="Delete" style='display:none'>
-                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
-                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
-                                    <input type="hidden" name="_method" value="POST">
-                                </form>
-                            </div>
-                        </div>
+                                    <div class="panel panel-primary" id="appointment{id}" onclick="javascript:return goToDetail({id});">
+																			  <div class="panel-heading">{name} 
+																			  <span class='pull-right'>{@pre type="content" key="entityaddress"/}  {floor}-{number}</span>
+																			  </div>
+																			  <div class="panel-body">
+																			  <form method="POST">
+																			    	<label class='label label-info'> {category} </label>
+																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
+																			    	<div style='margin:10px 0px;'>
+																			    		<div class='pull-left'>
+																				    		{#url}
+																									  <img class='img-circle' style='max-width:40%;margin-bottom:10px;' src='{.}'>
+																							 	{/url}
+																			    		</div>
+																			    		<div class='pull-right'></div>
+																			    	</div>
+																			    	<button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
+				                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
+				                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
+				                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
+				                                    <input type="hidden" name="_method" value="POST">
+				                                     </form>
+																			  </div>
+																			</div>
                         {/items}
                 </fieldset>
             {:else}
@@ -127,9 +110,9 @@ return false;
          	target_id:id
           },
          	 function( data ) {
-         	 if(data['warningCount'] == 0)
+         	 if(data['insertId'] >= 0)
          	 {
-         	  $('#commentMsg').html("<span class='sucess'>{@pre type="content" key="commentSucess"/}</span>").show();
+         	  $('#commentMsg').html('<div class="alert alert-success" role="alert">{@pre type="content" key="commentSucess"/}</div>').show();
          	  window.setTimeout(
          	  function(){
          	  	$('#commentDialog').modal('hide');
@@ -138,7 +121,7 @@ return false;
          	 }
          	 else
          	 {
-         	 $('#commentMsg').html("<span class='error'>{@pre type="content" key="commentError"/}</span>").show();
+         	 $('#commentMsg').html('<div class="alert alert-danger" role="alert">{@pre type="content" key="commentError"/}</div>').show();
          	 window.setTimeout(function(){$('#commentDialog').modal('hide');$('#commentMsg').hide();},3000);
          	 }
 					  return false ;
