@@ -7,7 +7,7 @@
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading">{name} 
-																			  <span class='pull-right' onmouseover='javascript:showMap({floor},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
+																			  <span class='pull-right' onclick='javascript:showMap({floor},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
