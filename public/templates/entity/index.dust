@@ -7,7 +7,7 @@
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading">{name} 
-																			  <span class='pull-right' onmouseover='javascript:showMap({floor});'>{@pre type="content" key="entityaddress"/} {floor}-{number}</span>
+																			  <span class='pull-right' onmouseover='javascript:showMap({floor},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
@@ -50,7 +50,7 @@
 				          <!-- Text input-->
 				          
 				          <!-- title-->
-									<label class="control-label" for="title">{@pre type="content" key="title"/}</label>
+						<label class="control-label" for="title">{@pre type="content" key="title"/}</label>
 				          <div class="controls">
 				            <input type="text"  class="input-xlarge" name='title' id='title'>
 				          </div>
@@ -97,8 +97,14 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
-function showMap(id){
+function showMap(id,event){
 id = 4;
+var e= event || window.event;
+if (window.event) {
+   e.cancelBubble=true;
+} else {
+   e.stopPropagation(); 
+}
 $('#floorMapDialog .modal-body img').attr('src', '/img/upload/floor_' + id + '.jpg');
 $('#floorMapDialog').modal();
 }
