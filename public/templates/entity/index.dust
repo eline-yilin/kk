@@ -11,7 +11,7 @@
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
-																			    	<label class='label label-info'> {category} </label>
+																			    	<label class='label label-primary'> {category} </label>
 																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 																			    	<div style='margin:10px 0px;'>
 																			    		<div class='pull-left'>
