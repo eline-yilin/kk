@@ -112,7 +112,10 @@ return false;
          	 function( data ) {
          	 if(data['insertId'] >= 0)
          	 {
+         	 $('#content').val('');
+         	 $('#title').val('');
          	  $('#commentMsg').html('<div class="alert alert-success" role="alert">{@pre type="content" key="commentSucess"/}</div>').show();
+         	  
          	  window.setTimeout(
          	  function(){
          	  	$('#commentDialog').modal('hide');

@@ -1,106 +1,84 @@
 {>"layouts/master" /}
 {<body}
 <div class='container-fluid'>
- 			<fieldset>
-                    <legend>{@pre type="content" key="entitydetail"/}</legend>
-										<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
-										  <li class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
-										  <li><a href="#tab-comment">{@pre type="content" key="entitydetail"/}</a></li>
-										</ul>
-										<!-- Tab panes -->
-										<div class="tab-content row-fluid ">
-										<div id='tab-detail' class='tab-pane active'>
-										     <div class="products">
-            						{?items}
+ 	<fieldset>
+       <legend>{@pre type="content" key="entitydetail"/}</legend>
+			<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
+			  <li class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
+			  <li><a href="#tab-comment">{@pre type="content" key="entitycomment"/}</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content row-fluid ">
+				<div id='tab-detail' class='tab-pane active'>
+            			{?items}
                         {#items}
-                        <div >
-                            <div id="appointment{id}" class="product-item">
-                                <form method="POST" >
-                                    <input type="hidden" name="item_id" value="{id}">
-																					<div class="new-tile primary-tile">
-																						<span class="item-title">{name}</span><span class="item-sub">{price}</span>
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityaddress"/}: </label>
-																						{floor}-{number}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entitycategory"/}: </label>
-																						{category}
-																					</div>
-																					<div class="new-tile">
-																						 {@pre type="content" key="entitydescription"/}:{description}
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityImg"/}: </label>
-																						<div class='images'>
-																						{#imgs}
-																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{url}'>
-																						 </div>
-																						 {/imgs}
-																						 </div>
-																						 <div class='clear'></div>
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="entityProduct"/}: </label>
-																						<div class='products'>
-																						{#products}
-																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																							<div class="new-tile primary-tile">
-																								<span class="item-title">{name}</span><span class="item-sub">{price}</span>
-																							</div>
-																						 </div>
-																						 	<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
-																						<div class='images'>
-																						{#url}
-																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
-																						 </div>
-																						 {/url}
-																						 </div>
-																						 <div class='clear'></div>
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="productDes"/}: </label>
-																						{description}
-																					</div>
-																						 {/products}
-																						 </div>
-																						 <div class='clear'></div>
-																					</div>
-																		<div style='margin-top:10px'></div>
-																	  <button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> add to cart</button>
-                                      
-                                    <input type="submit" value="Delete" style='display:none'>
-                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
-                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
-                                    <input type="hidden" name="_method" value="POST">
-                                </form>
-                            </div>
-                        </div>
+                        <div class="panel panel-primary my-list-detail" id="appointment{id}">
+							<div class="panel-heading">{name} 
+								<span class='pull-right'>{@pre type="content" key="entityaddress"/}  {floor}-{number}</span>
+							 </div>
+							 <div class="panel-body">
+								<form method="POST">
+								<label class='label label-info'> {category} </label>
+								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
+								<div style='margin:10px 0px;'>
+										<div class='pull-left'>
+											{#url}
+												<img class='img-circle' style='max-width:40%;margin-bottom:10px;' src='{.}'>
+											{/url}
+										</div>
+										<div class='pull-right'></div>
+								</div>
+								<!--start products-->									    	
+								<div class="new-tile">
+										<label class='control-label'> {@pre type="content" key="entityProduct"/}: </label>
+												<div class='products'>
+													{#products}
+														<div class="col-xs-12 col-sm-6 col-md-4">
+																<div class="new-tile primary-tile">
+																		<span class="item-title">{name}</span><span class="item-sub">{price}</span>
+																</div>
+														</div>
+														<div class="new-tile">
+																<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
+																<div class='images'>
+																	{#url}
+																		<div class="col-xs-12 col-sm-6 col-md-4">
+																			 <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
+																		 </div>
+																	{/url}
+																</div>
+																<div class='clear'></div>
+														</div>
+														<div class="new-tile">
+															<label class='control-label'> {@pre type="content" key="productDes"/}: </label>
+																{description}
+														</div>
+													{/products}
+												</div>
+												<div class='clear'></div>
+								</div><!--close products-->
+						   </div><!--close panel body-->
+						</div><!--close panel-->									
                         {/items}    
-            {:else}
-                There are no products :(
-            {/items}
-        </div>
- </div>
- <div id='tab-comment' class='tab-pane'>
-  {#items}
- {#comments}
- <div class="panel panel-primary">
-  <div class="panel-heading">{title}</div>
-  <div class="panel-body">
-    {content}
-  </div>
-</div>
- {/comments}
- {/items}
- </div>
- </div>
+			            {:else}
+			                There are no products :(
+			            {/items}
+          </div><!--close tab detail-->
+		   <div id='tab-comment' class='tab-pane'>
+			 {#items}
+			 {#comments}
+				 <div class="panel panel-primary">
+					  <div class="panel-heading">{title}</div>
+					  <div class="panel-body">
+					    {content}
+					  </div>
+				</div>
+			 {/comments}
+			 {/items}
+		  </div><!--close tab comment-->
+ 		</div><!--close tab-content-->
   </fieldset>
-  </div>
+ </div>
         <script>  
         $(document).ready(
         function(){
