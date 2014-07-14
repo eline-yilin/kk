@@ -7,19 +7,20 @@
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading">{name} 
-																			  <span class='pull-right'>{@pre type="content" key="entityaddress"/}  {floor}-{number}</span>
+																			  <span class='pull-right' onmouseover='javascript:showMap({floor});'>{@pre type="content" key="entityaddress"/} {floor}-{number}</span>
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
 																			    	<label class='label label-primary'> {category} </label>
 																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 																			    	<div style='margin:10px 0px;'>
-																			    		<div class='pull-left'>
+																			    		<span class='pull-left' style='display:inline'>
 																				    		{#url}
-																									  <img class='img-circle' style='max-width:40%;margin-bottom:10px;' src='{.}'>
-																							 	{/url}
-																			    		</div>
-																			    		<div class='pull-right'></div>
+																									  <img class='img-circle' style='display:inline-block;max-width:40%;margin-bottom:10px;' src='{.}'>
+																							 {/url}
+																			    		</span>
+																			    		<span class='pull-right' style='display:inline'>
+																			    		</span>
 																			    	</div>
 																			    	<button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
 				                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
@@ -75,6 +76,18 @@
     			 </div>
    
         </div>
+        <div id='floorMapDialog'  class="modal fade" tabindex="-1" role="dialog">
+
+       			  <div class="modal-header">
+          			 <button type="button" class="close" data-dismiss="modal" style='padding:3px;'>×</button>
+           		 </div>
+           		 <div class="modal-body">  
+       			 <img class='img img-responsive' src=''/>
+    			</div>
+    			 <div class="modal-footer">  	 
+    			 </div>
+   
+        </div>
         <script>  
 $.ajaxSetup({
     crossDomain: false, 
@@ -84,6 +97,11 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
+function showMap(id){
+id = 4;
+$('#floorMapDialog .modal-body img').attr('src', '/img/upload/floor_' + id + '.jpg');
+$('#floorMapDialog').modal();
+}
 function comment(id,event)
 {
 var e= event || window.event;
