@@ -23,17 +23,18 @@ var getEntityById = function  (id, callback){
 		}
 		else
 			{
-			var query_get_img = 'select url from entity_img where entity_id=' + id;
+			var query_get_img = 'SELECT url from entity_img where entity_id=' + id;
 			return base.query(query_get_img, function(err,img){
 				if(err){
 					throw err;
 				}
 				else
 					{
-					var query_get_products = 'select p.*, i.url from product p LEFT JOIN product_img i ' 
-					+ '	on  p.id = i.product_id where entity_id=' + id  + ' limit 50';
-					console.log(query_get_products);
-					return base.query(query_get_products, function(err,product){
+					 	entity.imgs = img;
+						var query_get_products = 'select p.*, i.url from product p LEFT JOIN product_img i ' 
+						+ '	on  p.id = i.product_id where entity_id=' + id  + ' limit 50';
+						console.log(query_get_products);
+						return base.query(query_get_products, function(err,product){
 						if(err){
 							throw err;
 						}
@@ -44,7 +45,7 @@ var getEntityById = function  (id, callback){
 							{
 								var p = product[key];
 								var pid = p['id'];
-								//ITEM IN ARRAY
+								// ITEM IN ARRAY
 								if(tempProd[pid] )
 								{
 									if(p['url']){
@@ -52,7 +53,7 @@ var getEntityById = function  (id, callback){
 										tempProd[pid]['url'].push( url.replace(".build", "") );
 									}
 								}
-								//item not in array, init and push
+								// item not in array, init and push
 								else
 								{
 									var url = p['url'];
@@ -79,10 +80,18 @@ var getEntityById = function  (id, callback){
 									break;
 									}
 							}
-							  entity.imgs = img;
-							  entity.products = products;
-							  return callback(null, entity);
-							
+							entity.products = products;
+							var query_get_comments = "SELECT title, content from comment WHERE target_type = 'entity' AND target_id=" + id;
+							return base.query(query_get_comments, function(err,comments){
+								if(err){
+									throw err;
+								}
+								else
+									{
+									 entity.comments = comments;
+									 return callback(null, entity);
+									}
+							});
 							}
 					});
 					

@@ -39,15 +39,9 @@ var post = function(data, callback) {
 	if (data && data['id']) {
 
 	} else {
-		query = "INSERT INTO user (name,phone,openid,gender,birthday,clientid,password) values"
-				+ "('"
-				+ data['username']
-				+ "','" + data['phone']
-				+ "','"+ data['openid'] + "','"
-				+ data['gender']
-				+ "','" + data['birthday'] + "',1,'" 
-				+ data['password'] + ")";
-		base.query(query, callback);
+		var query = base.processInsertQuery('user', data);
+		return base.query(query,callback);
+		
 	}
 	
 

@@ -1,11 +1,19 @@
 {>"layouts/master" /}
 {<body}
-     <div class="products">
-            {?items}
-                <fieldset>
+<div class='fluid'>
+ 			<fieldset>
                     <legend>{@pre type="content" key="entitydetail"/}</legend>
+										<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
+										  <li class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
+										  <li><a href="#tab-comment">{@pre type="content" key="entitydetail"/}</a></li>
+										</ul>
+										<!-- Tab panes -->
+										<div class="tab-content">
+										<div id='tab-detail' class='tab-pane fluid col-xs-6 col-sm-10 col-md-10 active'>
+										     <div class="products">
+            						{?items}
                         {#items}
-                        <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="col-xs-6 col-sm-10 col-md-10">
                             <div id="appointment{id}" class="product-item">
                                 <form method="POST" action="/cart">
                                     <input type="hidden" name="item_id" value="{id}">
@@ -72,13 +80,32 @@
                                 </form>
                             </div>
                         </div>
-                        {/items}
-                </fieldset>
+                        {/items}    
             {:else}
                 There are no products :(
             {/items}
         </div>
+ </div>
+ <div id='tab-comment' class='tab-pane'>
+  {#items}
+ {#comments}
+ <div class="new-tile primary-tile" style='margin-top:10px;'>
+					<div class="item-title">{title}</div><div class="item-sub">{content}</div>
+</div>
+ {/comments}
+ {/items}
+ </div>
+ </div>
+  </fieldset>
+  </div>
         <script>  
+        $(document).ready(
+        function(){
+	         $('#entity-tab-control a').click(function (e) {
+						  e.preventDefault();
+						  $(this).tab('show');
+						});
+        });
 $.ajaxSetup({
     crossDomain: false, 
     beforeSend: function(xhr, settings) {

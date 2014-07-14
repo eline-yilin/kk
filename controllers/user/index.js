@@ -168,23 +168,29 @@ module.exports = function(router) {
 		var UserModel = require('../../models/user');
 		var model = new UserModel();
 		var openid = req.query.openid || (req.cookies && req.cookies.openid);
-		req.body.openid = openid;
-		model.post(req.body, function(err, rst) {
+		var body = {
+				openid:openid,
+				name:req.body.username,
+				phone:req.body.phone,
+				gender:req.body.gender,
+				password:req.body.password,
+				birthday: req.body.year + '-' + req.body.month +  '-' +  req.body.day,
+				clientid:0
+		}
+
+		model.post(body, function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
-				res.format({
-					json : function() {
-						res.cookie('uid', rst.insertId);
-						res.json(rst);
-					},
-					html : function() {
-						res.render('user/register', {
-							credits : rst,
-							name : 'user'
-						});
-					}
-				});
+				res.cookie('uid', rst.insertId);
+				res.cookie('username',req.body.username);
+				if(!res.locals.userObj)
+				{
+					res.locals.userObj = {};
+
+				}
+				res.locals.userObj.username = req.body.username;
+				res.redirect('/');
 			}
 		});
 
