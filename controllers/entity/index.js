@@ -57,7 +57,6 @@ module.exports = function (router) {
 						ret.push(temp[key]);
 						}
 					}
-				consoloe.log(JSON.stringify(ret));
                 res.render('entity/index', {items:ret,name:'entity'});
             
 				}
