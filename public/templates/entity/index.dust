@@ -4,6 +4,34 @@
             {?items}
                 <fieldset>
                     <legend>{@pre type="content" key="entitylist"/}</legend>
+                        <!--Search Nav-->
+                        <nav class="navbar navbar-default" role="navigation">
+												  <div class="container-fluid">
+												    <!-- Brand and toggle get grouped for better mobile display -->
+												    <div class="navbar-header">
+												      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#searchForm">
+												        <span class="sr-only">Toggle navigation</span>
+												        <i class='icon icon-search'></i>
+												      </button>
+												      <a class="navbar-brand" href="#">{@pre type="content" key="search"/}</a>
+												    </div>
+												
+												    <!-- Collect the nav links, forms, and other content for toggling -->
+												    <div class="collapse navbar-collapse" id="searchForm">
+												      <ul class="nav navbar-nav">
+												     	  <li class="divider">{@pre type="content" key="floor"/}</li>
+												        <li><a href="?floor=1">{@pre type="content" key="floor1"/}</a></li>
+												        <li><a href="?floor=2">{@pre type="content" key="floor2"/}</a></li>  
+												        <li><a href="?floor=3">{@pre type="content" key="floor3"/}</a></li>  
+												        <li><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
+												        <li><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
+												        <li class="divider">{@pre type="content" key="category"/}</li>
+												        <li><a href="?category=1">{@pre type="content" key="westernfood"/}</a></li>
+												      </ul>
+												    </div><!-- /.navbar-collapse -->
+												  </div><!-- /.container-fluid -->
+												</nav>
+                        <!--Close Search Nav-->
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading">{name} 
