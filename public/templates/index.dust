@@ -67,42 +67,20 @@
   <div style='margin-top:20px;'></div>
    <div id='home-block-menus navbar navbar-fixed-bottom'>
   	 <div style='margin-top:15px;'>
-			   <div class='block-menu hidden'><a href='/entity'>{@pre type="content" key="entitylist"/}</div>
 			    <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/entity" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="entitylist"/}</a>
-			   </div>	   
+			      <a href="/entity" class="btn btn-danger my-circle ">{@pre type="content" key="entitylist"/}</a>
+			     </div>	   
+			    
 			    <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
+			      <a href="/map" class="btn btn-success my-circle ">{@pre type="content" key="floormap"/}</a>
+			    </div>	
+			   	<div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="/comment/add" class="btn btn-primary my-circle ">{@pre type="content" key="comment"/}</a>
+			    </div>	
 			    <div class='clear'></div>
 	   </div>
-	    <div style='margin-top:15px;'>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			    <div class='clear'></div>
-	   </div>
-	   <div style='margin-top:15px;'>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default"><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="#" class="btn btn-default "><i class="icon-black icon-arrow-right"></i> {@pre type="content" key="firstfloor"/}</a>
-			   </div>
-			   <div class='clear'></div>
-	   </div>
+	    
+	  
 	    
    </div>
    <script>

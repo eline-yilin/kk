@@ -10,9 +10,19 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-
+    	var reqBody = {};
+        if(req.query.floor)
+        	{
+        	reqBody.floor = req.query.floor;
+        	
+        	}
+        if(req.query.category)
+    	{
+    	reqBody.category = req.query.category;
+    	
+    	}
     	model.get
-    	({},
+    	(reqBody,
     		function (err, rst) {
 			if (err) {
 				console.log(err);

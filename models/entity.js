@@ -6,6 +6,14 @@ var getEntityList = function  (data, callback){
 	var query = 'select e.*, i.url, a.floor, a.number, a.city, a.state, c.name as category '
 		+ ' from entity e LEFT JOIN entity_category c ON e.category_id = c.id LEFT JOIN entity_img i on e.id = i.entity_id LEFT JOIN  address a on a.id  = e.address_id '
 		+ ' where e.is_deleted <> 1';
+	if(data.floor)
+		{
+		 query += ' and a.floor=' + data.floor;
+		}
+	if(data.category)
+	{
+	 query += ' and c.id=' + data.category;
+	}
 	return base.query(query, callback);
 }; 
 
