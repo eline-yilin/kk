@@ -2,6 +2,7 @@
 
 
 var EntityModel = require('../../models/entity');
+var categoryModel = require('../../models/category');
 
 
 module.exports = function (router) {
@@ -67,8 +68,14 @@ module.exports = function (router) {
 						ret.push(temp[key]);
 						}
 					}
-                res.render('entity/index', {items:ret,name:'entity'});
-            
+				var model = new categoryModel();
+		    	model.get
+		    	({parent_id:1},
+		    		function (err, cat) {
+		    		res.render('entity/index', {items:ret,category:cat,name:'entity'});
+		    	}
+		    	);
+                
 				}
 			}
     	);

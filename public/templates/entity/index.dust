@@ -26,7 +26,9 @@
 												        <li><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
 												        <li><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
 												        <li class="divider">{@pre type="content" key="category"/}</li>
-												        <li><a href="?category=1">{@pre type="content" key="westernfood"/}</a></li>
+												        {#category}
+												        <li><a href="?category={id}">{name}</a></li>
+												        {/category} 
 												      </ul>
 												    </div><!-- /.navbar-collapse -->
 												  </div><!-- /.container-fluid -->
