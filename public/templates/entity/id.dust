@@ -4,7 +4,7 @@
  	<fieldset>
        <legend>{@pre type="content" key="entitydetail"/}</legend>
 			<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
-			  <li class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
+			  <li  class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
 			  <li><a href="#tab-comment">{@pre type="content" key="entitycomment"/}</a></li>
 			  <li><a href="#tab-product">{@pre type="content" key="entityProduct"/}</a></li>
 			</ul>
@@ -53,24 +53,23 @@
 		  <div id='tab-product' class='tab-pane'>
 			 {#items}
 			 {#products}
-				 <div class="panel panel-primary">
-					  <div class="panel-heading">{name} <span class='pull-right'>{price}</span></div>
+				 <div class="panel panel-primary ">
+					  <div class="panel-heading">{name} <span class='pull-right'>￥{price}</span></div>
 					  <div class="panel-body">
-					    <div class="new-tile">
-																<label class='control-label'> {@pre type="content" key="productImg"/}: </label>
-																<div class='images'>
-																	{#url}
-																		<div class="col-xs-12 col-sm-6 col-md-4">
-																			 <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
-																		 </div>
-																	{/url}
-																	</div>
-																<div class='clear'></div>
-														</div>
-														<div class="new-tile">
-															<label class='control-label'> {@pre type="content" key="productDes"/}: </label>
-																{description}
-														</div>
+					  	<div class="alert alert-info" role="alert">
+								 {description}
+							</div>
+					    <div class="new-tile">	
+									<div class='images'>
+										{#url}
+											<div class="col-xs-12 col-sm-6 col-md-4">
+												 <img class='img img-rounded img-responsive' style='margin-bottom:10px;' src='{.}'>
+											 </div>
+										{/url}
+										</div>
+									<div class='clear'></div>
+							</div>
+														
 					  </div>
 				</div>
 			 {/products}

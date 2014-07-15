@@ -30,19 +30,25 @@
                         {/entity_comments}
                         <h2>{@pre type="content" key="othercomment"/}</h2>
                         {#other_comments}
-                        <div class="col-xs-12 col-sm-12 col-md-6">
-                            <div id="appointment{id}" class="product-item">
-																					<div class="new-tile primary-tile">
-																						<span class="item-sub">{title}</span>
-																					</div>
-																					<div class="new-tile">
-																						<label class='control-label'> {@pre type="content" key="content"/}: </label>
-																						{content}
-																					</div>
-																				
-																		<div style='margin-top:10px'></div>
-                            </div>
-                        </div>
+                        <div class="panel panel-{@eq key=status_id value=0}danger{:else}primary{/eq} my-list-item" id="other{id}" >
+														  <div class="panel-heading">{title} 
+														  <span class='pull-right' > {@formatDate value="{updated}" /}</span>
+														  </div>
+														  <div class="panel-body">
+														 
+														      <div class='label label-info'>
+															      <span class='pull-right'>
+															      	{@eq key=status_id value=0}
+															      	<button type='button' onclick="javascript:return commentStatus({id},1,'other');" class="btn btn-success btn-mini"><i class="icon-white icon-ok"></i> {@pre type="content" key="approve"/}</button>
+															      	{:else}
+															      	<button type='button' onclick="javascript:return commentStatus({id},0,'other');" class="btn btn-danger btn-mini"><i class="icon-white icon-off"></i> {@pre type="content" key="reject"/}</button>
+															      	{/eq}
+															      </span>
+														      </div>
+														    	<div style='margin:25px 0px;' class="alert alert-warning" role="alert">{content}</div>
+                              </form>
+														  </div>
+														</div>
                         {/other_comments}
                         {/items}
                 </fieldset>
