@@ -124,7 +124,7 @@ module.exports = function(router) {
 	});
 	
 	router.get('/register', function(req, res) {
-		var openid = req.query.openid;
+		var openid = req.cookies.openid;
 		if (!openid ||openid == 'undefined') {
 			console.log('no openid');
 			res.redirect('/errors/404');

@@ -23,7 +23,11 @@
 																			    		</span>
 																			    	</div>
 																			    	<button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
+				                                    {?userObj.username}
 				                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
+				                                    {:else}
+				                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
+				                                     {/userObj.username}
 				                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
 				                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
 				                                    <input type="hidden" name="_method" value="POST">
@@ -97,26 +101,22 @@ $.ajaxSetup({
 });
 
 var csrftoken = $('#csrf').val();
+$(document).ready(function(){
+$('.my-tool-tip').tooltip({trigger:'click'});
+$('.my-tool-tip').click(function(e){
+stopEvent(e);
+return false;
+});
+});
 function showMap(id,event){
 id = 4;
-var e= event || window.event;
-if (window.event) {
-   e.cancelBubble=true;
-} else {
-   e.stopPropagation(); 
-}
+stopEvent(event);
 $('#floorMapDialog .modal-body img').attr('src', '/img/upload/floor_' + id + '.jpg');
 $('#floorMapDialog').modal();
 }
 function comment(id,event)
 {
-var e= event || window.event;
-if (window.event) {
-   e.cancelBubble=true;
-} else {
-   e.stopPropagation(); 
-}
-
+stopEvent(event);
 $('#commentDialog').modal();
 $('#commentDialog').data('entityid',id);
 return false;

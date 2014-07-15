@@ -85,7 +85,27 @@ var processInsertQuery = function(table, data)
 	query = query.substring(0,query.length -1);
 	query += ")";
 	return query;
-}
+};
+
+var processUpdateQuery = function(table, data)
+{
+	var query = '';
+	var id = 0;
+	var query = "UPDATE  " + table + " SET " ;
+	for(var key in data)
+	{
+		if(key == 'id')
+		{
+			id = data[key];
+			continue;
+		}
+		query +=  key + "='" + data[key] + "',";
+	}
+	query = query.substring(0,query.length -1);
+	query += " WHERE id=" + id;
+	console.log(query);
+	return query;
+};
 module.exports = function(){
 	this.extend = function(child){
 		var source = child();
@@ -99,4 +119,6 @@ module.exports = function(){
 	this.getOne = getOne;
 	this.processFilter = processFilter;
 	this.processInsertQuery = processInsertQuery;
+	this.processUpdateQuery = processUpdateQuery;
+	
 };

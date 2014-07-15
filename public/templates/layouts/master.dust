@@ -30,7 +30,16 @@
             <span class="sr-only">Toggle navigation</span>   
           </button>
            {:else}
-           <a href="/user/login" class='pull-right visible-sm visible-xs' style='margin-top:10px;padding-right:10px;color:#fff;text-decoration:none;'><i class='icon-user icon-white'></i> {@pre type="content" key="login"/}</a>
+           <span class='pull-right visible-sm visible-xs small-login' style='padding-right:10px;'>
+           <ul class="nav navbar-nav"><li>
+           <a data-toggle="dropdown" class="dropdown-toggle" href="/user"><i class='icon-user icon-white'></i> {@pre type="content" key="user"/} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/user/login" >{@pre type="content" key="login"/}</a>  </li>
+                <li><a href="/user/register" >{@pre type="content" key="register"/}</a> </li>   
+              </ul>
+              </li></ul>
+           </span>
+           
           {/userObj.username} 
           <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#operation-navigation">
 			        <span class="sr-only">Toggle navigation</span>
@@ -60,6 +69,7 @@
             </li>
             {:else}
               <li  {@eq key=name value="user"}class="active"{/eq}><a href="/user/login">{@pre type="content" key="login"/}</a></li>
+              <li><a href="/user/register" >{@pre type="content" key="register"/}</a> </li>
             {/userObj.username}
             <li class='hidden-sm hidden-xs'  {@eq key=name value="cart"}class="active"{/eq}><a href="/cart">{@pre type="content" key="cart"/}</a></li>
             <li {@eq key=name value="comment"}class="active"{/eq}>

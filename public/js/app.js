@@ -29,7 +29,17 @@ function convertDateTime(date, format)
     }
 	
 }
+function stopEvent(event){
+	var e= event || window.event;
+	if (window.event) {
+	   e.cancelBubble=true;
+	} else {
+	   e.stopPropagation(); 
+	}
+}
 
+
+//////////// Slider ///////////
 function createPicMove(a, b, c) {
     var g = function(j) {
         return "string" == typeof j ? document.getElementById(j) : j

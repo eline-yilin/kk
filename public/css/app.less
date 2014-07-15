@@ -69,7 +69,8 @@ body .modal {
     margin-left:-40%; /* width/2) */ 
 }
 body .modal-header{border:none;}
-
+#floorMapDialog{max-height:250px;}
+#commentDialog{max-height:400px;}
 /************* label ************/
 .label-primary {
 background-color: #428bca;
@@ -91,6 +92,8 @@ display: inline-block;
 margin-bottom: 5px;
 font-weight: 700;
 }
+body .label:empty,
+body .badge:empty { display: inline-block; }
 /*******App css ******/
 .box-shadow(@style) {
   -webkit-box-shadow: @style;
@@ -168,3 +171,4 @@ margin:2px 0px;
 .my-list-item{
 cursor: pointer;
 }
+.small-login a{color:#fff;text-decoration:none;}
