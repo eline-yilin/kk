@@ -95,6 +95,48 @@ font-weight: 700;
 body .label:empty,
 body .badge:empty { display: inline-block; }
 
+/************Custom nav bar**************/
+@my-primary-color:#428bca;
+@my-primary-color-hover:#3276b1;
+@my-primary-font:#FFF;
+@my-primary-font-hover:#CCC;
+
+body
+{
+.navbar-primary 
+	{ 
+		background-color: @my-primary-color;
+		background-image: none;
+	  .navbar-nav>.active>a:hover,.navbar-nav>li>a:hover,.navbar-nav>li>a:focus
+	  {
+	  	background-color:@my-primary-color-hover;color:@my-primary-font;
+	  }
+	  .navbar-nav>.active>a,.navbar-nav>.open>a, .navbar-nav>.open>a,  .navbar-nav>.open>a:hover, .navbar-nav>.open>a,  .navbar-nav>.open>a:hover,  .navbar-nav>.open>a:focus {color:@my-primary-font-hover; background-color: @my-primary-color-hover}
+	  .navbar-nav>li{color:@my-primary-font}
+	  .dropdown-menu { background-color: @my-primary-color;}
+	  dropdown-menu>li>a
+	  {
+	  	color:@my-primary-font;
+	  	&:hover,&:focus{color:@my-primary-font-hover}
+	  }
+		.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus { background-color:@my-primary-color-hover;background-image: none;}
+		.navbar-brand 
+		{ 
+			color: @my-primary-font;
+			&:hover{color: @my-primary-font-hover}
+		}
+		.navbar-nav>li>a{color:@my-primary-font}
+		.navbar-nav>li>a:hover,  .navbar-nav>li>a:focus{color:@my-primary-font-hover}
+	}
+
+.navbar-primary { border-color: #080808}
+.navbar-primary .navbar-nav>.dropdown>a .caret { border-top-color: #999999}
+.navbar-primary .navbar-nav>.dropdown>a:hover .caret { border-top-color: #FFFFFF}
+.navbar-primary .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
+.navbar-primary .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
+
+
+}
 
 /*******App css ******/
 

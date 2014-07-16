@@ -6,7 +6,7 @@
 			<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
 			  <li  class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
 			  <li><a href="#tab-comment">{@pre type="content" key="entitycomment"/}</a></li>
-			  <li><a href="#tab-product">{@pre type="content" key="entityProduct"/}</a></li>
+			  <li><a href="#tab-address">{@pre type="content" key="entityaddress"/}</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content row-fluid ">
@@ -22,15 +22,33 @@
 								<label class='label label-primary'> {category} </label>
 								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 								<div style='margin:10px 0px;'>
-										<div class='pull-left'>
 											{#imgs}
 												<img class='img-circle' style='max-width:40%;margin-bottom:10px;' src='{url}'>
 											{/imgs}
-										</div>
-										<div class='pull-right'>
-										<img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_4.jpg'>
-										</div>
-								</div>		
+								</div>	
+								{#products}
+									 <div class="panel panel-primary ">
+										  <div class="panel-heading">{name} <span class='pull-right'>￥{price}</span></div>
+										  <div class="panel-body">
+										  	<div class="alert alert-info" role="alert">
+													 {description}
+												</div>
+										    <div class="new-tile">	
+														<div class='images'>
+															{#url}
+																<div class="col-xs-12 col-sm-6 col-md-4">
+																	 <img class='img img-rounded img-responsive' style='margin-bottom:10px;' src='{.}'>
+																 </div>
+															{/url}
+															</div>
+														<div class='clear'></div>
+												</div>
+																			
+										  </div>
+									</div>
+								{/products}
+								<!--products-->	
+								<!--close products-->
 						   </div><!--close panel body-->
 						</div><!--close panel-->									
                         {/items}    
@@ -50,31 +68,9 @@
 			 {/comments}
 			 {/items}
 		  </div><!--close tab comment-->
-		  <div id='tab-product' class='tab-pane'>
-			 {#items}
-			 {#products}
-				 <div class="panel panel-primary ">
-					  <div class="panel-heading">{name} <span class='pull-right'>￥{price}</span></div>
-					  <div class="panel-body">
-					  	<div class="alert alert-info" role="alert">
-								 {description}
-							</div>
-					    <div class="new-tile">	
-									<div class='images'>
-										{#url}
-											<div class="col-xs-12 col-sm-6 col-md-4">
-												 <img class='img img-rounded img-responsive' style='margin-bottom:10px;' src='{.}'>
-											 </div>
-										{/url}
-										</div>
-									<div class='clear'></div>
-							</div>
-														
-					  </div>
-				</div>
-			 {/products}
-			 {/items}
-		  </div><!--close tab product-->
+		  <div id='tab-address' class='tab-pane'>
+		  	<img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_4.jpg'>
+		  </div><!--close tab address-->
  		</div><!--close tab-content-->
   </fieldset>
  </div>
