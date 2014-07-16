@@ -13,7 +13,7 @@ module.exports = function (router) {
         var type = req.query.type;
         if(type == 'map')
         {
-        	var floors = [1,2,3,4,5];
+        	var floors = [1,2,3,4];
         	res.render('image/map', {name:'image',floors:floors});
         }
         else

@@ -9,7 +9,7 @@
 <legend>{@pre type="content" key="floormap"/}</legend>
 					<form method="POST">
    									{#floors}
-   																	<div class="col col-xs-4 col-sm-4 col-md-4">
+   																	<div class="col col-xs-12 col-sm-4 col-md-3">
                                     <div class="panel panel-primary" id="appointment{id}">
 																			  <div class="panel-heading">{.} {@pre type="content" key="floor"/}
 																			  </div>

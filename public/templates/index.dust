@@ -68,14 +68,14 @@
    <div id='home-block-menus navbar navbar-fixed-bottom'>
   	 <div style='margin-top:15px;'>
 			    <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/entity" class="btn btn-danger my-circle ">{@pre type="content" key="entitylist"/}</a>
+			      <a href="/entity"><img class='img img-responsive' src='/img/upload/entity_list.jpg'/></a>
 			     </div>	   
 			    
 			    <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/image?type=map" class="btn btn-success my-circle ">{@pre type="content" key="floormap"/}</a>
+			      <a href="/image?type=map"><img class='img img-responsive' src='/img/upload/map_floor.jpg'/></a>
 			    </div>	
 			   	<div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/comment/add" class="btn btn-primary my-circle ">{@pre type="content" key="comment"/}</a>
+			      <a href="/comment/add"><img class='img img-responsive' src='/img/upload/comment.png'/></a>
 			    </div>	
 			    <div class='clear'></div>
 	   </div>
