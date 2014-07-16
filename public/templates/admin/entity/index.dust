@@ -94,7 +94,7 @@ var csrftoken = $('#csrf').val();
         }
         function goToDetail(id)
         {
-         window.location = "/product/id/" + id;
+         window.location = "/admin/entity/id/" + id;
          return false;
         }
         </script>
