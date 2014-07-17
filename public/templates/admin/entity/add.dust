@@ -21,7 +21,7 @@
  					
  					<!-- Button -->
           <div class="controls">
-            <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">
+            <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success hidden">
             	<i class="icon-white icon-plus-sign"></i> {@pre type="content" key="addImg"/}
             </button>
           </div>

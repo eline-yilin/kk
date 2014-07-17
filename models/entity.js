@@ -171,7 +171,7 @@ console.log(update_address_query);
 			    {
 					var query = "UPDATE  entity set category_id = " + data.category 
 					+ ",name='" + data.entityname 
-					+"',description='" + data.description + "'";
+					+"',description='" + data.description + "' WHERE id=" + entity.id;
 			    }
 				else
 				{

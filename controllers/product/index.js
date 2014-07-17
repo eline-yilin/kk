@@ -23,7 +23,7 @@ module.exports = function (router) {
 				            },
 				            html: function () {
 				            	//products = JSON.stringify(products);
-								console.log('////' + rst);
+								console.log('////' + JSON.stringify(rst));
 								var temp = [];
 								for(var key in rst)
 								{
@@ -48,10 +48,20 @@ module.exports = function (router) {
 										
 										item['url'] = new Array(url);
 										temp[pid] = item;
+										
 									}
 									
 								}
-				                res.render('product/index', {products:temp,name:'product'});
+								var ret = [];
+								for(var key in temp)
+									{
+									if(temp[key])
+									{
+									 ret.push(temp[key]);	
+									}
+									}
+								
+				                res.render('product/index', {products:ret,name:'product'});
 				            }
 				        });
 						}

@@ -52,7 +52,15 @@ module.exports = function (router) {
 							}
 							
 						}console.log(temp);
-		                res.render('admin/product/index', {products:temp,name:'product'});
+						var ret =[];
+						for(var key in temp)
+						{
+						if(temp[key])
+						{
+						 ret.push(temp[key]);	
+						}
+						}
+		                res.render('admin/product/index', {products:ret,name:'product'});
 		            }
 		        });
 				}
