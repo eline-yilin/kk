@@ -1,10 +1,7 @@
 {>"layouts/master" /}
 
 {<body}
-<div id='fullImg' style='background:#ccc;display:none;width:100%;min-height:200px;position:fixed;top:18%;z-index:9999;'
- onclick='javascript: closeEle(this);'>
-<img src='' class='img img-responsive'/>
-</div>
+
 <fieldset>
 <legend>{@pre type="content" key="floormap"/}</legend>
 					<form method="POST">
@@ -14,7 +11,7 @@
 																			  <div class="panel-heading">{.} {@pre type="content" key="floor"/}
 																			  </div>
 																			  <div class="panel-body">
-																			      <img style='width:200px;cursor:pointer;' class='img-responsive img img-thumbnail'  src='/img/upload/floor_{.}.jpg' onclick="javascript: showFull({.});">				    	
+																			      <a href='/img/upload/floor_{.}.jpg'><img style='width:200px;cursor:pointer;' class='img-responsive img img-thumbnail'  src='/img/upload/floor_{.}.jpg'></a>				    	
 																			  </div>
 																			</div>
 																			</div>
@@ -25,14 +22,6 @@
                      </form>
 </fieldset>
 <script>
-function closeEle(ele)
-{
-$(ele).hide();
-}
-function showFull(id)
-{
-$('#fullImg img').attr('src', '/img/upload/floor_' + id + '.jpg');
-$('#fullImg').show();
-}
+
 </script>
 {/body}
