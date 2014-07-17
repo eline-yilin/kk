@@ -96,7 +96,17 @@ module.exports = function (router) {
 					catmodel.get
 			    	({parent_id:1},
 			    		function (err, cats) {
-			    		var obj={items:rst,category:cats,floors:[1,2,3,4,5,6]};
+			    		var floors = [];
+			    		for(var i = 1; i <= 6 ; i++)
+			    		{
+			    			floors.push({value:i,key:i});
+			    		}
+			    		var numbers = [];
+			    		for(var i = 1; i <= 16 ; i++)
+			    		{
+			    			numbers.push({value:i,key:i});
+			    		}
+			    		var obj={items:rst,category:cats,floors:floors,numbers:numbers};
 			    		console.log(obj);
 			    		res.render('admin/entity/update', {obj:obj,name:'entity'});
 			    	}
@@ -175,7 +185,8 @@ router.post('/edit/:id', function (req, res) {
     	({parent_id:1},
     		function (err, rst) {
     		var floors = ['1','2','3','4','5','6'];
-    		res.render('admin/entity/add', {floors:floors,category:rst,name:'entity'
+    		var numbers = [1,2,3,4,5,6,7,8,9,10];
+    		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:rst,name:'entity'
     			});}
     	);
        

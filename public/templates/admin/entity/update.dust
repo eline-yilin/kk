@@ -69,11 +69,19 @@
 		<h4>{@pre type="content" key="address"/}</h4>
 		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='floor' id='floor' value={obj.items.floor}>
+            <select  class="input-xlarge" name='floor' id='floor'>
+		          {#obj.floors  param1=obj.items.floor}
+		          <option value={value}>{value}</option> 
+		          {/obj.floors} 
+		         </select> 
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number" /}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='number' id='number' value={obj.items.number}>
+          <select  class="input-xlarge" name='number' id='number'>
+		          {#obj.numbers param2=obj.items.number}
+		          <option value={value}>{value}</option> 
+		          {/obj.numbers} 
+		         </select> 
           </div>
     </div>
         
@@ -94,5 +102,9 @@
           $("#imgTemplate").clone().removeClass('hidden').insertAfter("div.imgRow:last");
           $("div.imgRow:last").find('input').attr('name','thumbnail' +　index).attr('id','thumbnail' +　index );
         }
+        $(document).ready(function(){
+        $('#floor').val({obj.items.floor});
+        $('#number').val({obj.items.number});
+        });
         </script>
 {/body}

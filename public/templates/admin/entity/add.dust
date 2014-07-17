@@ -63,13 +63,17 @@
           <div class="controls">
 	            <select  class="input-xlarge" name='floor' id='floor'>
 		          {#floors}
-		          <option value={.}>{.}</option>
-		          </select> 
+		          <option value={.}>{.}</option> 
 		          {/floors} 
+		         </select> 
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='number' id='number'>
+           <select  class="input-xlarge" name='number' id='number'>
+		          {#numbers}
+		          <option value={.}>{.}</option> 
+		          {/numbers} 
+		         </select> 
           </div>
     </div>
         
