@@ -69,7 +69,7 @@
 			 {/items}
 		  </div><!--close tab comment-->
 		  <div id='tab-address' class='tab-pane'>
-		  	<img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_4.jpg'>
+		  	<a href='/img/upload/floor_{items.floor}.jpg'><img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_{items.floor}.jpg'>
 		  </div><!--close tab address-->
  		</div><!--close tab-content-->
   </fieldset>

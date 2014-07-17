@@ -69,11 +69,7 @@
 		<h4>{@pre type="content" key="address"/}</h4>
 		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-            <select  class="input-xlarge" name='floor' id='floor'>
-		          {#obj.floors  param1=obj.items.floor}
-		          <option value={value}>{value}</option> 
-		          {/obj.floors} 
-		         </select> 
+           <input type="text"  class="input-xlarge" name='number' id='number'> 
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number" /}</label>
           <div class="controls">

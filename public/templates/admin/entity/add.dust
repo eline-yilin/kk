@@ -69,11 +69,7 @@
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
           <div class="controls">
-           <select  class="input-xlarge" name='number' id='number'>
-		          {#numbers}
-		          <option value={.}>{.}</option> 
-		          {/numbers} 
-		         </select> 
+            <input type="text"  class="input-xlarge" name='number' id='number'>       
           </div>
     </div>
         

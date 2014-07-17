@@ -71,7 +71,7 @@
             {/items}
         </div>
         
-        <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog">
+        <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog" >
 
        			  <div class="modal-header">
           			 <button type="button" class="close" data-dismiss="modal" style='padding:3px;'>×</button>
@@ -84,19 +84,20 @@
 				          <!-- Text input-->
 				          
 				          <!-- title-->
-						<label class="control-label" for="title">{@pre type="content" key="title"/}</label>
-				          <div class="controls">
+						<label class="control-label pull-left" for="title">{@pre type="content" key="title"/}</label>
+				          <div class="controls pull-right">
 				            <input type="text"  class="input-xlarge" name='title' id='title'>
 				          </div>
-									
+							<div class='clear'></div>		
 				           <!-- content-->
-									<label class="control-label" for="content">{@pre type="content" key="content"/}</label>
-				          <div class="controls">
+									<label class="control-label  pull-left" for="content">{@pre type="content" key="content"/}</label>
+				          <div class="controls pull-right">
 				            <textarea  class="input-xlarge" name='content' id='content'></textarea>
 				          </div>
 				          
 				    </div>
 					<div id='commentMsg' style='display:none'></div>
+					
     			</fieldset>
     			</div>
     			 <div class="modal-footer">  
@@ -139,10 +140,9 @@ return false;
 });
 });
 function showMap(id,event){
-id = 4;
 stopEvent(event);
-$('#floorMapDialog .modal-body img').attr('src', '/img/upload/floor_' + id + '.jpg');
-$('#floorMapDialog').modal();
+location.href = '/img/upload/floor_' + id + '.jpg';
+return false;
 }
 function comment(id,event)
 {

@@ -89,7 +89,7 @@ var getEntityById = function  (id, callback){
 									}
 							}
 							entity.products = products;
-							var query_get_comments = "SELECT title, content from comment WHERE target_type = 'entity' AND status_id = 1 AND target_id=" + id;
+							var query_get_comments = "SELECT title, content from comment WHERE target_type = 'entity' AND target_id=" + id;
 							return base.query(query_get_comments, function(err,comments){
 								if(err){
 									throw err;
