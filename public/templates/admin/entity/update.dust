@@ -1,5 +1,6 @@
 {>"layouts/admin_master" /}
 {<body}
+{#obj.items}
 <div id='info'><div class='sucess'></div><div class='error'></div></div>
      <form class="form-horizontal" id='addproduct' method='POST' enctype="multipart/form-data">
      <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
@@ -12,15 +13,22 @@
     <div class="control-group">
           
           <!-- img-->
-		  <div class="controls hidden imgRow" id="imgTemplate">
+          {#obj.items.imgs}
+	          <div class="controls imgRow col-xs-8 col-sm-6 col-md-3">
+	          	<img class='img img-responsive' src={url} id='img{id}'>
+	          	<button onclick="javascript:return removeImg({id});" style='margin-top:5px;' class=" pull-right btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> {@pre type="content" key="remove"/}</button>
+	          </div>
+          {/obj.items.imgs}
+          <div class='clear'></div>
+		  		<div class="controls hidden imgRow" id="imgTemplate">
             <input type="file",  class="input-xlarge"  id='thumbnail'>
           </div>
-          <div class="controls imgRow">
+          <div class="controls imgRow imgRow-control hidden">
             <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
           </div>
  					
  					<!-- Button -->
-          <div class="controls">
+          <div class="controls hidden">
             <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">
             	<i class="icon-white icon-plus-sign"></i> {@pre type="content" key="addImg"/}
             </button>
@@ -38,7 +46,7 @@
           <!-- Text input-->
           <label class="control-label" for="username">{@pre type="content" key="entityname"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='entityname' id='entityname'>
+            <input type="text"  class="input-xlarge" name='entityname' id='entityname' value='{name}'>
           </div>
           <!-- category-->
 		<label class="control-label" for="category">{@pre type="content" key="category"/}</label>
@@ -47,29 +55,25 @@
           </div>
 		<div class="controls">
             <select class="input-xlarge" name='category' id='category'>
-            {#category}
-              <option value={id}>{name}</option>
-              {/category}
+            {#obj.category param=obj.items.category_id}
+              <option value={id}  {@eq key=id value=param} selected{/eq}>{name}</option>
+              {/obj.category}
             </select>
            </div>
           <!-- desc-->
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
-            <textarea  class="input-xlarge" name='description' id='description'></textarea>
+            <textarea  class="input-xlarge" name='description' id='description'>{obj.items.description}</textarea>
           </div>
            <!-- address-->
 		<h4>{@pre type="content" key="address"/}</h4>
 		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-	            <select  class="input-xlarge" name='floor' id='floor'>
-		          {#floors}
-		          <option value={.}>{.}</option>
-		          </select> 
-		          {/floors} 
+            <input type="text"  class="input-xlarge" name='floor' id='floor' value={obj.items.floor}>
           </div>
-          <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
+          <label class="control-label" for="number">{@pre type="content" key="number" /}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='number' id='number'>
+            <input type="text"  class="input-xlarge" name='number' id='number' value={obj.items.number}>
           </div>
     </div>
         
@@ -82,6 +86,7 @@
 	</div>
     </fieldset>
   </form>
+ {/obj.items}
         <script>  
        function addImage()
         {

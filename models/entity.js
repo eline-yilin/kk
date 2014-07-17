@@ -148,10 +148,66 @@ var post = function  (data, callback){
 		}
 	});
 }; 
+
+var update = function  (data, callback){
+	getEntityById(data.id, function(err,entity){
+		var address_id = entity.address_id;
+		if(data.floor != entity.floor || data.number != entity.number)
+		{
+			var update_address_query = 'UPDATE  address SET floor = ' + data.floor + ', number=' + data.number + ' WHERE id=' + address_id;
+		}
+		else
+		{
+			var update_address_query = 'SELECT 1';
+		}
+console.log(update_address_query);
+		return base.query(update_address_query, function(err, rst){
+			if(err){
+				throw err;
+			}
+			else
+			{
+				if(data.entityname != entity.name || data.description != entity.description || data.category != entity.category_id)
+			    {
+					var query = "UPDATE  entity set category_id = " + data.category 
+					+ ",name='" + data.entityname 
+					+"',description='" + data.description + "'";
+			    }
+				else
+				{
+					var query = 'select 1';
+				}
+				console.log(query);
+				return base.query(query,callback);
+				/*return base.query(query, function(err, rst){
+					if(err){
+						throw err;
+					}
+					else{
+						var eid = rst['insertId'];
+						var insert_img_query = "insert into entity_img (entity_id, url) values ";
+						var imgs = data['img'];
+						for(var i = 0; i <  imgs.length; i++)
+						{
+							insert_img_query += "(" + eid + ",'" + imgs[i] + "')";
+							if(i != (imgs.length - 1) )
+								{
+								insert_img_query += ",";
+								}
+						}
+						return base.query(insert_img_query, callback);
+					}
+				});	*/
+			}
+		});
+		
+	})
 	
+}; 
 module.exports = function(){
 this.get = getEntityList;
 this.id = getEntityById;
 this.post = post;
+this.update = update;
 this.delete = deleteItemById;
 };

@@ -68,11 +68,115 @@ module.exports = function (router) {
        
     });
     
+    
+    router.get('/edit/:id', function (req, res) {
+    	var id = req.params.id;
+		 console.log('////////////////product id ' +　id  + '//////////////////////');
+	 	 model.id
+	 	(id,
+	 		function (err, rst) {
+				if (err) {
+					console.log(err);
+				}
+				else{
+					console.log(rst);
+					if(rst.imgs)
+						{
+						for(var key in rst.imgs)
+						{
+							var item = rst.imgs[key];
+							var url = item.url;
+							url = url.replace(".build", "");
+							rst.imgs[key].url = url;
+	
+						}
+				    }
+					
+					var catmodel = new categoryModel();
+					catmodel.get
+			    	({parent_id:1},
+			    		function (err, cats) {
+			    		var obj={items:rst,category:cats,floors:[1,2,3,4,5,6]};
+			    		console.log(obj);
+			    		res.render('admin/entity/update', {obj:obj,name:'entity'});
+			    	}
+			    	);
+					}
+				}
+	 	);
+    	/*var model = new categoryModel();
+    	model.get
+    	({parent_id:1},
+    		function (err, rst) {res.render('admin/entity/update', {category:rst,name:'entity'});}
+    	);*/
+       
+    });
+    
+router.post('/edit/:id', function (req, res) {
+    	var id = req.params.id;
+	 	var  fs = require('fs');
+	 	var body = req.body;
+	 	body.img = [];
+
+	 	for(var key in req.files)
+	 	{
+	 		var img = req.files[key];
+	 		if(img.name && img.name != '')
+	 		{
+	 			 var tmp_path = img.path;
+	 			 var target_path =   '.build/img/upload/entity_' + img.name;
+	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);
+	 			try{		
+	 			var fw = fs.openSync(target_path,'w');
+	 			var content = fs.readFileSync(tmp_path);
+	 		    fs.writeFileSync(target_path, content );
+	 		    fs.close(fw);
+	 		    console.log('unlink ' + tmp_path);
+	 	        fs.unlinkSync(tmp_path);
+	 			// fs.renameSync(tmp_path, target_path);
+	 		}
+	 		catch(error){console.log(error);}
+ 		 	    body.img.push( target_path);
+ 		 	    // fs.unlinkSync(tmp_path);
+	 		}
+	 		
+	 	}
+	 	body.id = id;
+	 	 console.log(body.img);
+		    model.update(body,function (err, rst) {
+				if (err) {
+					console.log(err);
+					 res.render('admin/entity/edit/' + id, {error:err,name:'entity'});
+				}
+				else{
+			        res.format({
+			            json: function () {
+			                res.json(rst);
+			            },
+			            html: function () {
+			            	if(rst)
+			            		{
+			            		res.redirect('/admin/entity/');
+			            		// res.render('admin/entity/add',
+								// {sucess:rst,name:'entity'});
+			            		}
+			            }
+			        });
+					}
+				});
+
+    });
+    
+    
+    
     router.get('/add', function (req, res) {
     	var model = new categoryModel();
     	model.get
     	({parent_id:1},
-    		function (err, rst) {res.render('admin/entity/add', {category:rst,name:'credit'});}
+    		function (err, rst) {
+    		var floors = ['1','2','3','4','5','6'];
+    		res.render('admin/entity/add', {floors:floors,category:rst,name:'entity'
+    			});}
     	);
        
     });
