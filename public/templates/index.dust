@@ -75,7 +75,7 @@
 			      <a href="/image?type=map"><img class='img img-responsive' src='/img/upload/map_floor.jpg'/></a>
 			    </div>	
 			   	<div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/comment/add"><img class='img img-responsive' src='/img/upload/comment.png'/></a>
+			      <a href="/comment/add"><img class='img img-responsive' src='/img/upload/comment.jpg'/></a>
 			    </div>	
 			    <div class='clear'></div>
 	   </div>
