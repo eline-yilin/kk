@@ -27,13 +27,13 @@
         "host": "127.0.0.1",
         "port": "6379"
     },
-    "databaseConfig": {
+    "databaseConfig1": {
     "user": "root",
     "password": "goumao",
         "host": "localhost",
         "database": "yuechang"
     },
-"databaseConfig1": {
+"databaseConfig": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",
