@@ -7,29 +7,59 @@ var dbconfig = {"user": db['user'],
 	    "host": db['host'],
 	    "database": db['database']
 	};
-
+var redis = require("redis");
+var connect = cfg['redisconfig'];
+var isRedis = connect['isRedis'];
+var host = connect['host'] || '127.0.0.1';
+var port = connect['port'] || '6379';
+var option =  connect['option'] || {};
+if(isRedis)
+{
+	var client = redis.createClient(port,host,option);
+	
+	client.on("error", function (err) {
+	    console.log("Error " + err);
+	});
+}
+var hashkey = 'basequery';
 var query = function(query, callback){
 	console.log(query);
-	var connection = mysql.createConnection(dbconfig);
-	connection.connect(function(err) {
-	  if(!err){
-		  connection.query(query, function(err, result) {
-		        if(!err){
-		        	connection.end();
-		           return callback(null,result);
-		        }
-		        else{
-		        	console.log(err);
-		        	return callback(err,null);
-		        	}    
-			}
-			);
-      }
-      else{
-      	console.log(err);
-      	return callback(err,null);
-      	}
-	});
+	var results = null;
+	if(isRedis)
+	{
+	  var results = client.hget(hashkey, query);
+	  console.log('!!!!!!get  ' + results);
+	}
+	if(!results)
+		{
+			var connection = mysql.createConnection(dbconfig);
+			connection.connect(function(err) {
+			  if(!err){
+				  connection.query(query, function(err, result) {
+				        if(!err){
+				        	connection.end();
+				        	if(isRedis){
+				        		client.hset(hashkey, query,result);
+					        	console.log('!!!!!!set ' + result);
+				        	}
+				        	
+				           return callback(null,result);
+				        }
+				        else{
+				        	console.log(err);
+				        	return callback(err,null);
+				        	}    
+					}
+					);
+		      }
+		      else{
+		      	console.log(err);
+		      	return callback(err,null);
+		      	}
+			});
+		}
+        
+	
 };
 
 var getOne = function(query, callback){

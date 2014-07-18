@@ -23,6 +23,10 @@
             }
         }
     },
+    "redisconfig": {
+        "host": "127.0.0.1",
+        "port": "6379"
+    },
     "databaseConfig": {
     "user": "root",
     "password": "goumao",
@@ -63,7 +67,7 @@
                 "name": "path:./lib/auth"
             }
         },
-        
+ 
         "locale": {
             "priority": 95,
             "enabled": true,

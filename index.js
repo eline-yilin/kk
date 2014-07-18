@@ -6,6 +6,7 @@ var kraken = require('kraken-js'),
     options = {
         onconfig: function (config, next) {
         	cfg['databaseConfig'] = config.get('databaseConfig');
+        	cfg['redisconfig'] = config.get('redisconfig');
         	cfg['i18n'] = config.get('i18n');
         	
             //any config setup/overrides here
