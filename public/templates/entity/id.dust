@@ -1,6 +1,7 @@
 {>"layouts/master" /}
 {<body}
 <div class='container-fluid'>
+<form method="POST">
  	<fieldset>
        <legend>{@pre type="content" key="entitydetail"/}</legend>
 			<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
@@ -18,7 +19,7 @@
 								<span class='pull-right'>{@pre type="content" key="entityaddress"/}  {floor}-{number}</span>
 							 </div>
 							 <div class="panel-body">
-								<form method="POST">
+								
 								<label class='label label-primary'> {category} </label>
 								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 								<div style='margin:10px 0px;'>
@@ -67,12 +68,56 @@
 				</div>
 			 {/comments}
 			 {/items}
+			 {?userObj.username}
+                        <button type='button' onclick="javascript:return comment({items.id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
+                        {:else}
+                        <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
+			{/userObj.username}
+			 <div id='commentDialog'  class="modal fade" tabindex="-1" role="dialog" >
+
+       			  <div class="modal-header">
+          			 <button type="button" class="close" data-dismiss="modal" style='padding:3px;'>×</button>
+           		 </div>
+           		 <div class="modal-body">  
+       			 <fieldset>
+				        <legend class="">{@pre type="content" key="comment"/}</legend>
+				    <div class="control-group">
+				        <!-- title-->
+						<label class="control-label pull-left" for="title">{@pre type="content" key="title"/}</label>
+				          <div class="controls pull-right">
+				            <input type="text"  class="input-xlarge" name='title' id='title'>
+				          </div>
+							<div class='clear'></div>		
+				           <!-- content-->
+						<label class="control-label  pull-left" for="content">{@pre type="content" key="content"/}</label>
+				          <div class="controls pull-right">
+				            <textarea  class="input-xlarge" name='content' id='content'></textarea>
+				          </div>
+				          
+				    </div>
+					<div id='commentMsg' style='display:none'></div>
+					
+    			</fieldset>
+    			</div>
+    			 <div class="modal-footer">  
+				          <!-- Button -->
+				          <div class="controls">
+				            <button type='button' id='submitComment' onclick="javascript: addComment();" class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+				          </div>
+
+				</div>
+   
+        </div>
 		  </div><!--close tab comment-->
 		  <div id='tab-address' class='tab-pane'>
-		  	<a href='/img/upload/floor_{items.floor}.jpg'><img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_{items.floor}.jpg'>
+		  	<a href='/img/upload/floor_{items.floor}.jpg'><img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_{items.floor}.jpg'></a>
 		  </div><!--close tab address-->
  		</div><!--close tab-content-->
   </fieldset>
+  <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
+<input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
+<input type="hidden" name="_method" value="POST">
+ </form>
  </div>
         <script>  
         $(document).ready(
@@ -97,6 +142,46 @@ var csrftoken = $('#csrf').val();
 					},"json");
           return false;
         }
-        
+        function comment(id,event)
+{
+stopEvent(event);
+$('#commentDialog').modal();
+$('#commentDialog').data('entityid',id);
+return false;
+}
+ function addComment()
+        {
+         var id = $('#commentDialog').data('entityid');
+         var content = $('#content').val();
+         var title = $('#title').val();
+         $.post( "/comment/add", 
+         {	_csrf:csrftoken, 
+         	content:content, 
+         	title:title,
+         	target_type:'entity',
+         	target_id:id
+          },
+         	 function( data ) {
+         	 if(data['insertId'] >= 0)
+         	 {
+         	 $('#content').val('');
+         	 $('#title').val('');
+         	  $('#commentMsg').html('<div class="alert alert-success" role="alert">{@pre type="content" key="commentSucess"/}</div>').show();
+         	  
+         	  window.setTimeout(
+         	  function(){
+         	  	$('#commentDialog').modal('hide');
+         	  	$('#commentMsg').hide();
+         	  	},3000);
+         	 }
+         	 else
+         	 {
+         	 $('#commentMsg').html('<div class="alert alert-danger" role="alert">{@pre type="content" key="commentError"/}</div>').show();
+         	 window.setTimeout(function(){$('#commentDialog').modal('hide');$('#commentMsg').hide();},3000);
+         	 }
+					  return false ;
+					},"json");
+          return false;
+        }
         </script>
 {/body}

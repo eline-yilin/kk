@@ -29,14 +29,12 @@ module.exports = function (router) {
 				console.log(err);
 			}
 			else{
-
-				console.log('////' + JSON.stringify(rst));
 				var temp = [];
 				for(var key in rst)
 				{
-					var item = rst[key];
+					
+					var item = rst[key];	
 					var pid = item['id'];
-					console.log(pid+'---');
 					//ITEM IN ARRAY
 					if(temp[pid] )
 					{

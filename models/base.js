@@ -27,40 +27,60 @@ var query = function(query, callback){
 	var results = null;
 	if(isRedis)
 	{
-	  var results = client.hget(hashkey, query);
-	  console.log('!!!!!!get  ' + results);
+	  client.hget(hashkey, query,function(err,reply){
+		  if(err)
+			  {
+			  console.log(err);
+			  }
+		  else if(!reply)
+		  {
+			  return queryFunction(query,dbconfig,callback,isRedis);
+		  }
+		  else{
+			  console.log('!!!!!!hit ' + reply);
+			 return callback(null, JSON.parse(reply));
+		  }
+	  });
+	 
 	}
-	if(!results)
-		{
-			var connection = mysql.createConnection(dbconfig);
-			connection.connect(function(err) {
-			  if(!err){
-				  connection.query(query, function(err, result) {
-				        if(!err){
-				        	connection.end();
-				        	if(isRedis){
-				        		client.hset(hashkey, query,result);
-					        	console.log('!!!!!!set ' + result);
-				        	}
-				        	
-				           return callback(null,result);
-				        }
-				        else{
-				        	console.log(err);
-				        	return callback(err,null);
-				        	}    
-					}
-					);
-		      }
-		      else{
-		      	console.log(err);
-		      	return callback(err,null);
-		      	}
-			});
-		}
+	else
+	{
+		return queryFunction(query,dbconfig,callback,isRedis);
+	}
+	
         
 	
 };
+
+function queryFunction(query,dbconfig,callback,isRedis){
+
+	var connection = mysql.createConnection(dbconfig);
+	connection.connect(function(err) {
+	  if(!err){
+		  connection.query(query, function(err, result) {
+		        if(!err){
+		        	connection.end();
+		        	if(isRedis){
+		        		client.hset(hashkey, query,JSON.stringify(result));
+			        	console.log('!!!!!!set ' + JSON.stringify(result));
+		        	}
+		        	
+		           return callback(null,result);
+		        }
+		        else{
+		        	console.log(err);
+		        	return callback(err,null);
+		        	}    
+			}
+			);
+      }
+      else{
+      	console.log(err);
+      	return callback(err,null);
+      	}
+	});
+
+}
 
 var getOne = function(query, callback){
 	var connection = mysql.createConnection(dbconfig);

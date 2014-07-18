@@ -78,19 +78,16 @@
            		 </div>
            		 <div class="modal-body">  
        			 <fieldset>
-				      <div id="legend" class="">
 				        <legend class="">{@pre type="content" key="comment"/}</legend>
 				    <div class="control-group">
-				          <!-- Text input-->
-				          
-				          <!-- title-->
+				        <!-- title-->
 						<label class="control-label pull-left" for="title">{@pre type="content" key="title"/}</label>
 				          <div class="controls pull-right">
 				            <input type="text"  class="input-xlarge" name='title' id='title'>
 				          </div>
 							<div class='clear'></div>		
 				           <!-- content-->
-									<label class="control-label  pull-left" for="content">{@pre type="content" key="content"/}</label>
+						<label class="control-label  pull-left" for="content">{@pre type="content" key="content"/}</label>
 				          <div class="controls pull-right">
 				            <textarea  class="input-xlarge" name='content' id='content'></textarea>
 				          </div>
@@ -101,14 +98,12 @@
     			</fieldset>
     			</div>
     			 <div class="modal-footer">  
-    			 <div class="control-group">
 				          <!-- Button -->
 				          <div class="controls">
 				            <button type='button' id='submitComment' onclick="javascript: addComment();" class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
 				          </div>
-				        </div>
-					</div>
-    			 </div>
+
+				</div>
    
         </div>
         <div id='floorMapDialog'  class="modal fade" tabindex="-1" role="dialog">
