@@ -6,6 +6,35 @@ $.ajaxSetup({
     }
 });
 
+
+function validate()
+{
+    var isValid = true;
+    $('.required').each(function(){
+    	var value = $(this).val();
+    	if(value== null || value== '' || typeof value === 'undefined')
+    	{
+    	 isValid = false;
+    	 $(this).parents('.control-group').addClass('error');
+    	}
+    	else
+    	{
+    	 $(this).parents('.control-group').removeClass('error');
+    	}
+    }); 
+    if(!isValid)
+    {
+    	$('#errorMsg').show();
+    	return false;
+    } 
+    else
+    {
+    	$('#errorMsg').hide();
+    }
+    return isValid;
+
+}
+
 function convertDateTime(date, format)
 {
 	if(! date instanceof Date){

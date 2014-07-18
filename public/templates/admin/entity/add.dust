@@ -34,34 +34,40 @@
     <fieldset>
       <div id="legend" class="">
         <legend class="">{@pre type="content" key="addentity"/}</legend>
-    <div class="control-group">
-          <!-- Text input-->
+    		<!-- entityname-->
+    		<div class="control-group">
           <label class="control-label" for="username">{@pre type="content" key="entityname"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='entityname' id='entityname'>
+            <input type="text"  class="input-xlarge required" name='entityname' id='entityname'>
           </div>
-          <!-- category-->
-		<label class="control-label" for="category">{@pre type="content" key="category"/}</label>
+        </div>
+        <!-- category-->
+        <div class="control-group">
+					<label class="control-label" for="category">{@pre type="content" key="category"/}</label>
           <div class="controls">
             <input type="text"  class="input-xlarge" name='parent-category' id='category' value='餐饮' disabled>
-          </div>
-		<div class="controls">
-            <select class="input-xlarge" name='category' id='category'>
+          </div>  
+					<div class="controls">
+            <select class="input-xlarge required" name='category' id='category'>
             {#category}
               <option value={id}>{name}</option>
               {/category}
             </select>
            </div>
-          <!-- desc-->
+         </div>
+         <!-- desc-->
+         <div class="control-group">
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
             <textarea  class="input-xlarge" name='description' id='description'></textarea>
           </div>
-           <!-- address-->
-		<h4>{@pre type="content" key="address"/}</h4>
-		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
+         </div>
+         <!-- address-->
+				<h4>{@pre type="content" key="address"/}</h4>
+				<div class="control-group">
+					<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-	            <select  class="input-xlarge" name='floor' id='floor'>
+	            <select  class="input-xlarge required" name='floor' id='floor'>
 		          {#floors}
 		          <option value={.}>{.}</option> 
 		          {/floors} 
@@ -69,16 +75,13 @@
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='number' id='number'>       
+            <input type="text"  class="input-xlarge required" name='number' id='number'>       
           </div>
-    </div>
-        
-    <div class="control-group">
+    		</div>
           <!-- Button -->
           <div class="controls">
-            <button id='submit' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+            <button id='submit' onclick='javascript:return validate();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
           </div>
-        </div>
 	</div>
     </fieldset>
   </form>

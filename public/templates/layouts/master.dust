@@ -92,9 +92,25 @@
         
       </div>
     </nav>
-
+    <a name='top'></a>
     <div role="main" class="container theme-showcase">
 				{+body /}
     </div> <!-- /container -->
+    <div id="footer" style='margin-top:20px;'>
+		  <div class="container" style='position:relative;font-size:0.7em;line-height:1.7em;'>
+		    <div class="text-muted text-center">{@pre type="content" key="clientname"/}<divp>
+		     <div class="text-muted text-center">{@pre type="content" key="clientlld"/}</div>
+		     <div class="text-muted text-center">{@pre type="content" key="clientaddress"/}</div>
+		     <ul class="scroll-top" style='position:absolute;top:20%;right:10px;'>
+					  <li><a href="#top" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+					</ul>
+		  </div>
+		</div>
+		<script>
+		$(document).ready(function()
+		{
+	         $('.controls input.required:last,.controls select.required:last,textarea.required').after('<span class="alert alert-warning" role="alert" style="padding:3px;margin-left:5px;"> {@pre type="content" key="required"/} </span>');
+		});
+		</script>
 </body>
 </html>

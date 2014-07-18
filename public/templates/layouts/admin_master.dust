@@ -83,6 +83,11 @@
     <div role="main" class="container theme-showcase">
 				{+body /}
     </div> <!-- /container -->
-
+	<script>
+		$(document).ready(function()
+		{
+	         $('input.required,select.required,textarea.required').after('<span class="alert alert-warning" role="alert" style="padding:3px;margin-left:5px;"> {@pre type="content" key="required"/} </span>');
+		});
+		</script>
 </body>
 </html>

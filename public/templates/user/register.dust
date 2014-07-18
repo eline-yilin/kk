@@ -70,7 +70,7 @@
     	</div>
         
     <div class="control-group">
-    		 <div class='alert alert-danger' id='errorMsg' role='alert' style='display:none'>{@pre type="content" key="inputerror"/}</div>
+    		 <div class='alert alert-danger my-danger' id='errorMsg' role='alert' style='display:none'>{@pre type="content" key="inputerror"/}</div>
           <!-- Button -->
           <div class="controls">
             <button id='submit' onclick="javascript:return validate();"  class="btn btn-success">{@pre type="content" key="submit"/}</button>
@@ -80,32 +80,6 @@
     </fieldset>
   </form>
         <script>  
-        function validate()
-        {
-	        var isValid = true;
-	        $('.required').each(function(){
-	        	var value = $(this).val();
-	        	if(value== null || value== '' || typeof value === 'undefined')
-	        	{
-	        	 isValid = false;
-	        	 $(this).parents('.control-group').addClass('error');
-	        	}
-	        	else
-	        	{
-	        	 $(this).parents('.control-group').removeClass('error');
-	        	}
-	        }); 
-	        if(!isValid)
-	        {
-	        	$('#errorMsg').show();
-	        	return false;
-	        } 
-	        else
-	        {
-	        	$('#errorMsg').hide();
-	        }
-	        return isValid;
-        
-        }
+       
         </script>
 {/body}
