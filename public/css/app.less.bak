@@ -186,7 +186,7 @@ body
 		cursor: pointer;
 	}
 	.my-shadow{
-		.box-shadow (2px 2px 3px #333);
+		.box-shadow (5px 5px 6px #333);
 
 		border:5px double;
 	}
