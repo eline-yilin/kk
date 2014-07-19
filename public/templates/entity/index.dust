@@ -41,23 +41,30 @@
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
-																			    	<label class='label label-primary'> {category} </label>
-																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
-																			    	<div style='margin:10px 0px;'>
-																			    		<span class='pull-left' style='display:inline'>
+																			  		 <label class='label label-primary'> {category} </label>
+																			    	<div style='margin-top:10px;padding-bottom:30px;position:relative'> 		
+																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
 																				    		{#url}
-																									  <img class='img-circle' style='display:inline-block;max-width:40%;margin-bottom:10px;' src='{.}'>
+																									  <img class='img-circle my-shadow my-logo' style='margin-bottom:10px;' src='{.}'>
 																							 {/url}
-																			    		</span>
-																			    		<span class='pull-right' style='display:inline'>
-																			    		</span>
+																			    		</div>
+																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
+																			    			<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
+																			    		</div>
+																			    		<div style='position:absolute;bottom:0px;right:10px;'>
+																					    		{?userObj.username}
+															                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
+															                                    {:else}
+															                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
+														                                     {/userObj.username}
+																					    </div>	
+																				    	<div class='clear'> 
+																			    		
+																			    	</div>
+																			    	 				    	
 																			    	</div>
 																			    	<button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
-				                                    {?userObj.username}
-				                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
-				                                    {:else}
-				                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
-				                                     {/userObj.username}
+				                                    
 				                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
 				                                    <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
 				                                    <input type="hidden" name="_method" value="POST">
