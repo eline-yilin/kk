@@ -166,12 +166,14 @@ return false;
          	 {
          	 $('#content').val('');
          	 $('#title').val('');
+         	 $('#commentDialog .control-group').hide();
          	  $('#commentMsg').html('<div class="alert alert-success" role="alert">{@pre type="content" key="commentSucess"/}</div>').show();
          	  
          	  window.setTimeout(
          	  function(){
          	  	$('#commentDialog').modal('hide');
          	  	$('#commentMsg').hide();
+         	  	$('#commentDialog .control-group').show();
          	  	},3000);
          	 }
          	 else
