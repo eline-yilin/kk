@@ -53,24 +53,25 @@
 
 																			    			<div style='margin-top:15px;'> <label class='label label-info'> <i class="icon-white icon-envelope"></i> {phone}</label>  </div>
 																			    			{/phone}
-																			    			<div style='margin:10px 0px;' class="alert alert-warning" role="alert">
-																			    			<h4>{@pre type="content" key="entityDesc"/}</h4>
-																			    			{description}
-																			    			</div>
-																			    			<div class='pull-right' style='margin-top:10px;'>
-																					    		{?userObj.username}
-															                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
-															                                    {:else}
-															                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
-														                                     {/userObj.username}
+
+																			    			
 																					    </div>	
 																			    		</div>
 																			    		
 																				    	<div class='clear'> 
 																			    		
 																			    	</div>
-																			    	 				    	
+																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">
+																			    	<h4>{@pre type="content" key="entityDesc"/}</h4>
+																			    			{description}				    	
 																			    	</div>
+																			    	<div class='pull-right' style='margin-top:10px;'>
+																					    		{?userObj.username}
+															                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
+															                                    {:else}
+															                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
+														                                     {/userObj.username} 
+														                                    </div>	
 																			    	<button style='display:none' onclick="javascript:return addCart({id});" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> remove</button>
 				                                    
 				                                    <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
