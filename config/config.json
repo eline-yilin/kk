@@ -34,11 +34,17 @@
         "host": "localhost",
         "database": "yuechang"
     },
-"databaseConfig": {
+"databaseConfig2": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",
         "database": "yuechang"
+    },
+    "databaseConfig": {
+    "user": "root",
+    "password": "yuShu1234",
+        "host": "121.199.55.129",
+        "database": "shengzhu"
     },
     "i18n": {
         "contentPath": "path:./locales",
