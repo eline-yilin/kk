@@ -37,9 +37,9 @@ $oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7fd8d2
 $newmenu =  array(
     		"button"=>
     			array(
-    			array('type'=>'view','name'=>'用户登入','url'=>'http://121.199.55.129:8000/user/login'),
-    			array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
-    			array('type'=>'view','name'=>'通知','url'=>$oauth_url),
+    			array('type'=>'view','name'=>'进入平台','url'=>'http://121.199.55.129:8000/'),
+    			/*array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
+    			array('type'=>'view','name'=>'通知','url'=>$oauth_url),*/
 						/*array('name'=>'会员',"sub_button"=>array(
 						array('type'=>'view','name'=>'会员登录','url'=>'http://121.199.55.129/yuechang/wechat/yue/register.php'),
 						array('type'=>'view','name'=>'积分查询','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),

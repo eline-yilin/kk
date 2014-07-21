@@ -19,16 +19,25 @@
 												    <!-- Collect the nav links, forms, and other content for toggling -->
 												    <div class="collapse navbar-collapse" id="searchForm">
 												      <ul class="nav navbar-nav">
-												     	  <li class="divider">{@pre type="content" key="floor"/}</li>
-												        <li><a href="?floor=1">{@pre type="content" key="floor1"/}</a></li>
-												        <li><a href="?floor=2">{@pre type="content" key="floor2"/}</a></li>  
-												        <li><a href="?floor=3">{@pre type="content" key="floor3"/}</a></li>  
-												        <li><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
-												        <li><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
-												        <li class="divider">{@pre type="content" key="category"/}</li>
-												        {#category}
-												        <li><a href="?category={id}">{name}</a></li>
-												        {/category} 
+												      <li>
+											             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="floor"/} </a>
+											              <ul class="dropdown-menu">
+											               <li><a href="?floor=1">{@pre type="content" key="floor1"/}</a></li>
+													        <li><a href="?floor=2">{@pre type="content" key="floor2"/}</a></li>  
+													        <li><a href="?floor=3">{@pre type="content" key="floor3"/}</a></li>  
+													        <li><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
+													        <li><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
+											              </ul>
+											            </li>
+												     	 <li>
+											             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="category"/} </a>
+											              <ul class="dropdown-menu">
+											              	{#category}
+													        	<li><a href="?category={id}">{name}</a></li>
+													        {/category} 
+												     	   </ul>
+											             </li>
+	 
 												      </ul>
 												    </div><!-- /.navbar-collapse -->
 												  </div><!-- /.container-fluid -->
@@ -61,10 +70,12 @@
 																				    	<div class='clear'> 
 																			    		
 																			    	</div>
+																			    	{?description}
 																			    	<div style='margin:10px 0px;' class="alert alert-warning" role="alert">
 																			    	<h4>{@pre type="content" key="entityDesc"/}</h4>
 																			    			{description}				    	
 																			    	</div>
+																			    	{/description}
 																			    	<div class='pull-right' style='margin-top:10px;'>
 																					    		{?userObj.username}
 															                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
