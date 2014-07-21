@@ -205,27 +205,31 @@ router.post('/edit/:id', function (req, res) {
 	 		if(img.name && img.name != '')
 	 		{
 	 			 var tmp_path = img.path;
-	 			var target_path =   '.build/img/upload/entity_' + img.name;
-	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);
+	 			/*var target_path =   '.build/img/upload/entity_' + img.name;
+	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);*/
+	 			var target_path = '.build/img/upload/entity_' + img.name;
+    			console.log('try to resize ' + tmp_path + ' to ' +　target_path);
 	 			try{		
 		 			var fw = fs.openSync(target_path,'w');
 		 			var content = fs.readFileSync(tmp_path);
 		 		    fs.writeFileSync(target_path, content );
 		 		    fs.close(fw);
 		 		    console.log('unlink ' + tmp_path);
+		 		   fs.unlinkSync(tmp_path);
 		 	       
 		 			// fs.renameSync(tmp_path, target_path);
 		 		}
 		 		catch(error){console.log(error);}
 	 		 	body.img.push( target_path);
+	 		 	
 	 		 	    // fs.unlinkSync(tmp_path);
 
-    			target_path = '.build/img/upload/entity_' + img.name;
-    			console.log('try to resize ' + tmp_path + ' to ' +　target_path);
-	 			imageMagick(tmp_path).resize(200).autoOrient().write('.build/img/upload/full/entity_' + img.name, 
+    			/*target_path = '.build/img/upload/entity_' + img.name;
+    			console.log('try to resize ' + tmp_path + ' to ' +　target_path);*/
+	 			/*imageMagick(tmp_path).resize(200).autoOrient().write('.build/img/upload/full/entity_' + img.name, 
 	 					function(){		
 	 				 fs.unlinkSync(tmp_path);
-		 		});
+		 		});*/
 	 			}
 	 			 
 	 			

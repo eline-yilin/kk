@@ -21,6 +21,10 @@
 							 <div class="panel-body">
 								
 								<label class='label label-primary'> {category} </label>
+								{?phone}
+
+									<div style='margin-top:15px;'> <label class='label label-info'> <i class="icon-white icon-envelope"></i> {phone}</label>  </div>
+								{/phone}
 								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 								<div style='margin:10px 0px;'>
 											{#imgs}

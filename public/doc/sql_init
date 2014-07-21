@@ -98,6 +98,7 @@ CREATE TABLE  `yuechang`.`entity` (
   `name` varchar(100) NOT NULL,
   `description` varchar(450) NOT NULL,
   `category_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `phone` varchar(20) unsigned NOT NULL DEFAULT '',
   `address_id` int(10) unsigned NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)

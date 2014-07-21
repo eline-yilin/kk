@@ -63,24 +63,30 @@
           <!-- desc-->
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
-            <textarea  class="input-xlarge" name='description' id='description'>{obj.items.description}</textarea>
+            <textarea {@lengthControl value=50/}  class="input-xlarge" name='description' id='description'>{obj.items.description}</textarea>
           </div>
            <!-- address-->
 		<h4>{@pre type="content" key="address"/}</h4>
 		<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
           <div class="controls">
-           <input type="text"  class="input-xlarge" name='number' id='number'> 
+           <select  class="input-xlarge required" name='floor' id='floor' >
+          {#obj.floors param2=obj.items.floor}
+		          <option value={value}>{value}</option> 
+		   {/obj.floors}
+			</select>
           </div>
           <label class="control-label" for="number">{@pre type="content" key="number" /}</label>
           <div class="controls">
-          <select  class="input-xlarge" name='number' id='number'>
-		          {#obj.numbers param2=obj.items.number}
-		          <option value={value}>{value}</option> 
-		          {/obj.numbers} 
-		         </select> 
+           <input type="text"  class="input-xlarge required" name='number' id='number' value={obj.items.number}> 
           </div>
     </div>
-        
+       <!-- phone-->
+				<div class="control-group">
+					<label class="control-label" for="phone">{@pre type="content" key="phone"/}</label>
+			          <div class="controls">
+			           <input value="{obj.items.phone}" type="text"  {@lengthControl value=12/} class="input-xlarge " name='phone' id='phone'>       
+			          </div>
+    			</div>  
     <div class="control-group">
           <!-- Button -->
           <div class="controls">

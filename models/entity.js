@@ -121,11 +121,19 @@ var post = function  (data, callback){
 		}
 		else{
 			var aid = rst['insertId'];
-			var query = "insert into entity (category_id,name,address_id,description) values (" +　 data['category'] + ",'"
+			var query = base.processInsertQuery('entity',
+					{
+						category_id: data['category'],
+						name:  data['entityname'],
+						address_id:  aid,
+						description:data['description'],
+						phone:data['phone']
+					});
+			/*var query = "insert into entity (category_id,name,address_id,description,phone) values (" +　 data['category'] + ",'"
 			+ data['entityname'] + "',"
 			+ aid + ",'"
 			+ data['description']
-			+"')";
+			+"')";*/
 			return base.query(query, function(err, rst){
 				if(err){
 					throw err;
@@ -167,7 +175,7 @@ console.log(update_address_query);
 			}
 			else
 			{
-				if(data.entityname != entity.name || data.description != entity.description || data.category != entity.category_id)
+				if(data.phone != entity.phone || data.entityname != entity.name || data.description != entity.description || data.category != entity.category_id)
 			    {
 					var query = "UPDATE  entity set category_id = " + data.category 
 					+ ",name='" + data.entityname 

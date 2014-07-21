@@ -34,13 +34,13 @@
         "host": "localhost",
         "database": "yuechang"
     },
-"databaseConfig2": {
+"databaseConfig": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",
         "database": "yuechang"
     },
-    "databaseConfig": {
+    "databaseConfig2": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",

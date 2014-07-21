@@ -41,23 +41,31 @@
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
-																			  		 <label class='label label-primary'> {category} </label>
-																			    	<div style='margin-top:10px;padding-bottom:30px;position:relative'> 		
+	  																				    <div style='margin-top:10px;padding-bottom:30px;position:relative'> 		
 																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
 																				    		{#url}
 																									  <img class='img-circle my-shadow my-logo' style='margin-bottom:10px;' src='{.}'>
 																							 {/url}
 																			    		</div>
 																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
-																			    			<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
-																			    		</div>
-																			    		<div style='position:absolute;bottom:0px;right:10px;'>
+																			    			<div> <label class='label label-primary'> {category} </label></div>
+																			    			{?phone}
+
+																			    			<div style='margin-top:15px;'> <label class='label label-info'> <i class="icon-white icon-envelope"></i> {phone}</label>  </div>
+																			    			{/phone}
+																			    			<div style='margin:10px 0px;' class="alert alert-warning" role="alert">
+																			    			<h4>{@pre type="content" key="entityDesc"/}</h4>
+																			    			{description}
+																			    			</div>
+																			    			<div class='pull-right' style='margin-top:10px;'>
 																					    		{?userObj.username}
 															                                    <button type='button' onclick="javascript:return comment({id},event);" class="btn btn-success btn-mini"><i class="icon-white icon-heart"></i> {@pre type="content" key="comment"/}</button>
 															                                    {:else}
 															                                    <button type='button'  class="btn btn-default btn-mini link my-tool-tip" data-original-title="{@pre type="content" key="needRegister"/}"><i class="icon-black icon-heart"></i> {@pre type="content" key="comment"/}</button>
 														                                     {/userObj.username}
 																					    </div>	
+																			    		</div>
+																			    		
 																				    	<div class='clear'> 
 																			    		
 																			    	</div>

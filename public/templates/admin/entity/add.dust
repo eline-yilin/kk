@@ -59,25 +59,32 @@
          <div class="control-group">
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
-            <textarea  class="input-xlarge" name='description' id='description'></textarea>
+            <textarea  class="input-xlarge" name='description' id='description' {@lengthControl value=50/}></textarea>
           </div>
          </div>
          <!-- address-->
 				<h4>{@pre type="content" key="address"/}</h4>
 				<div class="control-group">
 					<label class="control-label" for="floor">{@pre type="content" key="floor"/}</label>
-          <div class="controls">
-	            <select  class="input-xlarge required" name='floor' id='floor'>
-		          {#floors}
-		          <option value={.}>{.}</option> 
-		          {/floors} 
-		         </select> 
-          </div>
-          <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
-          <div class="controls">
-            <input type="text"  class="input-xlarge required" name='number' id='number'>       
-          </div>
-    		</div>
+			          <div class="controls">
+				            <select  class="input-xlarge required" name='floor' id='floor'>
+					          {#floors}
+					          <option value={.}>{.}</option> 
+					          {/floors} 
+					         </select> 
+			          </div>
+			          <label class="control-label" for="number">{@pre type="content" key="number"/}</label>
+			          <div class="controls">
+			            <input type="text"class="input-xlarge required" name='number' id='number'>       
+			          </div>
+    			</div>
+    	 <!-- phone-->
+				<div class="control-group">
+					<label class="control-label" for="floor">{@pre type="content" key="phone"/}</label>
+			          <div class="controls">
+			            <input type="text"  {@lengthControl value=12/} class="input-xlarge " name='phone' id='phone'>       
+			          </div>
+    			</div>
           <!-- Button -->
           <div class="controls">
             <button id='submit' onclick='javascript:return validate();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
