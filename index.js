@@ -13,7 +13,7 @@ var kraken = require('kraken-js'),
             next(null, config);
         }
     },
-    port = process.env.PORT || 8899;
+    port = process.env.PORT || 8000;
 
 
 app.use(kraken(options));
