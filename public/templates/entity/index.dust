@@ -46,27 +46,35 @@
                           <!--Search bar-->
                           <div style='margin-bottom:10px;'>
                           <form method='GET'>
-		                          {@pre type="content" key="floor"/} 
-		                          <select id='floor' name='floor'>
-		                          				<option></option>
+                          <div class='fluid'>
+                          <div class="col-xs-4 col-sm-5 col-md-5">
+		                        
+		                          <select   class="form-control" id='floor' name='floor' >
+		                          				<option>{@pre type="content" key="floor"/}</option>
 											               	<option value=1.5 >{@pre type="content" key="floor1half"/}</option>
 															        <option value=2 >{@pre type="content" key="floor2"/}</option>  
 															        <option  value=3 >{@pre type="content" key="floor3"/}</option>  
 															        <option value=4  >{@pre type="content" key="floor4"/}</option>  
 															        <option  value=5 >{@pre type="content" key="floor5"/}</option>  
 											        </select> 
-											        {@pre type="content" key="category"/} 
-		                          <select id='category' name='category'>
-		                          		<option></option>
-				                          {#category}
+								</div>
+								<div class="col-xs-4 col-sm-5 col-md-5">			        
+											       
+							                          <select  class="form-control" id='category' name='category'>
+							                          		<option>{@pre type="content" key="category"/}</option>
+									                          {#category}
 															        	<option value={id}">{name}</option>
 															        	{#sub}
 															        		<option value={id}">> {name}</option>
 															        	{/sub}
 													        {/category}
 											        </select> 
-											        <button type='submit' class="btn btn-default btn-mini" style='padding:1px;margin-top:-1px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
-		
+								</div>
+								<div class="col-xs-2 col-sm-2 col-md-2">
+											        <button type='submit' class="btn btn-default btn-mini" style=';margin-top:0px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
+						 		</div>
+						 		<div class='clear'></div>
+						 </div>
                           </form>
                           </div>
                           <!--Close Search bar-->
