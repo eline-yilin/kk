@@ -3,7 +3,7 @@ var BaseController = require("./Base");
 var base = new BaseController();
 
 var getEntityList = function  (data, callback){	
-	var query = 'select e.*, i.url, a.floor, a.number, a.city, a.state, c.name as category '
+	var query = 'select e.*, i.url, i.shape, a.floor, a.number, a.city, a.state, c.name as category '
 		+ ' from entity e LEFT JOIN entity_category c ON e.category_id = c.id LEFT JOIN entity_img i on e.id = i.entity_id LEFT JOIN  address a on a.id  = e.address_id '
 		+ ' where e.is_deleted <> 1';
 	if(data.floor)
@@ -31,7 +31,7 @@ var getEntityById = function  (id, callback){
 		}
 		else
 			{
-			var query_get_img = 'SELECT url from entity_img where entity_id=' + id;
+			var query_get_img = 'SELECT url,shape from entity_img where entity_id=' + id;
 			return base.query(query_get_img, function(err,img){
 				if(err){
 					throw err;
@@ -140,11 +140,11 @@ var post = function  (data, callback){
 				}
 				else{
 					var eid = rst['insertId'];
-					var insert_img_query = "insert into entity_img (entity_id, url) values ";
+					var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
 					var imgs = data['img'];
 					for(var i = 0; i <  imgs.length; i++)
 					{
-						insert_img_query += "(" + eid + ",'" + imgs[i] + "')";
+						insert_img_query += "(" + eid + ",'" + imgs[i] + "','" + data['shape'] + "')";
 						if(i != (imgs.length - 1) )
 							{
 							insert_img_query += ",";
@@ -168,7 +168,7 @@ var update = function  (data, callback){
 		{
 			var update_address_query = 'SELECT 1';
 		}
-console.log(update_address_query);
+
 		return base.query(update_address_query, function(err, rst){
 			if(err){
 				throw err;
@@ -186,7 +186,20 @@ console.log(update_address_query);
 					var query = 'select 1';
 				}
 				console.log(query);
-				return base.query(query,callback);
+				return base.query(query,function(err,rst){
+					if(err){
+						throw err;
+					}
+					else
+					{
+						
+							var query = "UPDATE  entity_img set shape = '" + data.shape 
+							+ "' WHERE entity_id=" + entity.id;
+					    
+						console.log(query);
+						return base.query(query,callback);
+					}
+				});
 				/*return base.query(query, function(err, rst){
 					if(err){
 						throw err;

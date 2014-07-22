@@ -60,6 +60,9 @@
 		                          		<option></option>
 				                          {#category}
 															        	<option value={id}">{name}</option>
+															        	{#sub}
+															        		<option value={id}">> {name}</option>
+															        	{/sub}
 													        {/category}
 											        </select> 
 											        <button type='submit' class="btn btn-default btn-mini" style='padding:1px;margin-top:-1px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
@@ -77,8 +80,8 @@
 																			  <form method="POST">
 	  																				    <div style='margin-top:10px;padding-bottom:30px;position:relative'> 		
 																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
-																				    		{#url}
-																									  <img class='img-circle my-shadow my-logo' style='margin-bottom:10px;' src='{.}'>
+																				    		{#url  }
+																									  <img class='{@eq key=shape value="circle"}img-circle {/eq} my-shadow my-logo' style='margin-bottom:10px;' src='{value}'>
 																							 {/url}
 																			    		</div>
 																			    		<div class='col-xs-6 col-sm-6 col-md-6'>

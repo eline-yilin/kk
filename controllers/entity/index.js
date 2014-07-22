@@ -4,7 +4,22 @@
 var EntityModel = require('../../models/entity');
 var categoryModel = require('../../models/category');
 
-
+function getChild(record, rst)
+{
+	console.log('get child!!!!!!!!!');
+	record.sub = [];
+	for(var index in rst)
+	{
+		var row = rst[index];
+		var parent_id = row.parent_id;
+		if(parent_id == record.id)
+		{
+			row = getChild(row,rst);
+			record.sub.push(row);
+		}
+	}
+	return record;
+}
 module.exports = function (router) {
 
     var model = new EntityModel();
@@ -33,14 +48,15 @@ module.exports = function (router) {
 				for(var key in rst)
 				{
 					
-					var item = rst[key];	
+					var item = rst[key];
 					var pid = item['id'];
+					var shape = item['shape'];
 					//ITEM IN ARRAY
 					if(temp[pid] )
 					{
 						if(item['url']){
 							var url = item['url'];
-							temp[pid]['url'].push( url.replace(".build", "") );
+							temp[pid]['url'].push( {value:url.replace(".build", ""), shape:shape} );
 						}
 					}
 					//item not in array, init and push
@@ -52,7 +68,7 @@ module.exports = function (router) {
 							url = url.replace(".build", "");
 						}
 						
-						item['url'] = new Array(url);
+						item['url'] = new Array({value:url,shape:shape});
 						temp[pid] = item;
 						console.log(temp);
 					}
@@ -60,17 +76,36 @@ module.exports = function (router) {
 				}
 				var ret = [];
 				for(var key in temp)
-					{
+				{
 					if(temp[key])
-						{
+					{
 						ret.push(temp[key]);
-						}
 					}
+				}
 				var model = new categoryModel();
+				console.log('aaaaaaaaaaaa' + JSON.stringify(ret));
 		    	model.get
-		    	({parent_id:1},
+		    	({},
 		    		function (err, cat) {
-		    		res.render('entity/index', {items:ret,category:cat,query:req.query,name:'entity'});
+		    		var parent = [];
+		    		for(var index in cat)
+		    		{
+		    			var row = cat[index];
+		    			var parent_id = row.parent_id;
+		    			row.sub = [];
+		    			if(parent_id == null)
+		    			{
+		    				parent.push(row);
+		    			}
+		    		}
+		    		
+		    		for(var index in parent)
+		    		{
+		    			var row = parent[index];
+		    			parent[index] = getChild(row,cat);
+		    		}
+		    		console.log(JSON.stringify(parent));
+		    		res.render('entity/index', {items:ret,category:parent,query:req.query,name:'entity'});
 		    	}
 		    	);
                 

@@ -18,7 +18,16 @@
           <div class="controls imgRow">
             <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
           </div>
- 					
+ 					 <!--shape circle?-->
+        <div class="control-group">
+					<label class="control-label" for="category">{@pre type="content" key="shape"/}</label>
+					<div class="controls">
+            <select class="input-xlarge required" name='shape' id='shape'>
+              <option value='circle'>{@pre type="content" key="circle"/}</option>
+	            <option value='same'>{@pre type="content" key="same"/}</option>
+            </select>
+           </div>
+         </div>
  					<!-- Button -->
           <div class="controls">
             <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success hidden">

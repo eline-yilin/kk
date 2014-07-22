@@ -15,7 +15,17 @@
           <!-- img-->
           {#obj.items.imgs}
 	          <div class="controls imgRow col-xs-8 col-sm-6 col-md-3">
-	          	<img class='img img-responsive' src={url} id='img{id}'>
+	          	<img class='{@eq key=shape value="circle"} img-circle {/eq} img img-responsive' src={url} id='img{id}'>
+	          	<!--shape circle?-->
+			        <div class="control-group">
+								<label class="control-label" for="category">{@pre type="content" key="shape"/}</label>
+								<div class="controls">
+			            <select class="input-xlarge required" name='shape' id='shape'>
+			              <option value='circle' {@eq key=shape value="circle"} selected {/eq}>{@pre type="content" key="circle"/}</option>
+				            <option value='same' {@eq key=shape value="same"} selected {/eq}>{@pre type="content" key="same"/}</option>
+			            </select>
+			           </div>
+			         </div>
 	          	<button onclick="javascript:return removeImg({id});" style='margin-top:5px;' class=" pull-right btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> {@pre type="content" key="remove"/}</button>
 	          </div>
           {/obj.items.imgs}

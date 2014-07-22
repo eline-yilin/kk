@@ -28,7 +28,7 @@
 								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 								<div style='margin:10px 0px;'>
 											{#imgs}
-												<img class='img-circle my-shadow' style='max-width:40%;margin-bottom:10px;' src='{url}'>
+												<img class='{@eq key=shape value="circle"}img-circle {/eq}  my-shadow' style='max-width:40%;margin-bottom:10px;' src='{url}'>
 											{/imgs}
 								</div>	
 								{#products}

@@ -123,6 +123,7 @@ CREATE TABLE `entity_img` (
 	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	`entity_id` INT(10) UNSIGNED NOT NULL,
 	`url` VARCHAR(450) NOT NULL,
+	`shape` varchar(45) NOT NULL DEFAULT 'same',
 	PRIMARY KEY (`id`)
 )
 COLLATE='utf8_general_ci'
