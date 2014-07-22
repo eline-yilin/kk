@@ -114,7 +114,10 @@
         </div>
 		  </div><!--close tab comment-->
 		  <div id='tab-address' class='tab-pane'>
-		  	<a href='/image/jpg/floor_{items.floor}_{items.number}'><img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_{items.floor}.jpg'></a>
+		  	<a href='/image/jpg/floor_{items.floor}_{items.number}'>
+		  	<img class='img-responsive' style='max-width:90%;margin-bottom:10px;' src='/img/upload/floor_{items.floor}.jpg'>
+		  	<i class='icon icon-plus-sign'></i> {@pre type="content" key="viewfull"/}
+		  	</a>
 		  </div><!--close tab address-->
  		</div><!--close tab-content-->
   </fieldset>
