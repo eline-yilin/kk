@@ -46,7 +46,7 @@
                           <!--Search bar-->
                           <div style='margin-bottom:10px;'>
                           <form method='GET'>
-                          <div class='fluid'>
+                          <div class='fluid' style='margin-top:5px;'>
                           <div class="col-xs-4 col-sm-5 col-md-5">
 		                        
 		                          <select   class="form-control" id='floor' name='floor' >
