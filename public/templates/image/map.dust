@@ -11,7 +11,7 @@
 																			  <div class="panel-heading">{.} {@pre type="content" key="floor"/}
 																			  </div>
 																			  <div class="panel-body">
-																			      <a href='/img/upload/floor_{.}.jpg'><img style='width:200px;cursor:pointer;' class='img-responsive img img-thumbnail'  src='/img/upload/floor_{.}.jpg'></a>				    	
+																			      <a href='/image/jpg/floor_{.}'><img style='width:200px;cursor:pointer;' class='img-responsive img img-thumbnail'  src='/img/upload/floor_{.}.jpg'></a>				    	
 																			  </div>
 																			</div>
 																			</div>

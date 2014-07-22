@@ -46,7 +46,7 @@
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading"><h3 style='display:inline-block;margin:0px;'>{name}</h3> 
-																			  <span class='pull-right' style='padding-top:5px;' onclick='javascript:showMap({floor},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
+																			  <span class='pull-right' style='padding-top:5px;' onclick='javascript:showMap({floor},{number},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
 																			  </div>
 																			  <div class="panel-body">
 																			  <form method="POST">
@@ -161,9 +161,9 @@ stopEvent(e);
 return false;
 });
 });
-function showMap(id,event){
+function showMap(id,number,event){
 stopEvent(event);
-location.href = '/img/upload/floor_' + id + '.jpg';
+location.href = '/image/jpg/floor_' + id + '_' + number;
 return false;
 }
 function comment(id,event)

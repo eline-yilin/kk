@@ -23,5 +23,13 @@ module.exports = function (router) {
         
         
     });
+    router.get('/:format/:id', function (req, res) {
+        var format = req.params.format;
+        var id = req.params.id;
+        res.render('image/id', {url:'/img/upload/' + id + '.' + format,name:'image'});
+
+        
+        
+    });
 
 };

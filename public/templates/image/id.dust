@@ -1,0 +1,10 @@
+{>"layouts/master" /}
+
+{<body}
+
+
+   									{#url}
+   												<img src={.} />
+                    {/url}
+
+{/body}
