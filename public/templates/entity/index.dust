@@ -46,9 +46,7 @@
                           <!--Search bar-->
                           <div style='margin-bottom:10px;'>
                           <form method='GET'>
-                          <div class='fluid' style='margin-top:50px;'>
-                         
-		                        
+                          <div style='margin-top:20px;padding-top:20px;'>
 		                          <select  class="my-select" id='floor' name='floor'>
 		                          				<option value=''>{@pre type="content" key="floor"/}</option>
 											               	<option value=1.5 >{@pre type="content" key="floor1half"/}</option>
