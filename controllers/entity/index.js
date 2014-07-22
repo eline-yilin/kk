@@ -70,7 +70,7 @@ module.exports = function (router) {
 		    	model.get
 		    	({parent_id:1},
 		    		function (err, cat) {
-		    		res.render('entity/index', {items:ret,category:cat,name:'entity'});
+		    		res.render('entity/index', {items:ret,category:cat,query:req.query,name:'entity'});
 		    	}
 		    	);
                 

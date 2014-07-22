@@ -44,13 +44,16 @@
         <!-- category-->
         <div class="control-group">
 					<label class="control-label" for="category">{@pre type="content" key="category"/}</label>
-          <div class="controls">
+          <div class="controls hidden">
             <input type="text"  class="input-xlarge" name='parent-category' id='category' value='餐饮' disabled>
           </div>  
 					<div class="controls">
             <select class="input-xlarge required" name='category' id='category'>
             {#category}
               <option value={id}>{name}</option>
+	              {#sub}
+	              	<option value={id}>> {name}</option>
+	              {/sub}
               {/category}
             </select>
            </div>

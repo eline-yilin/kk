@@ -68,7 +68,7 @@
    <div id='home-block-menus navbar navbar-fixed-bottom'>
   	 <div style='margin-top:15px;'>
 			    <div class="col col-xs-4 col-sm-4 col-md-4">
-			      <a href="/entity"><img class='img img-responsive' src='/img/upload/entity_list.jpg'/></a>
+			      <a href="/entity?floor=2"><img class='img img-responsive' src='/img/upload/entity_list.jpg'/></a>
 			     </div>	   
 			    
 			    <div class="col col-xs-4 col-sm-4 col-md-4">

@@ -4,6 +4,22 @@
 var entityModel = require('../../../models/entity');
 var categoryModel = require('../../../models/category');
 
+function getChild(record, rst)
+{
+	console.log('get child!!!!!!!!!');
+	record.sub = [];
+	for(var index in rst)
+	{
+		var row = rst[index];
+		var parent_id = row.parent_id;
+		if(parent_id == record.id)
+		{
+			row = getChild(row,rst);
+			record.sub.push(row);
+		}
+	}
+	return record;
+}
 module.exports = function (router) {
 
     var model = new entityModel();
@@ -94,10 +110,30 @@ module.exports = function (router) {
 					
 					var catmodel = new categoryModel();
 					catmodel.get
-			    	({parent_id:1},
+			    	({},
 			    		function (err, cats) {
+			    		var parent = [];
+			    		for(var index in cats)
+			    		{
+			    			var row = cats[index];
+			    			var parent_id = row.parent_id;
+			    			row.sub = [];
+			    			if(parent_id == null)
+			    			{
+			    				parent.push(row);
+			    			}
+			    		}
+			    		
+			    		for(var index in parent)
+			    		{
+			    			var row = parent[index];
+			    			parent[index] = getChild(row,cats);
+			    		}
+			    		console.log(JSON.stringify(parent));
+			    		
 			    		var floors = [];
-			    		for(var i = 1; i <= 6 ; i++)
+			    		floors.push({value:1.5,key:1.5});
+			    		for(var i = 2; i <= 5 ; i++)
 			    		{
 			    			floors.push({value:i,key:i});
 			    		}
@@ -106,7 +142,7 @@ module.exports = function (router) {
 			    		{
 			    			numbers.push({value:i,key:i});
 			    		}
-			    		var obj={items:rst,category:cats,floors:floors,numbers:numbers};
+			    		var obj={items:rst,category:parent,floors:floors,numbers:numbers};
 			    		console.log(obj);
 			    		res.render('admin/entity/update', {obj:obj,name:'entity'});
 			    	}
@@ -182,11 +218,30 @@ router.post('/edit/:id', function (req, res) {
     router.get('/add', function (req, res) {
     	var model = new categoryModel();
     	model.get
-    	({parent_id:1},
+    	({},
     		function (err, rst) {
-    		var floors = ['1','2','3','4','5','6'];
+    		var parent = [];
+    		for(var index in rst)
+    		{
+    			var row = rst[index];
+    			var parent_id = row.parent_id;
+    			row.sub = [];
+    			if(parent_id == null)
+    			{
+    				parent.push(row);
+    			}
+    		}
+    		
+    		for(var index in parent)
+    		{
+    			var row = rst[index];
+    			parent[index] = getChild(row,rst);
+    		}
+    		
+    		console.log(JSON.stringify(rst));
+    		var floors = ['1.5','2','3','4','5'];
     		var numbers = [1,2,3,4,5,6,7,8,9,10];
-    		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:rst,name:'entity'
+    		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:parent,name:'entity'
     			});}
     	);
        

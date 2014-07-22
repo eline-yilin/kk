@@ -52,7 +52,7 @@
           <ul class="nav navbar-nav">
             <li {@eq key=name value="index"}class="active"{/eq}><a href="/">{@pre type="content" key="home"/}</a></li> 
             <li {@eq key=name value="product"}class="active"{/eq}><a href="/product">{@pre type="content" key="product"/}</a></li>
-            <li {@eq key=name value="entity"}class="active"{/eq}><a href="/entity">{@pre type="content" key="entity"/}</a></li>                
+            <li {@eq key=name value="entity"}class="active"{/eq}><a href="/entity?floor=2">{@pre type="content" key="entity"/}</a></li>                
           </ul>
          </span>
          <span class="navbar-collapse collapse pull-right"  id='user-navigation' >
