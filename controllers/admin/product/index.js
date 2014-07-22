@@ -93,15 +93,25 @@ module.exports = function (router) {
     
     	router.post('/add', function (req, res) {
 	 	var  fs = require('fs');
+	 	var sizeOf = require('image-size');
 	 	var body = req.body;
 	 	body.img = [];
-
+        var isImgValid = true;
 	 	for(var key in req.files)
 	 	{
 	 		var img = req.files[key];
 	 		if(img.name && img.name != '')
 	 		{
 	 			 var tmp_path = img.path;
+	 			var dimensions = sizeOf(tmp_path);
+	 			 console.log('image size' + dimensions.width, dimensions.height);
+	 			 var width = dimensions.width;
+	 			 var height = dimensions.height;
+	 			 if(width!=150 || height!=150)
+	 			{
+	 				isImgValid = false;
+	 				break;	
+	 			}
 	 			 var target_path =   '.build/img/upload/' + img.name;
 	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);
 	 			try{		
@@ -119,7 +129,27 @@ module.exports = function (router) {
 	 		}
 	 		
 	 	}
-	 
+	    if(!isImgValid)
+	    {
+	    	var EntityModel = require('../../../models/entity');
+			var entitymodel = new EntityModel();
+			entitymodel.get
+	    	   	({},
+	    	   		function (err, rst) {
+	    				if (err) {
+	    					console.log(err);
+	    				}
+	    				else{
+	    					res.render('admin/product/add', {data:{entities:rst},sizewarning:true, item: body,name:'product'});
+	    					
+	    					return false;
+	    				}
+	    	   	});
+			//res.render('admin/product/add', {sizewarning:true, item: body,name:'product'});
+			return false;
+	    }
+	    else
+	    {
 	 	 console.log(body.img);
 		    model.post(body,function (err, rst) {
 				if (err) {
@@ -141,7 +171,7 @@ module.exports = function (router) {
 			        });
 					}
 				});
-	 	
+	    }
 	    
 	    
     	

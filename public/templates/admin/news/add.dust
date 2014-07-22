@@ -9,7 +9,7 @@
 	<fieldset>
       <div id="legend" class="">
         <legend class="">{@pre type="content" key="uploadimage"/}</legend>
-    <div class="control-group">
+    <div class="control-group  {?sizewarning} error {/sizewarning}">
           
           <!-- img-->
 					<div class="controls hidden imgRow" id="imgTemplate">
@@ -17,8 +17,9 @@
           </div>
           <div class="controls imgRow">
             <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
+             <label class="control-label label-warning" for="thumbnail1" style='margin-top:5px;padding:3px;'>{@pre type="content" key="imgsizelimit"/}</label>
           </div>
-
+					
     </div>
  
 	</div>
@@ -31,24 +32,24 @@
           <!-- Text input-->
           <label class="control-label" for="username">{@pre type="content" key="newstitle"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='title' id='title'>
+            <input type="text"  class="input-xlarge" name='title' id='title' value={item.title}>
           </div>
 
 		  
           <!-- desc-->
           <label class="control-label" for="content">{@pre type="content" key="newscontent"/}</label>
           <div class="controls">
-            <textarea  class="input-xlarge" name='content' id='content'></textarea>
+            <textarea  class="input-xlarge" name='content' id='content' >{item.content}</textarea>
           </div>
            <!-- url-->
 					<label class="control-label" for="weight">{@pre type="content" key="newsurl"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='url' id='url'>
+            <input type="text"  class="input-xlarge" name='url' id='url' value={item.url}>
           </div>
            <!-- weight-->
 					<label class="control-label" for="weight">{@pre type="content" key="weight"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='weight' id='weight'>
+            <input type="text"  class="input-xlarge" name='weight' id='weight' value={item.weight}>
           </div>
     </div>
         

@@ -56,7 +56,7 @@
  	<div class="banner scroll-wrapper" id="idContainer2" ontouchstart="touchStart(event)" ontouchmove="touchMove(event);" ontouchend="touchEnd(event);">
        <ul class="scroller" style="width:{total}00%" id="idSlider2">
         {#items}
-	      <li><a href={url}><img src="{img}"/></a></li>  
+	      <li><a href={url}><img style="width:320px;" src="{img}"/></a></li>  
 	      {/items}  
        </ul>       
         <ul class="new-banner-num new-tbl-type" id="idNum">

@@ -9,7 +9,7 @@
 	<fieldset>
       <div id="legend" class="">
         <legend class="">{@pre type="content" key="uploadimage"/}</legend>
-    <div class="control-group">
+    <div class="control-group   {?sizewarning} error {/sizewarning}">
           
           <!-- img-->
 					<div class="controls hidden imgRow" id="imgTemplate">
@@ -18,7 +18,7 @@
           <div class="controls imgRow">
             <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
           </div>
- 					
+ 					<label class="control-label label-warning" for="thumbnail1" style='margin-top:5px;padding:3px;'>{@pre type="content" key="imgsizelimit"/}</label>
  					<!-- Button -->
           <div class="controls">
             <button type='button' id='addImg' onclick="javascript:addImage();"  class="btn btn-success">
@@ -38,22 +38,22 @@
           <!-- Text input-->
           <label class="control-label" for="username">{@pre type="content" key="productname"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='productname' id='productname'>
+            <input type="text"  class="input-xlarge" name='productname' id='productname'  value={item.productname}>
           </div>
           <!-- category-->
 		  <label class="control-label hidden" for="phone">{@pre type="content" key="category"/}</label>
           <div class="controls hidden">
-            <input type="text"  class="input-xlarge" name='category' id='category'>
+            <input type="text"  class="input-xlarge" name='category' id='category' value={item.category}>
           </div>
            <!-- price-->
 		  <label class="control-label" for="price">{@pre type="content" key="price"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='price' id='price'>
+            <input type="text"  class="input-xlarge" name='price' id='price' value={item.price}>
           </div>
           <!-- desc-->
           <label class="control-label" for="phone">{@pre type="content" key="description"/}</label>
           <div class="controls">
-            <textarea  class="input-xlarge" name='description' id='description'></textarea>
+            <textarea  class="input-xlarge" name='description' id='description'> {item.description}</textarea>
           </div>
     </div>
         
@@ -76,7 +76,7 @@
           <!-- weight-->
 			<label class="control-label" for="weight">{@pre type="content" key="weight"/}</label>
           <div class="controls">
-            <input type="text"  class="input-xlarge" name='weight' id='weight'>
+            <input type="text"  class="input-xlarge" name='weight' id='weight' value={item.weight}>
           </div>
           
     </div>
@@ -91,6 +91,11 @@
 	</div>
   </form>
         <script>  
+        {?item.entity}
+        $(document).ready(function(){
+        $('#entity').val({item.entity});
+        });
+        {/item.entity}
        function addImage()
         {
           var index  = $('div.imgRow').length;
