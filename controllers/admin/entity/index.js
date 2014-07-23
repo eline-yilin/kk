@@ -86,6 +86,7 @@ module.exports = function (router) {
     
     
     router.get('/edit/:id', function (req, res) {
+    	
     	var id = req.params.id;
 		 console.log('////////////////edit entity id ' +　id  + '//////////////////////');
 	 	 model.id
@@ -96,17 +97,7 @@ module.exports = function (router) {
 				}
 				else{
 					console.log(rst);
-					if(rst.imgs)
-						{
-						for(var key in rst.imgs)
-						{
-							var item = rst.imgs[key];
-							var url = item.url;
-							url = url.replace(".build", "");
-							rst.imgs[key].url = url;
-	
-						}
-				    }
+					
 					
 					var catmodel = new categoryModel();
 					catmodel.get

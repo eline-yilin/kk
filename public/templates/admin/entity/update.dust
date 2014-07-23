@@ -16,7 +16,7 @@
           {?obj.items.imgs}
           {#obj.items.imgs}
 	          <div class="controls imgRow col-xs-8 col-sm-6 col-md-3">
-	          	<img class='{@eq key=shape value="circle"} img-circle {/eq} img img-responsive' src={url} id='img{id}'>
+	          	<img class='{@eq key=shape value="circle"} img-circle {/eq} img img-responsive' src='{@formatImg value="{url}" /}' id='img{id}'>
 	          	<!--shape circle?-->
 			        <div class="control-group">
 								<label class="control-label" for="category">{@pre type="content" key="shape"/}</label>
@@ -116,7 +116,7 @@
     </fieldset>
   </form>
  {/obj.items}
-        <script>  
+        <script> 
        function addImage()
         {
           var index  = $('div.imgRow').length;

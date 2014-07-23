@@ -113,7 +113,7 @@ var getEntityById = function  (id, callback){	console.log(id + '&&&&&***********
 
 var post = function  (data, callback){
 	
-	var insert_address_query = 'INSERT INTO address (floor, number) values (' + data['floor'] + ',' + data['number'] + ')';
+	var insert_address_query = "INSERT INTO address (floor, number) values ('" + data['floor'] + "','" + data['number'] + "')";
 	
 	
 	return base.query(insert_address_query, function(err, rst){
@@ -143,19 +143,24 @@ var post = function  (data, callback){
 					var eid = rst['insertId'];
 					var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
 					var imgs = data['img'];
-					if(!imgs)
+					if(imgs && imgs.length > 0)
 					{
-						imgs = ['null'];
-						
+						var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
+
+						for(var i = 0; i <  imgs.length; i++)
+						{
+							insert_img_query += "(" + eid + ",'" + imgs[i] + "','" + data['shape'] + "')";
+							if(i != (imgs.length - 1) )
+								{
+								insert_img_query += ",";
+								}
+						}
 					}
-					for(var i = 0; i <  imgs.length; i++)
+					else
 					{
-						insert_img_query += "(" + eid + ",'" + imgs[i] + "','" + data['shape'] + "')";
-						if(i != (imgs.length - 1) )
-							{
-							insert_img_query += ",";
-							}
+						var insert_img_query = 'select 1';
 					}
+					console.log(query);
 					return base.query(insert_img_query, callback);
 				}
 			});	
