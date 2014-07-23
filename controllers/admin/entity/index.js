@@ -87,7 +87,7 @@ module.exports = function (router) {
     
     router.get('/edit/:id', function (req, res) {
     	var id = req.params.id;
-		 console.log('////////////////product id ' +　id  + '//////////////////////');
+		 console.log('////////////////edit entity id ' +　id  + '//////////////////////');
 	 	 model.id
 	 	(id,
 	 		function (err, rst) {

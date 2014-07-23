@@ -13,6 +13,7 @@
     <div class="control-group">
           
           <!-- img-->
+          {?obj.items.imgs}
           {#obj.items.imgs}
 	          <div class="controls imgRow col-xs-8 col-sm-6 col-md-3">
 	          	<img class='{@eq key=shape value="circle"} img-circle {/eq} img img-responsive' src={url} id='img{id}'>
@@ -26,8 +27,13 @@
 			            </select>
 			           </div>
 			         </div>
-	          	<button onclick="javascript:return removeImg({id});" style='margin-top:5px;' class=" pull-right btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> {@pre type="content" key="remove"/}</button>
+	          	<button type='button' id='removeImgBtn' onclick="javascript:return removeImg({id});" style='margin-top:5px;' class=" pull-right btn btn-danger btn-mini"><i class="icon-white icon-remove"></i> {@pre type="content" key="remove"/}</button>
 	          </div>
+          {/obj.items.imgs}
+          {:else}
+          <div class="controls imgRow imgRow-control ">
+            <input type="file", name="thumbnail1"  class="input-xlarge"  id='thumbnail1'>
+          </div>
           {/obj.items.imgs}
           <div class='clear'></div>
 		  		<div class="controls hidden imgRow" id="imgTemplate">
@@ -116,6 +122,12 @@
           var index  = $('div.imgRow').length;
           $("#imgTemplate").clone().removeClass('hidden').insertAfter("div.imgRow:last");
           $("div.imgRow:last").find('input').attr('name','thumbnail' +　index).attr('id','thumbnail' +　index );
+        }
+        function removeImg(id)
+        {
+          $('#img' + id).hide();
+          $('#removeImgBtn').hide();
+          $('.imgRow-control').removeClass('hidden');
         }
         $(document).ready(function(){
         $('#floor').val({obj.items.floor});
