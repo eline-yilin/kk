@@ -18,6 +18,7 @@ module.exports = function (router) {
         });
     
     router.post('/add', function (req, res) {
+    	var model = new CreditModel();
     	var uid = req.cookies && req.cookies.uid;
 		var reqBody=
 			{
@@ -39,7 +40,7 @@ module.exports = function (router) {
 		            },
 		            html: function () {
 						console.log('////' + JSON.stringify(rst));
-		                res.render('credit/index', {credits:rst,name:'credit'});
+		                res.redirect('/admin/credit');
 		            }
 		        });
 				}

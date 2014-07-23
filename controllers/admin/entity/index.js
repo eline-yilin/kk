@@ -132,6 +132,7 @@ module.exports = function (router) {
 			    		console.log(JSON.stringify(parent));
 			    		
 			    		var floors = [];
+			    		floors.push({value:1,key:1});
 			    		floors.push({value:1.5,key:1.5});
 			    		for(var i = 2; i <= 5 ; i++)
 			    		{
@@ -245,7 +246,7 @@ router.post('/edit/:id', function (req, res) {
     		
     		console.log(JSON.stringify(parent));
     
-    		var floors = ['1.5','2','3','4','5'];
+    		var floors = ['1','1.5','2','3','4','5'];
     		var numbers = [1,2,3,4,5,6,7,8,9,10];
     		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:parent,name:'entity'
     			});}
