@@ -45,7 +45,7 @@
                         <!--Close Search Nav-->
                           <!--Search bar-->
                           <div style='margin-bottom:10px;'>
-                          <form method='GET'>
+                          <form id='searchBarForm' method='GET'>
                           <div style='margin-top:20px;padding-top:20px;'>
 		                          <select  class="my-select" id='floor' name='floor'>
 		                          				<option value=''>{@pre type="content" key="floor"/}</option>
@@ -67,7 +67,7 @@
 													        {/category}
 											        </select> 
 								
-											        <button type='submit' class="btn btn-default btn-mini" style='padding:5px;margin-top:-1px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
+											        <button type='submit' class="btn btn-default btn-mini hidden" style='padding:5px;margin-top:-1px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
 						 		
 						 </div>
                           </form>
@@ -194,6 +194,12 @@ return false;
 });
 $('#floor').val({query.floor});
 $('#category').val({query.category});
+$('#floor').change(function(){
+$('#searchBarForm').submit();
+});
+$('#category').change(function(){
+$('#searchBarForm').submit();
+});
 });
 function showMap(id,number,event){
 stopEvent(event);

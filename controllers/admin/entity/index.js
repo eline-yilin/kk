@@ -225,6 +225,7 @@ router.post('/edit/:id', function (req, res) {
     		{
     			var row = rst[index];
     			var parent_id = row.parent_id;
+    			
     			row.sub = [];
     			if(parent_id == null)
     			{
@@ -232,13 +233,18 @@ router.post('/edit/:id', function (req, res) {
     			}
     		}
     		
+
     		for(var index in parent)
     		{
-    			var row = rst[index];
+    			var row = parent[index];
+    			
+    		    var ele =  getChild(row,rst);
+    			
     			parent[index] = getChild(row,rst);
     		}
     		
-    		console.log(JSON.stringify(rst));
+    		console.log(JSON.stringify(parent));
+    
     		var floors = ['1.5','2','3','4','5'];
     		var numbers = [1,2,3,4,5,6,7,8,9,10];
     		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:parent,name:'entity'

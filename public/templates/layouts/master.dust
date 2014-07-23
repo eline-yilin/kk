@@ -23,7 +23,7 @@
     <nav role="navigation" class="navbar navbar-primary navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-         <a class="navbar-brand pull-left" href="/">{@pre type="content" key="title"/}</a>
+         <a class="navbar-brand pull-left" href="/" >{@pre type="content" key="title"/}</a>
          {?userObj.username}
           <button data-target="#user-navigation" data-toggle="collapse" class="navbar-toggle pull-right" type="button">       
            <span style='color:#999;position:fixed;right:10px;top:15px;'> {userObj.username} <i class='icon-cog icon-white'></i> </span>

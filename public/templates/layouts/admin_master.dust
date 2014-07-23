@@ -40,10 +40,15 @@
               <ul class="dropdown-menu">
                 <li><a href="/user">{@pre type="content" key="user"/}</a> </li>
                 <li><a href="/user/order">{@pre type="content" key="order"/}</a> </li>
-                 <li><a href="/user/credit">{@pre type="content" key="credit"/}</a> </li>
               </ul>
             </li>
-            
+            <li {@eq key=name value="credit"}class="active"{/eq}>
+             <a data-toggle="dropdown" class="dropdown-toggle" href="/admin/credit">{@pre type="content" key="credit"/} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                 <li><a href="/admin/credit">{@pre type="content" key="credit"/}</a> </li>
+                 <li><a href="/admin/credit/add">{@pre type="content" key="addcredit"/}</a> </li>
+              </ul>
+            </li>
             <li class="dropdown {@eq key=name value="product"} active{/eq}">
               <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="product"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
