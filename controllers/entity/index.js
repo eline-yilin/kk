@@ -6,7 +6,6 @@ var categoryModel = require('../../models/category');
 
 function getChild(record, rst)
 {
-	console.log('get child!!!!!!!!!');
 	record.sub = [];
 	for(var index in rst)
 	{
@@ -83,7 +82,6 @@ module.exports = function (router) {
 					}
 				}
 				var model = new categoryModel();
-				console.log('aaaaaaaaaaaa' + JSON.stringify(ret));
 		    	model.get
 		    	({},
 		    		function (err, cat) {
@@ -104,7 +102,7 @@ module.exports = function (router) {
 		    			var row = parent[index];
 		    			parent[index] = getChild(row,cat);
 		    		}
-		    		console.log(JSON.stringify(parent));
+
 		    		res.render('entity/index', {items:ret,category:parent,query:req.query,name:'entity'});
 		    	}
 		    	);
@@ -118,7 +116,6 @@ module.exports = function (router) {
     
     router.get('/id/:id', function (req, res) {
    	 var id = req.params.id;
-		 console.log('////////////////product id ' +　id  + '//////////////////////');
   	 model.id
   	(id,
   		function (err, rst) {

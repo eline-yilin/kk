@@ -14,7 +14,7 @@ var getEntityList = function  (data, callback){
 	{
 	 query += ' and c.id=' + data.category;
 	}
-	return base.query(query, callback);
+	return base.query(query, callback,'select','entity');
 }; 
 
 var deleteItemById = function  (id, callback){	
@@ -22,7 +22,7 @@ var deleteItemById = function  (id, callback){
 	return base.query(query, callback);	
 }; 
 
-var getEntityById = function  (id, callback){	console.log(id + '&&&&&*************');
+var getEntityById = function  (id, callback){
 	var query = 'select e.*, a.floor, a.number, a.city, a.state, c.name as category from entity e '
 	+ '	LEFT JOIN entity_category c ON e.category_id = c.id LEFT JOIN address a ON e.address_id = a.id WHERE e.id=' + id;
 
@@ -42,7 +42,6 @@ var getEntityById = function  (id, callback){	console.log(id + '&&&&&***********
 					 	entity.imgs = img;
 						var query_get_products = 'select p.*, i.url from product p LEFT JOIN product_img i ' 
 						+ '	on  p.id = i.product_id where entity_id=' + id  + ' limit 50';
-						console.log(query_get_products);
 						return base.query(query_get_products, function(err,product){
 						if(err){
 							throw err;
@@ -159,7 +158,7 @@ var post = function  (data, callback){
 								}
 					}
 
-					return base.query(insert_img_query, callback);
+					return base.query(insert_img_query, callback,'insert','entity');
 				}
 			});	
 		}
@@ -194,7 +193,7 @@ var update = function  (data, callback){
 				{
 					var query = 'select 1';
 				}
-				console.log(query);
+
 				return base.query(query,function(err,rst){
 					if(err){
 						throw err;
@@ -224,10 +223,8 @@ var update = function  (data, callback){
 								entity.id + ",'" + url +"','" + data.shape +
 										"')";
 							}
-							
-							
-						console.log(query);
-						return base.query(query,callback);
+
+						return base.query(query,callback,'update','entity');
 					}
 				});
 				/*return base.query(query, function(err, rst){

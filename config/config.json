@@ -24,11 +24,11 @@
         }
     },
     "redisconfig": {
-    	"isRedis":0,
+    	"isRedis":1,
         "host": "127.0.0.1",
         "port": "6379"
     },
-    "databaseConfig1": {
+    "databaseConfig": {
     "user": "root",
     "password": "goumao",
         "host": "localhost",
@@ -40,7 +40,7 @@
         "host": "121.199.55.129",
         "database": "yuechang"
     },
-    "databaseConfig": {
+    "databaseConfig1": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",

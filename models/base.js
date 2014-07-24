@@ -22,47 +22,66 @@ if(isRedis)
 	});
 }
 var hashkey = 'basequery';
-var query = function(query, callback){
+var query = function(query, callback, method , name ){
 	console.log(query);
 	var results = null;
-	if(isRedis)
+	if(isRedis && name)
 	{
-	  client.hget(hashkey, query,function(err,reply){
-		  if(err)
+	  if(method == 'select')
+	  {
+		  client.hget(name, query,function(err,reply){
+			  if(err)
 			  {
-			  console.log(err);
+				  console.log(err);
 			  }
-		  else if(!reply)
-		  {
-			  return queryFunction(query,dbconfig,callback,isRedis);
-		  }
-		  else{
-			  console.log('!!!!!!hit ' + reply);
-			 return callback(null, JSON.parse(reply));
-		  }
-	  });
-	 
+			  //didn't find, query db
+			  else if(!reply)
+			  {
+				  console.log('!!!!!!didnt hit ');
+				  return queryFunction(query,callback,isRedis,method , name);
+			  }
+			  else{
+				  console.log('!!!!!!hit ' + reply);
+				 return callback(null, JSON.parse(reply));
+			  }
+		  });
+	  }
+	  else if(method == 'insert' || method == 'update')
+	  {
+		  return queryFunction(query,callback,isRedis,method , name);
+	  }
+	  else
+	  {
+		  return queryFunction(query,callback,isRedis,method , name);
+	  }
+
 	}
 	else
 	{
-		return queryFunction(query,dbconfig,callback,isRedis);
+		return queryFunction(query,callback);
 	}
-	
-        
-	
+
 };
 
-function queryFunction(query,dbconfig,callback,isRedis){
-
+function queryFunction(query,callback,isRedis, method , name){console.log(isRedis + '||||' + method + '||||' + name);
 	var connection = mysql.createConnection(dbconfig);
 	connection.connect(function(err) {
 	  if(!err){
 		  connection.query(query, function(err, result) {
 		        if(!err){
 		        	connection.end();
-		        	if(isRedis){
-		        		client.hset(hashkey, query,JSON.stringify(result));
-			        	console.log('!!!!!!set ' + JSON.stringify(result));
+		        	if(isRedis && name){
+		        		if(method == 'select')
+		        		{
+		        			client.hset(name, query ,JSON.stringify(result));
+				        	console.log('!!!!!!set ' + JSON.stringify(result));
+		        		}
+		        		else if(method == 'insert' || method == 'update')
+		        		{
+		        			client.del(name);
+				        	console.log('!!!!!!del ' + name);
+		        		}
+		        		
 		        	}
 		        	
 		           return callback(null,result);
@@ -79,7 +98,6 @@ function queryFunction(query,dbconfig,callback,isRedis){
       	return callback(err,null);
       	}
 	});
-
 }
 
 var getOne = function(query, callback){

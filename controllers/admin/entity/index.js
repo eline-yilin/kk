@@ -6,7 +6,6 @@ var categoryModel = require('../../../models/category');
 
 function getChild(record, rst)
 {
-	console.log('get child!!!!!!!!!');
 	record.sub = [];
 	for(var index in rst)
 	{
@@ -38,7 +37,6 @@ module.exports = function (router) {
 		                res.json(rst);
 		            },
 		            html: function () {
-						console.log('////' + JSON.stringify(rst));
 						var temp = [];
 						for(var key in rst)
 						{
@@ -88,7 +86,6 @@ module.exports = function (router) {
     router.get('/edit/:id', function (req, res) {
     	
     	var id = req.params.id;
-		 console.log('////////////////edit entity id ' +　id  + '//////////////////////');
 	 	 model.id
 	 	(id,
 	 		function (err, rst) {
@@ -120,8 +117,7 @@ module.exports = function (router) {
 			    			var row = parent[index];
 			    			parent[index] = getChild(row,cats);
 			    		}
-			    		console.log(JSON.stringify(parent));
-			    		
+
 			    		var floors = [];
 			    		floors.push({value:1,key:1});
 			    		floors.push({value:1.5,key:1.5});
@@ -135,7 +131,7 @@ module.exports = function (router) {
 			    			numbers.push({value:i,key:i});
 			    		}
 			    		var obj={items:rst,category:parent,floors:floors,numbers:numbers};
-			    		console.log(obj);
+
 			    		res.render('admin/entity/update', {obj:obj,name:'entity'});
 			    	}
 			    	);
@@ -234,9 +230,7 @@ router.post('/edit/:id', function (req, res) {
     			
     			parent[index] = getChild(row,rst);
     		}
-    		
-    		console.log(JSON.stringify(parent));
-    
+
     		var floors = ['1','1.5','2','3','4','5'];
     		var numbers = [1,2,3,4,5,6,7,8,9,10];
     		res.render('admin/entity/add', {floors:floors,numbers:numbers,category:parent,name:'entity'
