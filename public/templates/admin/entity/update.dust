@@ -116,7 +116,7 @@
     </fieldset>
   </form>
  {/obj.items}
-        <script> 
+        <script>
        function addImage()
         {
           var index  = $('div.imgRow').length;
@@ -130,8 +130,8 @@
           $('.imgRow-control').removeClass('hidden');
         }
         $(document).ready(function(){
-        $('#floor').val({obj.items.floor});
-        $('#number').val({obj.items.number});
+        $('#floor').val('{obj.items.floor}');
+        $('#number').val('{obj.items.number}');
         });
         </script>
 {/body}

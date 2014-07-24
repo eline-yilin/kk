@@ -141,26 +141,24 @@ var post = function  (data, callback){
 				}
 				else{
 					var eid = rst['insertId'];
-					var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
 					var imgs = data['img'];
-					if(imgs && imgs.length > 0)
+					if(!imgs || imgs.length == 0)
 					{
-						var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
-
-						for(var i = 0; i <  imgs.length; i++)
-						{
-							insert_img_query += "(" + eid + ",'" + imgs[i] + "','" + data['shape'] + "')";
+						imgs = ['.build/img/upload/noimage.jpg'];
+					}
+					
+					var insert_img_query = "INSERT INTO entity_img (entity_id, url, shape) VALUES ";
+					for(var i = 0; i <  imgs.length; i++)
+					{
+							var url = imgs[i];
+							url = url || '.build/img/upload/noimage.jpg';
+							insert_img_query += "(" + eid + ",'" + url + "','" + data['shape'] + "')";
 							if(i != (imgs.length - 1) )
 								{
 								insert_img_query += ",";
 								}
-						}
 					}
-					else
-					{
-						var insert_img_query = 'select 1';
-					}
-					console.log(query);
+
 					return base.query(insert_img_query, callback);
 				}
 			});	
@@ -173,7 +171,7 @@ var update = function  (data, callback){
 		var address_id = entity.address_id;
 		if(data.floor != entity.floor || data.number != entity.number)
 		{
-			var update_address_query = 'UPDATE  address SET floor = ' + data.floor + ', number=' + data.number + ' WHERE id=' + address_id;
+			var update_address_query = "UPDATE  address SET floor = '" + data.floor + "', number='" + data.number + "' WHERE id=" + address_id;
 		}
 		else
 		{
@@ -205,7 +203,7 @@ var update = function  (data, callback){
 					{
 							var url = null;
 							var old_url = null;
-							if( data['img'])
+							if( data['img'] &&  data['img'][0])
 							{
 								 url = data['img'][0];
 							}
@@ -221,13 +219,13 @@ var update = function  (data, callback){
 							}
 							else
 							{
-								url = url || '';
+								url = url || '.build/img/upload/noimage.jpg';
 								var query = "INSERT INTO entity_img (entity_id, url, shape) VALUES (" +
 								entity.id + ",'" + url +"','" + data.shape +
 										"')";
 							}
 							
-					    
+							
 						console.log(query);
 						return base.query(query,callback);
 					}
