@@ -30,7 +30,7 @@
 																						<div class='images'>
 																						{#url}
 																						 <div class="col-xs-12 col-sm-6 col-md-4">
-																						  <img style='max-width:100%;margin-bottom:10px;' src='{.}'>
+																						  <img style='max-width:100%;margin-bottom:10px;' src='{@formatImg value="{.}"/}'>
 																						 </div>
 																						 {/url}
 																						 </div>

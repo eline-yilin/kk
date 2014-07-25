@@ -204,6 +204,14 @@ router.post('/edit/:id', function (req, res) {
     
     
     router.get('/add', function (req, res) {
+    	var gm = require('gm');
+    	var imageMagick = gm.subClass({ imageMagick : true });
+    	try{
+    		imageMagick("/public/img/upload/thumbnail/entity_1406273094839_Tulips.jpg").autoOrient().write('//public/img/upload/thumbnail/', function(){});
+    	//gm("/public/img/upload/thumbnail/entity_1406273094839_Tulips.jpg").resize(20);
+    	}
+    	catch(error){console.log(error);}
+    	return false;
     	var model = new categoryModel();
     	model.get
     	({},
@@ -239,10 +247,10 @@ router.post('/edit/:id', function (req, res) {
        
     });
     
-    	router.post('/add', function (req, res) {
+    router.post('/add', function (req, res) {
 	 	var  fs = require('fs');
 	 	var gm = require('gm');
-	 	var imageMagick = gm.subClass({ imageMagick : true });
+	 	//var imageMagick = gm.subClass({ imageMagick : true });
 	 	var body = req.body;
 	 	body.img = [];
 
@@ -254,20 +262,28 @@ router.post('/edit/:id', function (req, res) {
 	 			 var tmp_path = img.path;
 	 			/*var target_path =   '.build/img/upload/entity_' + img.name;
 	 			console.log('try to rename ' + tmp_path + ' to ' +　target_path);*/
-	 			var target_path = '.build/img/upload/entity_' + img.name;
-    			console.log('try to resize ' + tmp_path + ' to ' +　target_path);
-	 			try{		
-		 			var fw = fs.openSync(target_path,'w');
+	 			 var timestamp = new Date().getTime();
+	 			var target_path = 'public/img/upload/thumbnail/entity_' + timestamp + '_' + img.name ;
+	 			var full_target_path = 'public/img/upload/full/entity_' + timestamp + '_' +  img.name;
+	 			try{	
+	 				console.log('try to rename ' + tmp_path + ' to ' +　full_target_path);
+		 			var fw = fs.openSync(full_target_path,'w');
 		 			var content = fs.readFileSync(tmp_path);
-		 		    fs.writeFileSync(target_path, content );
-		 		    fs.close(fw);
-		 		    console.log('unlink ' + tmp_path);
-		 		   fs.unlinkSync(tmp_path);
-		 	       
+		 		    fs.writeFileSync(full_target_path, content );
+		 		   fs.writeFileSync(target_path, content );
+		 		   fs.closeSync(fw);
+		 		   //var fw = fs.openSync(target_path,'w');
+		 		   //console.log(content);
+		 		   console.log('try to resize ' + full_target_path + ' to ' +　target_path);
+		 		  gm(target_path).resize(240);
+		 		  console.log('unlink ' + tmp_path);
+			 	  //fs.unlinkSync(tmp_path);
+		 		 fs.unlink(tmp_path,function(){  console.log('img complete !!!!!!!');});
+		 		 
 		 			// fs.renameSync(tmp_path, target_path);
 		 		}
 		 		catch(error){console.log(error);}
-	 		 	body.img.push( target_path);
+	 		 	body.img.push( '/entity_' + timestamp + '_' +  img.name);
 	 		 	
 	 		 	    // fs.unlinkSync(tmp_path);
 
@@ -282,8 +298,7 @@ router.post('/edit/:id', function (req, res) {
 	 			
 	 		
 	 	}
-	 
-	 	 console.log(body.img);
+
 		    model.post(body,function (err, rst) {
 				if (err) {
 					console.log(err);
