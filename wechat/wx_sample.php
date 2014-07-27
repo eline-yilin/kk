@@ -38,6 +38,7 @@ $newmenu =  array(
     		"button"=>
     			array(
     			array('type'=>'view','name'=>'进入平台','url'=>'http://121.199.55.129:8000/'),
+    			array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
     			/*array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
     			array('type'=>'view','name'=>'通知','url'=>$oauth_url),*/
 						/*array('name'=>'会员',"sub_button"=>array(

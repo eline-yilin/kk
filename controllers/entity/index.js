@@ -114,7 +114,7 @@ module.exports = function (router) {
     
     });
     
-    router.get('/id/:id', function (req, res) {
+    router.get('/id/:id', function (req, res) {console.log('ccc ' + JSON.stringify(res.locals.userObj));
    	 var id = req.params.id;
   	 model.id
   	(id,
