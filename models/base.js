@@ -123,14 +123,14 @@ var getOne = function(query, callback){
 }
 
 var processFilter = function(data){
-	var query = '';
+	var query = "";
 	if(data)
 	{
-		query += ' where true ';
+		query += " where true ";
 		for(var key in data){
 	        var attrName = key;
 	        var attrValue = data[key];
-	        query += ' and ' +　attrName + '=' + attrValue;
+	        query += " and " +　attrName + "='" + attrValue + "' ";
 	    }
 	}	
 	return query;

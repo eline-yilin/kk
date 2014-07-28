@@ -21,48 +21,36 @@ define("TOKEN", "szgc"); //thjcj
 ); */
 $options = array(
 		'token'=>'szgc', //填写你设定的key
-		'appid'=>'wx7fd8d219a89079f3', //填写高级调用功能的app id, 请在微信开发模式后台查询
-		'appsecret'=>'cee0122f11a19053b649ac593f856a5d ', //填写高级调用功能的密钥
+		'appid'=>'wx81c05a579d2ab456',//wx7fd8d219a89079f3', //填写高级调用功能的app id, 请在微信开发模式后台查询
+		'appsecret'=>'fe2290189dc4815c4c84dcb4ecc3d41f',//cee0122f11a19053b649ac593f856a5d ', //填写高级调用功能的密钥
 
 );
 $weObj = new Wechat($options);
-//$weObj->valid();
-//$menu = $weObj->getMenu();
-//var_dump($menu);
-$weObj->deleteMenu();
-$redir = urlencode("http://121.199.55.129/shengzhuguangchang/wechat/oauth_service.php");
-$oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7fd8d219a89079f3&redirect_uri="
-. $redir 
+//var_dump($weObj);
+$weObj->valid();
+
+
+/* $menu = $weObj->getMenu();
+var_dump($menu);
+$menu = $weObj->deleteMenu();
+var_dump($menu);
+ */
+
+/* $redir = urlencode("http://112.124.32.175/shengzhu/wechat/oauth_service.php");
+$oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81c05a579d2ab456&redirect_uri="
+. $redir
 ."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
 $newmenu =  array(
-    		"button"=>
-    			array(
-    			array('type'=>'view','name'=>'进入平台','url'=>'http://121.199.55.129:8000/'),
-    			array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
-    			/*array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
-    			array('type'=>'view','name'=>'通知','url'=>$oauth_url),*/
-						/*array('name'=>'会员',"sub_button"=>array(
-						array('type'=>'view','name'=>'会员登录','url'=>'http://121.199.55.129/yuechang/wechat/yue/register.php'),
-						array('type'=>'view','name'=>'积分查询','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-						array('type'=>'view','name'=>'积分兑换','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-						array('type'=>'view','name'=>'会员卡','url'=>'http://121.199.55.129/yuechang/wechat/yue/')
-							)
-						),*/
-						/*array('name'=>'互动',"sub_button"=>array(
-						array('type'=>'view','name'=>'会员圈','url'=>'http://121.199.55.129/yuechang/wechat/yue/'),
-						array('type'=>'view','name'=>'约唱','url'=>'http://121.199.55.129/yuechang/wechat/yue/appointmentlist.php')
-							)
-						),*/
-						/*array('name'=>'查询信息',"sub_button"=>array(
-						array('type'=>'view','name'=>'店铺信息','url'=>$oauth_url),
-						array('type'=>'view','name'=>'关于我们','url'=>$oauth_url),
-						array('type'=>'view','name'=>'通知','url'=>$oauth_url),
-    						)
-    					)*/
-					)
-    		);
+		"button"=>
+		array(
+				array('type'=>'view','name'=>'进入平台','url'=>'http://112.124.32.175:8000/'),
+				array('type'=>'view','name'=>'微信测试','url'=>$oauth_url),
+		)
+);
+var_dump($newmenu);
   $result = $weObj->createMenu($newmenu);
 
+var_dump($result); */
 
 $rev = $weObj->getRev();
 $type = $rev->getRevType();
