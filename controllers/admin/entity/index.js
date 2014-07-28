@@ -207,7 +207,9 @@ router.post('/edit/:id', function (req, res) {
     	var gm = require('gm');
     	var imageMagick = gm.subClass({ imageMagick : true });
     	try{
-    		imageMagick("/public/img/upload/thumbnail/entity_1406273094839_Tulips.jpg").autoOrient().write('//public/img/upload/thumbnail/', function(){});
+    		imageMagick("/public/img/upload/thumbnail/Tulips.jpg").resize(20).autoOrient().write('//public/img/upload/thumbnail/', function(){
+    			
+    		});
     	//gm("/public/img/upload/thumbnail/entity_1406273094839_Tulips.jpg").resize(20);
     	}
     	catch(error){console.log(error);}
