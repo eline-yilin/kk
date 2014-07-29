@@ -28,13 +28,13 @@
         "host": "127.0.0.1",
         "port": "6379"
     },
-    "databaseConfig1": {
+    "databaseConfig2": {
     "user": "root",
     "password": "goumao",
         "host": "localhost",
         "database": "yuechang"
     },
-"databaseConfig2": {
+"databaseConfig1": {
     "user": "root",
     "password": "yuShu1234",
         "host": "121.199.55.129",
@@ -74,7 +74,13 @@
                 "name": "path:./lib/auth"
             }
         },
- 
+ 		"redis": {
+            "priority": 91,
+            "enabled": false,
+            "module": {
+                "name": "path:./lib/redis"
+            }
+        },
         "locale": {
             "priority": 95,
             "enabled": true,
@@ -90,7 +96,13 @@
                 "name": "engine-munger/lib/expressView"
             }
         },
-        
+        "redisAfter": {
+            "priority": 101,
+            "enabled": false,
+            "module": {
+                "name": "path:./lib/redisAfter"
+            }
+        },
 
         "fileNotFound": {
             "enabled": true,

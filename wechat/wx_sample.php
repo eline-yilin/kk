@@ -9,16 +9,6 @@ define("TOKEN", "szgc"); //thjcj
 //$wechatObj = new wechatCallbackapiTest();
 //$wechatObj->valid();
 
-/* $options = array(
-		'token'=>'thjcj', //填写你设定的key
-		'appid'=>'wx5007aebe43f266ac', //填写高级调用功能的app id, 请在微信开发模式后台查询
-		'appsecret'=>'9a1783aac69883afbe0012978fe40155', //填写高级调用功能的密钥
-		//'debug'=>true,
-		//'logcallback'=>'logdebug',
-		// 'partnerid'=>'88888888', //财付通商户身份标识，支付权限专用，没有可不填
-		// 'partnerkey'=>'', //财付通商户权限密钥Key，支付权限专用
-		//'paysignkey'=>'' //商户签名密钥Key，支付权限专用
-); */
 $options = array(
 		'token'=>'szgc', //填写你设定的key
 		'appid'=>'wx81c05a579d2ab456',//wx7fd8d219a89079f3', //填写高级调用功能的app id, 请在微信开发模式后台查询
@@ -26,31 +16,31 @@ $options = array(
 
 );
 $weObj = new Wechat($options);
-//var_dump($weObj);
-$weObj->valid();
+
+//$weObj->valid();
 
 
-/* $menu = $weObj->getMenu();
-var_dump($menu);
-$menu = $weObj->deleteMenu();
-var_dump($menu);
- */
+//$menu = $weObj->getMenu();
+//var_dump($menu);
+//$menu = $weObj->deleteMenu();
+//var_dump($menu);
 
-/* $redir = urlencode("http://112.124.32.175/shengzhu/wechat/oauth_service.php");
+$redir = urlencode("http://112.124.32.175/shengzhu/wechat/oauth_service.php");
 $oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81c05a579d2ab456&redirect_uri="
 . $redir
 ."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
 $newmenu =  array(
 		"button"=>
 		array(
-				array('type'=>'view','name'=>'进入平台','url'=>'http://112.124.32.175:8000/'),
-				array('type'=>'view','name'=>'微信测试','url'=>$oauth_url),
+				array('type'=>'view','name'=>'进入平台','url'=>'http://112.124.32.175:8000'),
+				array('type'=>'view','name'=>'微信验证','url'=>$oauth_url),
 		)
 );
-var_dump($newmenu);
-  $result = $weObj->createMenu($newmenu);
+//var_dump($newmenu);
 
-var_dump($result); */
+$result = $weObj->createMenu($newmenu);
+
+var_dump($result);
 
 $rev = $weObj->getRev();
 $type = $rev->getRevType();

@@ -78,9 +78,10 @@
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
 																			  <div class="panel-heading"><h3 style='display:inline-block;margin:0px;'>{name}</h3> 
-																			  <span class='pull-right' style='padding-top:5px;' onclick='javascript:showMap({floor},{number},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-white icon-question-sign'></i></span>
+																			  
 																			  </div>
 																			  <div class="panel-body">
+																			  <div class='alert alert-info' style='padding:5px;' onclick='javascript:showMap({floor},{number},event);'>{@pre type="content" key="entityaddress"/} {floor}-{number} <i class='icon-black icon-question-sign'></i></div>
 																			  <form method="POST">
 	  																				    <div style='margin-top:10px;padding-bottom:30px;position:relative'> 		
 																			    		<div class='col-xs-6 col-sm-6 col-md-6'>
@@ -92,7 +93,7 @@
 																			    			<div> <label class='label label-primary'> {category} </label></div>
 																			    			{?phone}
 
-																			    			<div style='margin-top:15px;'> <label class='label label-info'> <i class="icon-white icon-envelope"></i> {phone}</label>  </div>
+																			    			<div style='margin-top:15px;'><div class='my-icon-phone'></div> <label class='label label-info'>  {phone}</label>  </div>
 																			    			{/phone}
 
 																			    			

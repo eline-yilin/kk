@@ -23,7 +23,7 @@
 								<label class='label label-primary'> {category} </label>
 								{?phone}
 
-									<div style='margin-top:15px;'> <label class='label label-info'> <i class="icon-white icon-envelope"></i> {phone}</label>  </div>
+									<div style='margin-top:15px;'><div class='my-icon-phone'></div> <label class='label label-info'> {phone}</label>  </div>
 								{/phone}
 								<div style='margin:10px 0px;' class="alert alert-warning" role="alert">{description}</div>
 								<div style='margin:10px 0px;'>
