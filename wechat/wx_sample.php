@@ -17,7 +17,7 @@ $options = array(
 );
 $weObj = new Wechat($options);
 
-//$weObj->valid();
+$weObj->valid();
 
 
 //$menu = $weObj->getMenu();
@@ -25,32 +25,33 @@ $weObj = new Wechat($options);
 //$menu = $weObj->deleteMenu();
 //var_dump($menu);
 
-$redir = urlencode("http://112.124.32.175/shengzhu/wechat/oauth_service.php");
+/* $redir = urlencode("http://112.124.32.175/shengzhu/wechat/oauth_service.php");
 $oauth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx81c05a579d2ab456&redirect_uri="
 . $redir
 ."&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
 $newmenu =  array(
 		"button"=>
 		array(
-				array('type'=>'view','name'=>'进入平台','url'=>'http://112.124.32.175:8000'),
-				array('type'=>'view','name'=>'微信验证','url'=>$oauth_url),
+					array('type'=>'view','name'=>'进入平台','url'=>'http://112.124.32.175:8000/'),
+				  array('type'=>'view','name'=>'微信测试','url'=>$oauth_url),
 		)
 );
-//var_dump($newmenu);
+
 
 $result = $weObj->createMenu($newmenu);
 
-var_dump($result);
+var_dump($result); */
 
 $rev = $weObj->getRev();
 $type = $rev->getRevType();
-$toName = $rev->getRevTo();
-$userInfo = $weObj->getUserInfo($toName);
+//$toName = $rev->getRevTo();
+//$userInfo = $weObj->getUserInfo($toName);
 
 switch($type) {
 	
 	case Wechat::MSGTYPE_TEXT:
-		$weObj->text($userInfo['nickname'] . " 你说的一切都将成为呈堂证供")->reply();
+		//$weObj->text($userInfo['nickname'] . " 你说的一切都将成为呈堂证供")->reply();
+		$weObj->text(" 你好")->reply();
 		exit;
 		break;
 	case Wechat::MSGTYPE_EVENT:

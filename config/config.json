@@ -74,13 +74,7 @@
                 "name": "path:./lib/auth"
             }
         },
- 		"redis": {
-            "priority": 91,
-            "enabled": false,
-            "module": {
-                "name": "path:./lib/redis"
-            }
-        },
+ 		
         "locale": {
             "priority": 95,
             "enabled": true,
@@ -96,13 +90,7 @@
                 "name": "engine-munger/lib/expressView"
             }
         },
-        "redisAfter": {
-            "priority": 101,
-            "enabled": false,
-            "module": {
-                "name": "path:./lib/redisAfter"
-            }
-        },
+       
 
         "fileNotFound": {
             "enabled": true,
