@@ -36,7 +36,7 @@
           <ul class="nav navbar-nav">
             <li style='display:none' {@eq key=name value="index"}class="active"{/eq}><a href="/admin">{@pre type="content" key="home"/}</a></li>
             <li {@eq key=name value="user"}class="active"{/eq}>
-             <a data-toggle="dropdown" class="dropdown-toggle" href="/admin/users">{@pre type="content" key="user"/} <b class="caret"></b></a>
+             <a data-toggle="dropdown" class="dropdown-toggle hidden" href="/admin/users">{@pre type="content" key="user"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="/user">{@pre type="content" key="user"/}</a> </li>
                 <li><a href="/user/order">{@pre type="content" key="order"/}</a> </li>

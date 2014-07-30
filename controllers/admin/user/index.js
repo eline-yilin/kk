@@ -13,7 +13,7 @@ module.exports = function (router) {
 
     	var model = new UserModel();
     	model.get({},function(err,rst){
-    		res.render('admin/user/index', {items:rst,name:'credit'});
+    		res.render('admin/user/index', {items:rst,name:'user'});
     	});
     
     });
