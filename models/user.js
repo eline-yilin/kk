@@ -4,15 +4,7 @@ var base = new BaseController();
 
 var getUserList = function(data, callback) {
 	var query = "select * from user ";
-	if(data)
-		{
-		query += ' where true ';
-		for(var key in data){
-            var attrName = key;
-            var attrValue = data[key];
-            query += ' and ' +　attrName + '=' + attrValue;
-        }
-	}
+	query += base.processFilter(data);
 	return base.query(query, callback);
 };
 

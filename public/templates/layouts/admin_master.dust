@@ -42,6 +42,7 @@
                 <li><a href="/user/order">{@pre type="content" key="order"/}</a> </li>
               </ul>
             </li>
+            <li {@eq key=name value="user"}class="active"{/eq}><a href="/admin/user">{@pre type="content" key="user"/}</a></li>
             <li {@eq key=name value="credit"}class="active"{/eq}>
              <a data-toggle="dropdown" class="dropdown-toggle" href="/admin/credit">{@pre type="content" key="credit"/} <b class="caret"></b></a>
               <ul class="dropdown-menu">
