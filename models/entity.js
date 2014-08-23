@@ -104,7 +104,7 @@ var getEntityById = function  (id, callback){
 					});
 					
 					}
-			});
+			}, 'entity');
 			}
 	});	
 }; 

@@ -107,7 +107,7 @@ module.exports = function (router) {
 	 			 console.log('image size' + dimensions.width, dimensions.height);
 	 			 var width = dimensions.width;
 	 			 var height = dimensions.height;
-	 			 if(width!=150 || height!=150)
+	 			 if(width!=220 || height!=220)
 	 			{
 	 				isImgValid = false;
 	 				break;	

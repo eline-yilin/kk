@@ -63,7 +63,8 @@ var query = function(query, callback, method , name ){
 
 };
 
-function queryFunction(query,callback,isRedis, method , name){console.log(isRedis + '||||' + method + '||||' + name);
+function queryFunction(query,callback,isRedis, method , name){
+	console.log(isRedis + '||||' + method + '||||' + name);
 	var connection = mysql.createConnection(dbconfig);
 	connection.connect(function(err) {
 	  if(!err){
@@ -100,7 +101,31 @@ function queryFunction(query,callback,isRedis, method , name){console.log(isRedi
 	});
 }
 
-var getOne = function(query, callback){
+var getOne = function(query, callback, name){
+	if(isRedis && name){
+		client.hget(name, query,function(err,reply){
+			  if(err)
+			  {
+				  console.log(err);
+			  }
+			  //didn't find, query db
+			  else if(!reply)
+			  {
+				  console.log('!!!!!!didnt hit ');
+				  return queryOneFunction(query,callback,isRedis , name);
+			  }
+			  else{
+				  console.log('!!!!!!hit ' + reply);
+				 return callback(null, JSON.parse(reply));
+			  }
+		  });
+	}
+	else{
+		return queryOneFunction(query,callback,isRedis , name);
+	}
+};
+
+var queryOneFunction = function(query,callback,isRedis , name){
 	var connection = mysql.createConnection(dbconfig);
 	connection.connect(function(err) {
 		if (!err) {
@@ -109,6 +134,11 @@ var getOne = function(query, callback){
 						if (!err ) {
 							connection.end();
 							var rst = result ? result[0] : null;
+							if(isRedis)
+							{
+								client.hset(name, query ,JSON.stringify(result));
+					        	console.log('!!!!!!set ' + JSON.stringify(result));
+							}
 							return callback(null, rst);
 						} else {
 							console.log(err);
@@ -121,7 +151,6 @@ var getOne = function(query, callback){
 		}
 	});
 }
-
 var processFilter = function(data){
 	var query = "";
 	if(data)

@@ -67,6 +67,18 @@ function stopEvent(event){
 	}
 }
 
+function fallDisplay()
+{
+	window.onscroll=function(){
+		var a = document.documentElement.scrollTop==0? document.body.clientHeight : document.documentElement.clientHeight;
+		var b = document.documentElement.scrollTop==0? document.body.scrollTop : document.documentElement.scrollTop;
+		var c = document.documentElement.scrollTop==0? document.body.scrollHeight : document.documentElement.scrollHeight;
+
+		if(a+b==c){
+			showmore();
+		}
+	}
+}
 
 //////////// Slider ///////////
 function createPicMove(a, b, c) {
