@@ -27,6 +27,7 @@ module.exports = function (router) {
     	console.log(body);
     	var imgs = [];
     	var uid = req.cookies && req.cookies.uid;
+
     	for(var key in req.files)
 	 	{
 	 		var img = req.files[key];
