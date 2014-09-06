@@ -86,12 +86,12 @@
        			 <fieldset>
 				        <legend class="">{@pre type="content" key="comment"/}</legend>
 				    <div class="control-group">
-				        <!-- title-->
+				        <!-- title
 						<label class="control-label pull-left" for="title">{@pre type="content" key="title"/}</label>
 				          <div class="controls pull-right">
 				            <input type="text"  class="input-xlarge" name='title' id='title'>
 				          </div>
-							<div class='clear'></div>		
+							<div class='clear'></div>-->		
 				           <!-- content-->
 						<label class="control-label  pull-left" for="content">{@pre type="content" key="content"/}</label>
 				          <div class="controls pull-right">
@@ -162,7 +162,7 @@ return false;
         {
          var id = $('#commentDialog').data('entityid');
          var content = $('#content').val();
-         var title = $('#title').val();
+         var title = '';
          $.post( "/comment/add", 
          {	_csrf:csrftoken, 
          	content:content, 
@@ -174,7 +174,7 @@ return false;
          	 if(data['insertId'] >= 0)
          	 {
          	 $('#content').val('');
-         	 $('#title').val('');
+         	
          	 $('#commentDialog .control-group').hide();
          	  $('#commentMsg').html('<div class="alert alert-success" role="alert">{@pre type="content" key="commentSucess"/}</div>').show();
          	  
