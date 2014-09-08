@@ -1,0 +1,75 @@
+{>"layouts/admin_master" /}
+{<body}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <script>
+  $(function() {
+  $( ".datepicker" ).datepicker( );
+   $( ".datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+ 
+  });
+  </script>
+<div id='info'><div class='sucess'></div><div class='error'></div></div>
+     <form class="form-horizontal" id='makereward' method='POST'>
+     <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
+     <input type="hidden" id='_method' name="_method" value="CREATE">
+	<input type='hidden' name='postback' value='1' />
+	  <!-- Prod Info-->
+    <fieldset>
+      <div id="legend" class="">
+        <legend class="">{@pre type="content" key="makereward"/}</legend>
+    		<!-- start date-->
+    		<div class="control-group">
+          <label class="control-label" for="startdate">{@pre type="content" key="startdate"/}</label>
+          <div class="controls">
+            <input type="text"  class="input-xlarge required datepicker" name='startdate' id='startdate'>
+          </div>
+        </div>
+        <!-- enddate-->
+        <div class="control-group">
+					<label class="control-label" for="enddate">{@pre type="content" key="enddate"/}</label>
+            
+			<div class="controls">
+             <input type="text"  class="input-xlarge required datepicker" name='enddate' id='enddate'>
+           </div>
+         </div>
+       	<!-- number-->
+        <div class="control-group">
+					<label class="control-label" for="number">{@pre type="content" key="number"/}</label>
+            
+			<div class="controls">
+             <input type="text"  class="input-xlarge required" name='number' id='number'>
+           </div>
+         </div>
+          <!-- Button -->
+          <div class="controls">
+	          <div class="col-xs-12 col-sm-6 col-md-6">
+	          	<button type='button' id='makelist' onclick='javascript:return makerewardlist();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="makelist"/}</button>
+	          </div>
+	          <div class="col-xs-12 col-sm-6 col-md-6">
+	            <button id='submit' onclick='javascript:return validate();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+	          </div>
+          </div>
+          
+          <div id="reward-list" style='display:none'>
+          
+          </div>
+	</div>
+    </fieldset>
+  </form>
+        <script>  
+        function makerewardlist(){
+	    var startdate = $('#startdate').val();
+	    var enddate = $('#enddate').val();
+	    var number = $('#number').val();
+         $.get( "/admin/activity/comment/make?startdate=" + startdate + "&enddate=" + enddate + "&number=" + number,{}, function( data ) {
+					  return false;
+					},"json");
+        }
+
+      function validate(){
+      return true;
+      }
+        </script>
+{/body}

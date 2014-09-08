@@ -70,6 +70,7 @@
               <ul class="dropdown-menu">
                  <li><a href="/admin/news">{@pre type="content" key="newslist"/}</a></li>
                  <li><a href="/admin/news/add">{@pre type="content" key="newsadd"/}</a></li>
+                 <li><a href="/admin/activity/comment/">{@pre type="content" key="commentreward"/}</a></li>
               </ul>
             </li>
             <li {@eq key=name value="cart"}class="active"{/eq}><a href="/admin/orders">{@pre type="content" key="orders"/}</a></li>
