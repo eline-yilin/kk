@@ -69,7 +69,8 @@ router.get('/comment/make', function (req, res) {
 		        res.format({
 		            json: function () {
 		            	console.log(rst);
-		                res.json(rst);
+		            	var rsp = randomNfromArray(rst,number);
+		                res.json(rsp);
 		            },
 		            html: function () {
 		            	
@@ -83,15 +84,33 @@ router.get('/comment/make', function (req, res) {
 };
 
 function randomNfromArray(arr, n){
+     if(arr.length <= n)
+     {
+    	 n = arr.length;
+     }
+	 var $filtered = new Array(); //create a new jQuery object we're going to fill
+	 var temp = shuffle(arr);
+	 for(var i = 0; i < n ; i++)
+	 {
+		 var data = temp[i];
+		 data['token'] = generateToken(10);
+		 $filtered.push(data);
+	 }
+	 return $filtered;
+}
 
-	 var added = 0;
-	 var $filtered = []; //create a new jQuery object we're going to fill
-	    var $random;
-	    while ($filtered.length < n ) {
-	        $random = arr[Math.round(Math.random() * arr.length];
-	        if(!$filtered.contains($random)) 
-	        	{
-	        		$filtered.push($random); //grab some random element from links
-	        	}
-	    }
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
+
+function generateToken(n)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < n; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
