@@ -50,7 +50,7 @@
 	          	<button type='button' id='makelist' onclick='javascript:return makerewardlist();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="makelist"/}</button>
 	          </div>
 	          <div class="col-xs-12 col-sm-6 col-md-6">
-	            <button id='submit' onclick='javascript:return validate();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
+	            <button type='button' id='submit' onclick='javascript:return sendList();' class="btn btn-success"><i class="icon-white icon-hand-right"></i> {@pre type="content" key="submit"/}</button>
 	          </div>
           </div>
           
@@ -67,13 +67,15 @@
         
             if(data)
             {
-              var append = "<table class='table table-bordered table-hover' style='margin-top:10px;'><thead><tr><th>{@pre type="content" key="username"/}</th>
+              var append = "<table class='table table-bordered table-hover' style='margin-top:10px;'><thead><tr>
+              <th>{@pre type="content" key="check"/}</th>
+              <th>{@pre type="content" key="username"/}</th>
               <th>{@pre type="content" key="phone"/}</th>
               <th>{@pre type="content" key="token"/}</th></tr>
               </thead><tbody>";
             	for(var i = 0; i < data.length; i++)
             	{
-            	 append += "<tr><td class='name'>" + data[i]['name'] + "</td><td class='phone'>" + data[i]['phone'] + "</td><td class='token'>" + data[i]['token'] + "</td></tr>";
+            	 append += "<tr><td class='check'><input type='checkbox' checked/></td><td class='name'>" + data[i]['name'] + "</td><td class='phone'>" + data[i]['phone'] + "</td><td class='token'>" + data[i]['token'] + "</td></tr>";
             	}
             	append += "</tbody></table";
             	$('#reward-list').html(append).show();
@@ -84,10 +86,13 @@
 			function sendList(){
 			
 			$( "#reward-list tbody tr" ).each(function( index ) {
-  					var name = $( this ).find('.name').text(); 
-  					var phone = $( this ).find('.phone').text(); 
-  					var token = $( this ).find('.token').text(); 
-  					 sendSMS(name,phone, token);
+			      var is_checked =  $(this).find('.check input').is(':checked');
+						if(is_checked){
+	  					var name = $( this ).find('.name').text(); 
+	  					var phone = $( this ).find('.phone').text(); 
+	  					var token = $( this ).find('.token').text(); 
+	  					sendSMS(name,phone, token);
+  					 }
 				});
 			}
 			
