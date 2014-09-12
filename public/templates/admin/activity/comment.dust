@@ -38,10 +38,12 @@
         <div class="control-group">
 					<label class="control-label" for="number">{@pre type="content" key="number"/}</label>
             
-			<div class="controls">
+				<div class="controls">
              <input type="text"  class="input-xlarge required" name='number' id='number'>
            </div>
          </div>
+         
+         <div id="reward-list" style='display:none'> </div>
           <!-- Button -->
           <div class="controls">
 	          <div class="col-xs-12 col-sm-6 col-md-6">
@@ -52,9 +54,7 @@
 	          </div>
           </div>
           
-          <div id="reward-list" style='display:none'>
-          
-          </div>
+    
 	</div>
     </fieldset>
   </form>
@@ -64,10 +64,49 @@
 	    var enddate = $('#enddate').val();
 	    var number = $('#number').val();
          $.get( "/admin/activity/comment/make?startdate=" + startdate + "&enddate=" + enddate + "&number=" + number,{}, function( data ) {
+        
+            if(data)
+            {
+              var append = "<table class='table table-bordered table-hover' style='margin-top:10px;'><thead><tr><th>{@pre type="content" key="username"/}</th>
+              <th>{@pre type="content" key="phone"/}</th>
+              <th>{@pre type="content" key="token"/}</th></tr>
+              </thead><tbody>";
+            	for(var i = 0; i < data.length; i++)
+            	{
+            	 append += "<tr><td class='name'>" + data[i]['name'] + "</td><td class='phone'>" + data[i]['phone'] + "</td><td class='token'>" + data[i]['token'] + "</td></tr>";
+            	}
+            	append += "</tbody></table";
+            	$('#reward-list').html(append).show();
+            }
 					  return false;
 					},"json");
         }
-
+			function sendList(){
+			
+			$( "#reward-list tbody tr" ).each(function( index ) {
+  					var name = $( this ).find('.name').text(); 
+  					var phone = $( this ).find('.phone').text(); 
+  					var token = $( this ).find('.token').text(); 
+  					 sendSMS(name,phone, token);
+				});
+			}
+			
+			function sendSMS(name,phone, token)
+			{
+				var msg = "中奖码为 " + token;
+				 $.get( "http://utf8.sms.webchinese.cn/?Uid=yudongpan&Key=927b82a679860d0548c7&smsMob=" + phone + "&smsText=" + msg  ,{}, function( data ) {
+        
+            if(data)
+            {
+              alert(data);
+              if(data > 0)
+              {
+              
+              }
+            }
+					  return false;
+					},"json");
+			}
       function validate(){
       return true;
       }

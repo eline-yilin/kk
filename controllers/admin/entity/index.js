@@ -18,7 +18,7 @@ function getChild(record, rst)
 		}
 	}
 	return record;
-}
+} 
 module.exports = function (router) {
 
     var model = new entityModel();

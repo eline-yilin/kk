@@ -93,7 +93,7 @@ function randomNfromArray(arr, n){
 	 for(var i = 0; i < n ; i++)
 	 {
 		 var data = temp[i];
-		 data['token'] = generateToken(10);
+		 data['token'] = generateToken(6,'0123456789');
 		 $filtered.push(data);
 	 }
 	 return $filtered;
@@ -104,10 +104,11 @@ function shuffle(o){ //v1.0
     return o;
 };
 
-function generateToken(n)
+function generateToken(n,possible)
 {
     var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    if(!possible) 
+    	possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     for( var i=0; i < n; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
