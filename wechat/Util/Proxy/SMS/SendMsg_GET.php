@@ -1,3 +1,4 @@
+<?php
 $msg=$_GET["smsText"];
 $phone=$_GET["smsMob"];
 $Uid='yudongpan';
@@ -23,3 +24,5 @@ return $url;
 	}
 	return $file_contents;
 }
+
+?>

@@ -99,7 +99,7 @@
 			function sendSMS(name,phone, token)
 			{
 				var msg = "感谢您参与评论活动，获得意大利Stickhouse价值25元冰淇淋一份。获取代码为 " + token;
-				 $.get( "112.124.32.175/wechat/Util/Proxy/SMS/SendMsg_GET.php?smsMob=" + phone + "&smsText=" + msg  ,{}, function( data ) {
+				 $.get( "http://112.124.32.175/shengzhu/wechat/Util/Proxy/SMS/SendMsg_GET.php?smsMob=" + phone + "&smsText=" + msg  ,{}, function( data ) {
         
             if(data)
             {
