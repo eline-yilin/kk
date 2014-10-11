@@ -14,8 +14,20 @@ var getEntityList = function  (data, callback){
 	{
 	 query += ' and c.id=' + data.category;
 	}
+	if(data.q)
+	{
+	 query += ' and ( c.name like \'%' + data.q + '%\' or e.name like \'%' + data.q + '%\' )';
+	}
 	return base.query(query, callback,'select','entity');
 }; 
+
+var getEventList = function  (data, callback){	
+	var query = 'select e.* '
+		+ ' from entity e  '
+		+ ' where e.is_deleted <> 1 ORDER BY id DESC LIMIT 5';
+	
+	return base.query(query, callback,'select','entity');
+};
 
 var deleteItemById = function  (id, callback){	
 	var query = 'UPDATE entity SET is_deleted = 1 where id=' + id;
@@ -258,4 +270,5 @@ this.id = getEntityById;
 this.post = post;
 this.update = update;
 this.delete = deleteItemById;
+this.events = getEventList;
 };

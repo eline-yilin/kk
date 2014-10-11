@@ -3,6 +3,7 @@
 
 var NewsModel = require('../models/news');
 
+var EntityModel = require('../models/entity');
 
 module.exports = function (router) {
 
@@ -24,7 +25,15 @@ module.exports = function (router) {
 	    			  }
 	     }
     	  console.log(rst);
-    	  res.render('index', {items:rst, total:total,name:'index'});
+    	  var entity_model = new EntityModel();
+    	  entity_model.events
+      	({},
+      		function (err, news) {
+      		
+      		res.render('index', {items:rst,news:news, total:total,name:'index'});
+      		
+      	});
+    	  
       });
       
         

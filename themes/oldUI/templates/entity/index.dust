@@ -4,31 +4,76 @@
             
                 <fieldset>
                     <legend>{@pre type="content" key="entitylist"/}</legend>
-
+                        <!--Search Nav-->
+                        <nav class="navbar navbar-default hidden" role="navigation" style='padding:0px;line-height:0.9em !important;font-size:0.9em !important;'>
+												  <div class="container-fluid">
+												    <!-- Brand and toggle get grouped for better mobile display -->
+												    <div class="navbar-header">
+												      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#searchForm">
+												        <span class="sr-only">Toggle navigation</span>
+												        <i class='icon icon-search'></i>
+												      </button>
+												      <a class="navbar-brand" href="#">{@pre type="content" key="search"/}</a>
+												    </div>
+												
+												    <!-- Collect the nav links, forms, and other content for toggling -->
+												    <div class="collapse navbar-collapse" id="searchForm">
+												      <ul class="nav navbar-nav">
+												      <li>
+											             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="floor"/} </a>
+											              <ul class="dropdown-menu">
+											               	<li {@eq key=floor value=1.5} class='active'{/eq}><a href="?floor=1.5">{@pre type="content" key="floor1half"/}</a></li>
+															        <li {@eq key=floor value=2} class='active'{/eq}><a href="?floor=2">{@pre type="content" key="floor2"/}</a></li>  
+															        <li {@eq key=floor value=3} class='active'{/eq}><a href="?floor=3">{@pre type="content" key="floor3"/}</a></li>  
+															        <li {@eq key=floor value=4} class='active'{/eq}><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
+															        <li {@eq key=floor value=5} class='active'{/eq}><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
+											              </ul>
+											            </li>
+												     	 <li>
+											             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{@pre type="content" key="category"/} </a>
+											              <ul class="dropdown-menu">
+											              	{#category}
+													        	<li><a href="?category={id}">{name}</a></li>
+													        {/category} 
+												     	   </ul>
+											             </li>
+	 
+												      </ul>
+												    </div><!-- /.navbar-collapse -->
+												  </div><!-- /.container-fluid -->
+												</nav>
+                        <!--Close Search Nav-->
                           <!--Search bar-->
                           <div style='margin-bottom:10px;'>
                           <form id='searchBarForm' method='GET'>
-                          <div style='margin-top:20px;padding-top:20px;text-align:center'>
-		                          <div class="controls center" style='text-align:center'>
-						            <input type="text" placeholder="输入店铺/菜名进行搜索" size="35" maxlength="255" class="" name='search' id='search' style='margin-right:10px;'>
-						          	<i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i>
-						          </div>	
+                          <div style='margin-top:20px;padding-top:20px;'>
+		                          <select  class="my-select" id='floor' name='floor'>
+		                          				<option value=''>{@pre type="content" key="floor"/}</option>
+		                          				<option value=1 >{@pre type="content" key="floor1"/}</option>
+											               	<option value=1.5 >{@pre type="content" key="floor1half"/}</option>
+															        <option value=2 >{@pre type="content" key="floor2"/}</option>  
+															        <option  value=3 >{@pre type="content" key="floor3"/}</option>  
+															        <option value=4  >{@pre type="content" key="floor4"/}</option>  
+															        <option  value=5 >{@pre type="content" key="floor5"/}</option>  
+											        </select> 
+											        
+											       
+							                          <select  class="my-select" id='category' name='category' >
+							                          		<option value=''>{@pre type="content" key="category"/}</option>
+									                          {#category}
+															        	<option value={id}>{name}</option>
+															        	{#sub}
+															        		<option value={id}>> {name}</option>
+															        	{/sub}
+													        {/category}
+											        </select> 
+								
+											        <button type='submit' class="btn btn-default btn-mini hidden" style='padding:5px;margin-top:-1px;'><i class='icon icon-search'></i> {@pre type="content" key="search"/}</button>
+						 		
 						 </div>
                           </form>
                           </div>
                           <!--Close Search bar-->
-                        <div class='row'>
-                        <div class='col col-xs-2 col-sm-2 col-md-2 my-container'>
-                        <ul>
-                        <li class='button-item'><a href="?floor=1">{@pre type="content" key="floor1"/}</a></li>
-                        <li class='button-item'><a href="?floor=1.5">{@pre type="content" key="floor1half"/}</a></li>
-						<li class='button-item'><a href="?floor=2">{@pre type="content" key="floor2"/}</a></li>  
-						<li class='button-item'><a href="?floor=3">{@pre type="content" key="floor3"/}</a></li>  
-						<li class='button-item'><a href="?floor=4">{@pre type="content" key="floor4"/}</a></li>  
-						<li class='button-item'><a href="?floor=5">{@pre type="content" key="floor5"/}</a></li>  
-						</ul>					          
-                        </div>
-                        <div class='col col-xs-10 col-sm-10 col-md-10'>
                         {?items}
                         {#items}
                                     <div class="panel panel-primary my-list-item" id="appointment{id}" onclick="javascript:return goToDetail({id});">
@@ -81,8 +126,6 @@
                         {:else}
                
             						{/items}
-            				</div>
-            		   </div>
                 </fieldset>
             
         </div>
@@ -135,11 +178,6 @@
    
         </div>
         <script>  
-        function jumptoquery()
-   {
-   	var query = $('#search').val();
-    location.href= "/entity?q=" + query;
-   } 
 $.ajaxSetup({
     crossDomain: false, 
     beforeSend: function(xhr, settings) {

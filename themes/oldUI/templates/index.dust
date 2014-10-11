@@ -65,47 +65,18 @@
   </div>      
   <input type="hidden" value="{total}" id="activity"/>
   <div style='margin-top:20px;'></div>
-  <div class="control-group" >
-          <!-- Text input-->
-          
-          <!-- search-->
-		
-          <div class="controls center" style='text-align:center'>
-            <input type="text" placeholder="输入店铺/菜名进行搜索" size="35" maxlength="255" class="" name='search' id='search' style='margin-right:10px;'>
-          	<i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i>
-          </div>
-  </div>
-  <div class="campaign">
-  <h2 id="activityheader">近期活动</h2>
-  <table id="campaigntbl" width="100%">
-  	  <tbody>
-	    <tr>
-	      <td width="25%">商家名称</td>
-	      <td width="50%">活动内容</td>
-	      <td width="25%">活动时间</td>
-	    </tr>
-	    {#news}
-	     <tr>
-	      <td width="25%"><a href='/entity/id/{id}'>{name}</td>
-	      <td width="50%">{description}</td>
-	      <td width="25%"></td>
-	    </tr> 
-	      {/news} 
-	  </tbody>
-	</table>
-  </div>
    <div id='home-block-menus navbar navbar-fixed-bottom'>
-  	 <div class='my-center' style='margin-top:35px;'>
-			    <span class='button-item'>
-			      <a href="/entity?floor=2">{@pre type="content" key="entitylist"/}</a>
-			     </span>	   
+  	 <div style='margin-top:15px;'>
+			    <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="/entity?floor=2"><button type='button' class='my-circle btn btn-success'>{@pre type="content" key="entitylist"/}</button></a>
+			     </div>	   
 			    
-			    <span class="button-item">
-			      <a href="/image?type=map">{@pre type="content" key="floormap"/}</a>
-			    </span>	
-			   	<span class="button-item">
-			       <a href="/comment/add">{@pre type="content" key="comment"/}</a>
-			    </span>	
+			    <div class="col col-xs-4 col-sm-4 col-md-4">
+			      <a href="/image?type=map"><button type='button' class='my-circle btn btn-warning'>{@pre type="content" key="floormap"/}</button></a>
+			    </div>	
+			   	<div class="col col-xs-4 col-sm-4 col-md-4">
+			       <a href="/comment/add"><button type='button' class='my-circle btn btn-primary'>{@pre type="content" key="comment"/}</button></a>
+			    </div>	
 			    <div class='clear'></div>
 	   </div>
 	    
@@ -113,11 +84,6 @@
 	    
    </div>
    <script>
-   function jumptoquery()
-   {
-   	var query = $('#search').val();
-    location.href= "/entity?q=" + query;
-   } 
 	var picCount = $("#activity").val();
 	$(".pic-num1").css("width",(picCount*30)+"px");
 	var forEach = function(array, callback){

@@ -100,13 +100,17 @@ body .label:empty,
 body .badge:empty { display: inline-block; }
 
 /************Custom nav bar**************/
-@my-primary-color:#3276b1;
+@my-primary-color:#007FFF;
 @my-primary-color-hover:#428bca;
 @my-primary-font:#FFF;
 @my-primary-font-hover:#CCC;
 
 body
 {
+.my-top-nav
+{
+a {color:@my-primary-color;}
+}
 .ui-datepicker {z-index:9999 !important;}
 .navbar-primary 
 	{ 
@@ -174,6 +178,56 @@ body.page-entity{min-height:400px;}
 } 
 body
 {
+    .my-center
+    {
+    	text-align:center;
+    	.button-item a{
+	    text-align: center;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		padding-right: 10px;
+		background-color: #3960F5;
+		color: #FFC;
+		text-decoration: none;
+		margin-right: 10px;
+		margin-left: 10px;
+		
+		}
+    }  
+    #activityheader {
+	color: #3960F5;
+	text-align: center;
+	}
+	#campaigntbl {
+	border-bottom: 2px solid #3960F5;
+	border-top: 2px solid #3960F5;
+	}
+	.my-container
+    {
+
+    	ul {
+		    li{
+			    display: list-item;
+				text-align: -webkit-match-parent;
+			    a
+			    {
+				    text-decoration: none;
+					float: none;
+					text-align: center;
+					list-style-type: none;
+					display: block;
+					padding-top: 10px;
+					padding-bottom: 10px;
+					border: 1px solid #FFC;
+					background-color: #007FFF;
+					color: #FFF;
+					font-weight: bold;
+			    }
+		    }
+		}
+
+    }
 	padding-top:70px;
 	.my-red{
 	background-repeat: repeat-x;
@@ -235,7 +289,7 @@ body
 		.icon-cog {
 		    background-position: -432px 0;
 		}
-		.small-login a{color:#fff;text-decoration:none;}
+		
 }
 
 .clear{clear:both;}

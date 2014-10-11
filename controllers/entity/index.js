@@ -36,6 +36,11 @@ module.exports = function (router) {
     	reqBody.category = req.query.category;
     	
     	}
+        if(req.query.q)
+    	{
+    	reqBody.q = req.query.q;
+    	
+    	}
     	model.get
     	(reqBody,
     		function (err, rst) {
