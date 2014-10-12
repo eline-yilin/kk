@@ -24,7 +24,7 @@ var getEntityList = function  (data, callback){
 var getEventList = function  (data, callback){	
 	var query = 'select e.* '
 		+ ' from entity e  '
-		+ ' where e.is_deleted <> 1 ORDER BY id DESC LIMIT 5';
+		+ ' where e.is_deleted <> 1 AND description <> \'\' ORDER BY id DESC LIMIT 5';
 	
 	return base.query(query, callback,'select','entity');
 };
