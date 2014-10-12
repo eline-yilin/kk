@@ -2,7 +2,7 @@
 {<body}
 <div class='container-fluid'>
 <form method="POST">
- 	<fieldset>
+ 	<div class='fieldset'>
        <legend>{@pre type="content" key="entitydetail"/}</legend>
 			<ul class="nav nav-tabs" role="tablist" id='entity-tab-control'>
 			  <li  class="active"><a href="#tab-detail">{@pre type="content" key="entitydetail"/}</a></li>
@@ -83,7 +83,7 @@
           			 <button type="button" class="close" data-dismiss="modal" style='padding:3px;'>×</button>
            		 </div>
            		 <div class="modal-body">  
-       			 <fieldset>
+       			 <div>
 				        <legend class="">{@pre type="content" key="comment"/}</legend>
 				    <div class="control-group">
 				        <!-- title
@@ -122,7 +122,7 @@
 		  	</a>
 		  </div><!--close tab address-->
  		</div><!--close tab-content-->
-  </fieldset>
+  </div>
   <!--If we don't at the Cross-Site Request Forgey token, this POST will be rejected-->
 <input type="hidden" id='csrf' name="_csrf" value="{_csrf}">
 <input type="hidden" name="_method" value="POST">
