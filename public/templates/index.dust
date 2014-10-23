@@ -96,17 +96,19 @@
   </div>
    <div id='home-block-menus navbar navbar-fixed-bottom'>
   	 <div class='my-center' style='margin-top:35px;'>
+  	  		<div class='btn btn-primary'>
 			    <span class='button-item'>
 			      <a href="/entity?floor=2">{@pre type="content" key="entitylist"/}</a>
 			     </span>	   
-			    
+			    |
 			    <span class="button-item">
-			      <a href="/image?type=map">{@pre type="content" key="floormap"/}</a>
-			    </span>	
+			      <a  href="/image?type=map">{@pre type="content" key="floormap"/}</a>
+			    </span>	|
 			   	<span class="button-item">
-			       <a href="/comment/add">{@pre type="content" key="comment"/}</a>
+			       <a  href="/comment/add">{@pre type="content" key="comment"/}</a>
 			    </span>	
 			    <div class='clear'></div>
+			   </div>
 	   </div>
 	    
 	  
