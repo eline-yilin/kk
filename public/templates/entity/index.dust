@@ -3,9 +3,7 @@
      <div class="products">
             
                 <fieldset>
-                    <legend>{@pre type="content" key="entitylist"/}</legend>
-
-                          
+                    <legend>{@pre type="content" key="entitylist"/}</legend>                   
                         <div  class='my-center' style='margin-top:15px;margin-bottom:15px;'>
                         	<div class='btn btn-primary button-item'>
                         		<a href="?floor=1">{@pre type="content" key="floor1"/}</a>|
