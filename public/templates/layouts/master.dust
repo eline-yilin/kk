@@ -25,8 +25,8 @@
       <div class="container">
         <div class="navbar-header pull-left">
         	<div class="input-group input-group-sm pull-left" style='width:60%;position:relative;top:10px;left:10px;'>
-	            <input type="text" placeholder="搜索店铺/菜名" size="35" maxlength="255" class="form-control" name='search' id='search' style='height:30px;max-width:100%;margin-right:10px;'>
-	          	 <span class="input-group-addon"><i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i></span>
+	            <input type="text" placeholder="搜索店铺/菜名" size="35" maxlength="255" class="form-control" name='search' id='search' style='padding:10px 2px;max-width:100%;margin-right:10px;'>
+	          	 <span class="input-group-addon" ><i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i></span>
 	         </div>
           <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
 	          {?userObj.username}
