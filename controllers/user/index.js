@@ -104,12 +104,13 @@ module.exports = function(router) {
 		var model = new UserModel();
 		var phone = req.body.phone;
 		var password = req.body.password;
+		console.log(phone + '/' + password);
 		model.get({phone:phone,password:password}, function(err, rst) {
 			if (err) {
 				console.log(err);
 			} else {
 				
-					
+				console.log(rst);
 					if(rst && rst[0])
 					{
 						rst = rst[0];

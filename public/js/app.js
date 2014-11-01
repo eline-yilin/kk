@@ -6,7 +6,11 @@ $.ajaxSetup({
     }
 });
 
-
+function jumptoquery()
+{
+	var query = $('#search').val();
+ location.href= "/entity?q=" + query;
+} 
 function validate()
 {
     var isValid = true;

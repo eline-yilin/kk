@@ -51,6 +51,15 @@
           <div class="controls">
             <input type="text"  class="input-xlarge" name='weight' id='weight' value={item.weight}>
           </div>
+           <!-- entity-->
+          <label class="control-label">{@pre type="content" key="entity"/}</label>
+	          <div class="controls">
+	            <select class="input-xlarge required" name='gender' id='gender'>
+	              <option value=''></option>
+	              <option value='male'>{@pre type="content" key="male"/}</option>
+	              <option value='female'>{@pre type="content" key="female"/}</option>
+	            </select>
+	          </div>
     </div>
         
     </fieldset>

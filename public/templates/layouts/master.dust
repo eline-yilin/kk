@@ -20,37 +20,56 @@
 </head>
 <body role="document" class="page-{name}">
     <!-- Fixed navbar -->
-    <nav role="navigation" class="navbar navbar-primary navbar-fixed-top">
-      <div class="container" style='text-align:center;'> 
-         <img src='/img/LOGO.png' style='width:180px;height:90px'>
+   
+    <div role="navigation" class="navbar navbar-primary navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header pull-left">
+        	<div class="input-group input-group-sm pull-left" style='width:60%;position:relative;top:10px;left:10px;'>
+	            <input type="text" placeholder="搜索店铺/菜名" size="35" maxlength="255" class="form-control" name='search' id='search' style='max-width:100%;margin-right:10px;'>
+	          	 <span class="input-group-addon"><i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i></span>
+	         </div>
+          <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+	          {?userObj.username}
+	           	<span style='color:#999;position:fixed;right:60px;top:15px;'>{userObj.username}</span>
+	          {/userObj.username} 
+	        <span class='pull-left' style='position:relative;right:20px;'><i class='icon-white icon-user'></i></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse pull-right" style='position:relative;top:-30px;'>
+          <ul class="nav navbar-nav">
+             {?userObj.username}
+			                 
+			           <li><a href="/user/logout">{userObj.username} - {@pre type="content" key="logout"/}</a></li>   
+			
+			           {:else}
+			           <li><a href="/user/login" >{@pre type="content" key="login"/}</a></li>
+			           <li><a href="/user/register" >{@pre type="content" key="register"/}</a> </li>
+			     {/userObj.username} 
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </nav>
-    <div class='clear my-top-nav' style='padding-top:50px;'>
-    <span class='pull-right' style='padding-right:10px;'>
-           | <a href="/image?type=map">{@pre type="content" key="floormap"/}</a>
-     </span>
-     {?userObj.username}
-                 
-           <span class='pull-right' style='padding-right:10px;'>  
-           	<a href="/user/logout">{userObj.username} - {@pre type="content" key="logout"/}</a></span>   
-
-           {:else}
-           <span class='pull-right' style='padding-right:10px;'>
-               <a href="/user/login" >{@pre type="content" key="login"/}</a> / 
-               <a href="/user/register" >{@pre type="content" key="register"/}</a>  
-         
-           </span>
-          {/userObj.username} 
-
     </div>
 
     
     <div role="main" class="container theme-showcase">
 				{+body /}
     </div> <!-- /container -->
+    <div id='home-block-menus navbar navbar-fixed-bottom'>
+  	 <div class='container-fluid' style='margin-top:35px;'>
+  	       <ul class="my-center nav nav-pills" role="tablist" style='max-width:300px;'>
+			  <li role="presentation" class="active"><a href="/entity?floor=2">{@pre type="content" key="entitylist"/}</a></li>
+			  <li role="presentation"  class="active"> <a  href="/image?type=map">{@pre type="content" key="floormap"/}</a></li>
+			  <li role="presentation"  class="active"> <a  href="/comment/add">{@pre type="content" key="comment"/}</a></li>
+			</ul>
+  	  		
+	   </div>
     <div id="footer" style='margin-top:20px;'>
-		  <div class="container" style='position:relative;font-size:0.7em;line-height:1.7em;background:#3960F5;color:#FFC;'>
-		    <p>Copyright 2014 羽书信息科技. All rights reserved.</p>
+		  <div class="container">
+		    <p>{@pre type="content" key="companyname"/}</p>
 		  </div>
 		</div>
 		<script>

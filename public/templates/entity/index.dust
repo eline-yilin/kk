@@ -5,18 +5,7 @@
                 <fieldset>
                     <legend>{@pre type="content" key="entitylist"/}</legend>
 
-                          <!--Search bar-->
-                          <div style='margin-bottom:10px;'>
-                          <form id='searchBarForm' method='GET'>
-                          <div style='margin-top:20px;padding-top:20px;text-align:center'>
-		                          <div class="controls center" style='text-align:center'>
-						            <input type="text" placeholder="输入店铺/菜名进行搜索" size="35" maxlength="255" class="" name='search' id='search' style='margin-right:10px;'>
-						          	<i class="icon-black icon-search" onclick='javascript:jumptoquery();'></i>
-						          </div>	
-						 </div>
-                          </form>
-                          </div>
-                          <!--Close Search bar-->
+                          
                         <div  class='my-center' style='margin-top:15px;margin-bottom:15px;'>
                         	<div class='btn btn-primary button-item'>
                         		<a href="?floor=1">{@pre type="content" key="floor1"/}</a>|

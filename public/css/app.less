@@ -100,7 +100,7 @@ body .label:empty,
 body .badge:empty { display: inline-block; }
 
 /************Custom nav bar**************/
-@my-primary-color:#007FFF;
+@my-primary-color:#2d6ca2;
 @my-primary-color-hover:#428bca;
 @my-primary-font:#FFF;
 @my-primary-font-hover:#CCC;
@@ -109,7 +109,7 @@ body
 {
 .my-top-nav
 {
-a {color:@my-primary-color;}
+a {color:@my-primary-font;}
 }
 .ui-datepicker {z-index:9999 !important;}
 .navbar-primary 
@@ -223,7 +223,7 @@ body
 					padding-top: 10px;
 					padding-bottom: 10px;
 					border: 1px solid #FFC;
-					background-color: #007FFF;
+					background-color: @my-primary-color;
 					color: #FFF;
 					font-weight: bold;
 			    }
@@ -318,3 +318,6 @@ border:1px solid #aaa;padding:15px;margin:10px 0px;
 
 .primary-tile{font-weight:bold;padding-bottom:3px;margin-bottom:3px;border-bottom:1px solid #888;}
 
+#footer .container{
+
+font-size:0.5em;text-align:center;}
